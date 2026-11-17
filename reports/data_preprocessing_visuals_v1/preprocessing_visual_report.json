@@ -1,0 +1,40 @@
+{
+  "source": "models\\alpaca_1min_research_v1\\raw_ecl_iex_5min_train_validation.csv",
+  "source_sha256": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+  "symbol": "ECL",
+  "feed": "Alpaca IEX",
+  "timeframe": "5Min",
+  "permitted_new_york_dates": [
+    "2025-11-13",
+    "2026-09-24"
+  ],
+  "input_timestamp_range_utc": [
+    "2025-11-13T14:30:00+00:00",
+    "2026-09-24T19:55:00+00:00"
+  ],
+  "input_timestamp_range_new_york": [
+    "2025-11-13T09:30:00",
+    "2026-09-24T15:55:00"
+  ],
+  "clean_timestamp_range_new_york": [
+    "2025-11-13T09:30:00",
+    "2026-09-24T15:55:00"
+  ],
+  "preprocessing_counts": {
+    "input_rows": 16060,
+    "duplicate_rows_removed": 0,
+    "invalid_ohlc_rows_removed": 0,
+    "outside_or_misaligned_session_rows_removed": 1,
+    "zero_volume_rows_marked_missing": 0,
+    "output_rows": 16059,
+    "missing_expected_intervals_preserved": 717
+  },
+  "provenance_metadata_confirms_no_credentials_saved": true,
+  "test_dataset_accessed": false,
+  "outputs": [
+    "before_after_preprocessing.png",
+    "volume_and_return_distributions.png",
+    "preprocessing_visual_report.json"
+  ],
+  "plot_note": "Price traces and close changes reset at missing five-minute timestamps and session boundaries. No missing OHLC bars are filled or synthesized."
+}

@@ -1,0 +1,430 @@
+{
+  "inputs": [
+    "data/alpaca_rebuild_v1/train.csv",
+    "data/alpaca_rebuild_v1/validation.csv"
+  ],
+  "test_data_accessed": false,
+  "train_sha256": "b38005521485be7e22dc6a617bb422deaad075546f9a2db9603a5e737f96486b",
+  "validation_sha256": "1767ccd6d69d8c416a9087e710d93f9f69de0e2e0b8f4521edd1074f8d6365cf",
+  "features_exact_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "base_models": [
+    "lightgbm_conservative",
+    "lightgbm_balanced_B_start",
+    "multinomial_logistic"
+  ],
+  "base_hyperparameters": {
+    "lightgbm_conservative": {
+      "objective": "multiclass",
+      "num_class": 3,
+      "n_estimators": 350,
+      "learning_rate": 0.02,
+      "num_leaves": 15,
+      "max_depth": -1,
+      "min_child_samples": 60,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 5.0,
+      "class_weight": null,
+      "random_state": 42,
+      "n_jobs": -1,
+      "verbosity": -1
+    },
+    "lightgbm_balanced_B_start": {
+      "objective": "multiclass",
+      "num_class": 3,
+      "n_estimators": 500,
+      "learning_rate": 0.03,
+      "num_leaves": 31,
+      "max_depth": -1,
+      "min_child_samples": 40,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 1.0,
+      "class_weight": "balanced",
+      "random_state": 42,
+      "n_jobs": -1,
+      "verbosity": -1
+    },
+    "multinomial_logistic": {
+      "C": 1.0,
+      "max_iter": 2000,
+      "solver": "lbfgs",
+      "class_weight": null,
+      "random_state": 42
+    }
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "train_dates": 61,
+      "predict_dates": 31,
+      "train_date_start": "2025-11-13",
+      "train_date_end": "2026-03-10",
+      "predict_date_start": "2026-03-11",
+      "predict_date_end": "2026-04-29",
+      "train_rows_before_purge": 1508,
+      "train_rows_after_purge": 1508,
+      "purged_rows": 0,
+      "first_prediction_timestamp": "2026-03-11 11:10:00"
+    },
+    {
+      "fold": 2,
+      "train_dates": 92,
+      "predict_dates": 31,
+      "train_date_start": "2025-11-13",
+      "train_date_end": "2026-04-29",
+      "predict_date_start": "2026-04-30",
+      "predict_date_end": "2026-06-16",
+      "train_rows_before_purge": 2635,
+      "train_rows_after_purge": 2635,
+      "purged_rows": 0,
+      "first_prediction_timestamp": "2026-04-30 11:10:00"
+    },
+    {
+      "fold": 3,
+      "train_dates": 123,
+      "predict_dates": 31,
+      "train_date_start": "2025-11-13",
+      "train_date_end": "2026-06-16",
+      "predict_date_start": "2026-06-17",
+      "predict_date_end": "2026-08-05",
+      "train_rows_before_purge": 3903,
+      "train_rows_after_purge": 3903,
+      "purged_rows": 0,
+      "first_prediction_timestamp": "2026-06-17 11:10:00"
+    }
+  ],
+  "oof_rows": 3375,
+  "oof_date_range": [
+    "2026-03-11",
+    "2026-08-05"
+  ],
+  "oof_label_metrics_are": "Base-model expanding-window predictions on their OOF blocks. Ensemble weights/meta-models/policy were fit using these same OOF rows; any in-sample ensemble-fit score is not an unbiased generalization estimate.",
+  "preprocessing": "Each OOF fold independently fits median numeric imputation; day_of_week most-frequent imputation + one-hot. Logistic additionally scales numeric features. Validation base models are existing train-only candidate artifacts.",
+  "weight_learning": {
+    "global": "simplex-constrained soft voting minimizes OOF multiclass log loss with mild L2 shrinkage toward equal weights",
+    "class_specific": "per-class simplex weights, same OOF loss and shrinkage",
+    "regime": "weights fitted separately only if regime OOF n>=300; otherwise fall back to global OOF weights"
+  },
+  "regime_method": "Causal thresholds: volatility_20 >= fold-training 75th percentile means high_volatility; else abs(sma_ratio_20) >= fold-training 75th percentile means trending; else sideways. Final validation thresholds are estimated from all train rows only; high volatility takes precedence.",
+  "regime_oof_counts": {
+    "trending": 516,
+    "sideways": 2013,
+    "high_volatility": 846
+  },
+  "regime_validation_counts": {
+    "trending": 187,
+    "sideways": 791,
+    "high_volatility": 183
+  },
+  "regime_minimum_rows": 300,
+  "global_weights_model_order": [
+    "lightgbm_conservative",
+    "lightgbm_balanced_B_start",
+    "multinomial_logistic"
+  ],
+  "global_weights": [
+    0.31929022713829325,
+    0.015708312983898985,
+    0.6650014598778079
+  ],
+  "class_specific_weights_rows_class_cols_model": {
+    "DOWN": [
+      0.32460529978309477,
+      0.08727438566941281,
+      0.5881203145474924
+    ],
+    "NEUTRAL": [
+      0.3075793647723932,
+      0.16323864752482894,
+      0.5291819877027779
+    ],
+    "UP": [
+      0.34532130250990023,
+      0.11011123572393008,
+      0.5445674617661697
+    ]
+  },
+  "regime_weights_model_order": [
+    "lightgbm_conservative",
+    "lightgbm_balanced_B_start",
+    "multinomial_logistic"
+  ],
+  "regime_weights": {
+    "trending": [
+      0.4023199286697683,
+      1.1058862159352145e-17,
+      0.5976800713302318
+    ],
+    "sideways": [
+      0.2891249418528611,
+      0.038938088741138306,
+      0.6719369694060007
+    ],
+    "high_volatility": [
+      0.28417366663450133,
+      0.029180426166024134,
+      0.6866459071994745
+    ]
+  },
+  "selective_policy": {
+    "threshold_source": "training OOF only",
+    "minimum_directional_coverage_constraint": 0.2,
+    "confidence_threshold": 1.0,
+    "oof_coverage": 0.0,
+    "oof_directional_macro_f1": 0.0,
+    "agreement_threshold": 1.0,
+    "agreement_oof_coverage": 0.0,
+    "agreement_oof_directional_macro_f1": 0.0,
+    "agreement_votes_required": 2
+  },
+  "training_oof_base_metrics": {
+    "lightgbm_conservative": {
+      "model": "lightgbm_conservative",
+      "n": 3375,
+      "accuracy": 0.43407407407407406,
+      "balanced_accuracy": 0.34861059393003013,
+      "macro_f1_3class": 0.32285415533117956,
+      "directional_precision_macro": 0.2924073558094177,
+      "directional_recall_macro": 0.13898167204621537,
+      "directional_f1_macro": 0.18825587332839577,
+      "directional_coverage": 0.25333333333333335,
+      "log_loss": 1.109525332348286,
+      "predicted_distribution": {
+        "DOWN": 485,
+        "NEUTRAL": 2520,
+        "UP": 370
+      },
+      "confusion_matrix_labels_rows_actual_cols_predicted": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "confusion_matrix": [
+        [
+          146,
+          723,
+          94
+        ],
+        [
+          196,
+          1214,
+          171
+        ],
+        [
+          143,
+          583,
+          105
+        ]
+      ]
+    },
+    "lightgbm_balanced_B_start": {
+      "model": "lightgbm_balanced_B_start",
+      "n": 3375,
+      "accuracy": 0.39111111111111113,
+      "balanced_accuracy": 0.3512240297649132,
+      "macro_f1_3class": 0.3502431563259864,
+      "directional_precision_macro": 0.28135108610817033,
+      "directional_recall_macro": 0.2529587517947449,
+      "directional_f1_macro": 0.26639344262295084,
+      "directional_coverage": 0.4776296296296296,
+      "log_loss": 1.2580325041790994,
+      "predicted_distribution": {
+        "DOWN": 857,
+        "NEUTRAL": 1763,
+        "UP": 755
+      },
+      "confusion_matrix_labels_rows_actual_cols_predicted": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "confusion_matrix": [
+        [
+          245,
+          510,
+          208
+        ],
+        [
+          377,
+          866,
+          338
+        ],
+        [
+          235,
+          387,
+          209
+        ]
+      ]
+    },
+    "multinomial_logistic": {
+      "model": "multinomial_logistic",
+      "n": 3375,
+      "accuracy": 0.46874074074074074,
+      "balanced_accuracy": 0.3494177414210593,
+      "macro_f1_3class": 0.27451144199231886,
+      "directional_precision_macro": 0.33709576062261326,
+      "directional_recall_macro": 0.054487143440886815,
+      "directional_f1_macro": 0.09364376967228291,
+      "directional_coverage": 0.08533333333333333,
+      "log_loss": 1.0666763848511163,
+      "predicted_distribution": {
+        "DOWN": 137,
+        "NEUTRAL": 3087,
+        "UP": 151
+      },
+      "confusion_matrix_labels_rows_actual_cols_predicted": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "confusion_matrix": [
+        [
+          47,
+          864,
+          52
+        ],
+        [
+          47,
+          1485,
+          49
+        ],
+        [
+          43,
+          738,
+          50
+        ]
+      ]
+    }
+  },
+  "prediction_agreement_rates": {
+    "lightgbm_conservative__lightgbm_balanced_B_start": 0.7318518518518519,
+    "lightgbm_conservative__multinomial_logistic": 0.7282962962962963,
+    "lightgbm_balanced_B_start__multinomial_logistic": 0.5226666666666666
+  },
+  "flattened_probability_correlation_matrix_order": [
+    "lightgbm_conservative",
+    "lightgbm_balanced_B_start",
+    "multinomial_logistic"
+  ],
+  "flattened_probability_correlation_matrix": [
+    [
+      1.0,
+      0.8557558645627413,
+      0.7193637970579644
+    ],
+    [
+      0.8557558645627414,
+      1.0,
+      0.4451161845115669
+    ],
+    [
+      0.7193637970579645,
+      0.44511618451156687,
+      1.0
+    ]
+  ],
+  "prediction_label_correlation_matrix_order": [
+    "lightgbm_conservative",
+    "lightgbm_balanced_B_start",
+    "multinomial_logistic"
+  ],
+  "prediction_label_correlation_matrix": [
+    [
+      1.0,
+      0.5721554012459309,
+      0.08984580925008652
+    ],
+    [
+      0.5721554012459309,
+      1.0,
+      0.056451203974665555
+    ],
+    [
+      0.08984580925008652,
+      0.056451203974665555,
+      1.0
+    ]
+  ],
+  "individual_model_contributions": {
+    "lightgbm_conservative": {
+      "global_weight": 0.31929022713829325,
+      "class_weights": {
+        "DOWN": 0.32460529978309477,
+        "NEUTRAL": 0.3075793647723932,
+        "UP": 0.34532130250990023
+      },
+      "regime_weights": {
+        "trending": 0.4023199286697683,
+        "sideways": 0.2891249418528611,
+        "high_volatility": 0.28417366663450133
+      }
+    },
+    "lightgbm_balanced_B_start": {
+      "global_weight": 0.015708312983898985,
+      "class_weights": {
+        "DOWN": 0.08727438566941281,
+        "NEUTRAL": 0.16323864752482894,
+        "UP": 0.11011123572393008
+      },
+      "regime_weights": {
+        "trending": 1.1058862159352145e-17,
+        "sideways": 0.038938088741138306,
+        "high_volatility": 0.029180426166024134
+      }
+    },
+    "multinomial_logistic": {
+      "global_weight": 0.6650014598778079,
+      "class_weights": {
+        "DOWN": 0.5881203145474924,
+        "NEUTRAL": 0.5291819877027779,
+        "UP": 0.5445674617661697
+      },
+      "regime_weights": {
+        "trending": 0.5976800713302318,
+        "sideways": 0.6719369694060007,
+        "high_volatility": 0.6866459071994745
+      }
+    }
+  },
+  "selection_protocol": "All weights, meta-model and selective threshold frozen from training-only chronological OOF predictions before validation scoring. Validation compares these fixed candidates; no refitting or repeated threshold search on validation.",
+  "versions": {
+    "python": "3.14.3",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1",
+    "lightgbm": "4.7.0"
+  }
+}

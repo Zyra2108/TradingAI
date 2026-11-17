@@ -1,0 +1,287 @@
+{
+  "dataset": "Alpaca IEX ECL 5-minute rebuild v1",
+  "created_utc": "2026-11-12T22:07:39.480749+05:30",
+  "source": {
+    "path": "reports\\alpaca_iex_1y_audit_v1\\alpaca_iex_ecl_5min_1y_20261112.csv",
+    "sha256": "757b35e5426426ed5840282b9817f888664789ffe5f50f17898f8178ed1bd4c2",
+    "source_rows": 18735,
+    "duplicate_timestamps_removed": 0,
+    "invalid_ohlc_removed": 0,
+    "outside_regular_session_removed": 1,
+    "zero_volume_marked_missing": 0,
+    "clean_regular_session_candles": 18734,
+    "clean_start": "2025-11-12 11:25:00",
+    "clean_end": "2026-11-12 11:20:00"
+  },
+  "source_provenance": "Previously downloaded Alpaca IEX historical bars audit CSV; no credential or API access in this build.",
+  "calendar": "NYSE regular session; candle starts from market open through market close minus 5 minutes; early closes from pandas_market_calendars.",
+  "timezone": "Input UTC parsed timezone-aware then converted to America/New_York; feature functions receive timezone-naive NY local timestamps as required by project.",
+  "cleaning": {
+    "OHLC": "remove missing, nonpositive or structurally invalid OHLC",
+    "duplicates": "stable chronological sort; keep first duplicate timestamp",
+    "outside_session": "remove",
+    "volume": "zero marked missing per src/09; never a model feature and not used to fabricate candles",
+    "missing_candles": "never filled; segment resets at each session and every 5-minute gap"
+  },
+  "features": {
+    "implementation": "live_app/features.py::calculate_b_features, which reuses src/11_create_features.py and src/17_add_time_features.py",
+    "columns_in_exact_order": [
+      "close",
+      "return_1",
+      "return_3",
+      "return_6",
+      "return_12",
+      "sma_ratio_5",
+      "sma_ratio_10",
+      "sma_ratio_20",
+      "ema_ratio_5",
+      "ema_ratio_10",
+      "ema_ratio_20",
+      "rsi_14",
+      "volatility_5",
+      "volatility_10",
+      "volatility_20",
+      "candle_body",
+      "candle_range",
+      "upper_wick",
+      "lower_wick",
+      "minutes_since_open",
+      "minutes_until_close",
+      "day_of_week",
+      "time_sin",
+      "time_cos"
+    ],
+    "count": 24,
+    "causal": true,
+    "volume_used": false,
+    "warmup": "Rows with any missing/nonfinite required B feature are dropped, matching src/11."
+  },
+  "target": {
+    "implementation": "src/11_create_features.py::create_labels, applied within src/11 continuous segments",
+    "horizon_minutes": 15,
+    "candles_ahead": 3,
+    "definition": "future_return_pct = (close[t+15m] / close[t] - 1) * 100; UP if > +0.10; DOWN if < -0.10; NEUTRAL inclusive between -0.10 and +0.10",
+    "integrity_rows_passed": 7358,
+    "same_session_and_contiguous_timestamps_verified": true,
+    "missing_future_candle": "label remains missing and row is excluded; no forward fill/interpolation"
+  },
+  "split": {
+    "method": "chronological by sorted trading date; floor(70% dates) train, floor(85% dates) cumulative train+validation, remainder test",
+    "date_counts": {
+      "train": 154,
+      "validation": 33,
+      "test": 33
+    },
+    "date_ranges": {
+      "train": [
+        "2025-11-13",
+        "2026-08-05"
+      ],
+      "validation": [
+        "2026-08-06",
+        "2026-09-24"
+      ],
+      "test": [
+        "2026-09-25",
+        "2026-11-11"
+      ]
+    },
+    "purge_rule": "For each earlier split, remove any row with future_datetime >= first decision timestamp of following split; target horizons may not reach across split boundary.",
+    "purged_rows": {
+      "train": 0,
+      "validation": 0,
+      "test": 0
+    },
+    "test_handling": "Constructed once; per-split summaries computed in memory before writing. No subsequent read, model training or evaluation in this task."
+  },
+  "split_summaries": {
+    "train": {
+      "split": "train",
+      "rows": 4883,
+      "trading_dates": 154,
+      "date_start": "2025-11-13",
+      "date_end": "2026-08-05",
+      "timestamp_start": "2025-11-13 11:10:00",
+      "timestamp_end": "2026-08-05 15:40:00",
+      "class_distribution": {
+        "DOWN": {
+          "count": 1323,
+          "percent": 27.09399959041573
+        },
+        "NEUTRAL": {
+          "count": 2364,
+          "percent": 48.412860946139666
+        },
+        "UP": {
+          "count": 1196,
+          "percent": 24.493139463444606
+        }
+      },
+      "feature_missing_cells": 0,
+      "feature_nonfinite_cells": 0,
+      "target_missing": 0,
+      "bad_horizon_rows": 0,
+      "feature_dtypes": {
+        "close": "float64",
+        "return_1": "float64",
+        "return_3": "float64",
+        "return_6": "float64",
+        "return_12": "float64",
+        "sma_ratio_5": "float64",
+        "sma_ratio_10": "float64",
+        "sma_ratio_20": "float64",
+        "ema_ratio_5": "float64",
+        "ema_ratio_10": "float64",
+        "ema_ratio_20": "float64",
+        "rsi_14": "float64",
+        "volatility_5": "float64",
+        "volatility_10": "float64",
+        "volatility_20": "float64",
+        "candle_body": "float64",
+        "candle_range": "float64",
+        "upper_wick": "float64",
+        "lower_wick": "float64",
+        "minutes_since_open": "float64",
+        "minutes_until_close": "float64",
+        "day_of_week": "int32",
+        "time_sin": "float64",
+        "time_cos": "float64"
+      }
+    },
+    "validation": {
+      "split": "validation",
+      "rows": 1161,
+      "trading_dates": 33,
+      "date_start": "2026-08-06",
+      "date_end": "2026-09-24",
+      "timestamp_start": "2026-08-06 14:35:00",
+      "timestamp_end": "2026-09-24 12:25:00",
+      "class_distribution": {
+        "DOWN": {
+          "count": 277,
+          "percent": 23.858742463393625
+        },
+        "NEUTRAL": {
+          "count": 623,
+          "percent": 53.66063738156761
+        },
+        "UP": {
+          "count": 261,
+          "percent": 22.48062015503876
+        }
+      },
+      "feature_missing_cells": 0,
+      "feature_nonfinite_cells": 0,
+      "target_missing": 0,
+      "bad_horizon_rows": 0,
+      "feature_dtypes": {
+        "close": "float64",
+        "return_1": "float64",
+        "return_3": "float64",
+        "return_6": "float64",
+        "return_12": "float64",
+        "sma_ratio_5": "float64",
+        "sma_ratio_10": "float64",
+        "sma_ratio_20": "float64",
+        "ema_ratio_5": "float64",
+        "ema_ratio_10": "float64",
+        "ema_ratio_20": "float64",
+        "rsi_14": "float64",
+        "volatility_5": "float64",
+        "volatility_10": "float64",
+        "volatility_20": "float64",
+        "candle_body": "float64",
+        "candle_range": "float64",
+        "upper_wick": "float64",
+        "lower_wick": "float64",
+        "minutes_since_open": "float64",
+        "minutes_until_close": "float64",
+        "day_of_week": "int32",
+        "time_sin": "float64",
+        "time_cos": "float64"
+      }
+    },
+    "test": {
+      "split": "test",
+      "rows": 1314,
+      "trading_dates": 33,
+      "date_start": "2026-09-25",
+      "date_end": "2026-11-11",
+      "timestamp_start": "2026-09-25 12:20:00",
+      "timestamp_end": "2026-11-11 15:40:00",
+      "class_distribution": {
+        "DOWN": {
+          "count": 319,
+          "percent": 24.277016742770165
+        },
+        "NEUTRAL": {
+          "count": 660,
+          "percent": 50.2283105022831
+        },
+        "UP": {
+          "count": 335,
+          "percent": 25.49467275494673
+        }
+      },
+      "feature_missing_cells": 0,
+      "feature_nonfinite_cells": 0,
+      "target_missing": 0,
+      "bad_horizon_rows": 0,
+      "feature_dtypes": {
+        "close": "float64",
+        "return_1": "float64",
+        "return_3": "float64",
+        "return_6": "float64",
+        "return_12": "float64",
+        "sma_ratio_5": "float64",
+        "sma_ratio_10": "float64",
+        "sma_ratio_20": "float64",
+        "ema_ratio_5": "float64",
+        "ema_ratio_10": "float64",
+        "ema_ratio_20": "float64",
+        "rsi_14": "float64",
+        "volatility_5": "float64",
+        "volatility_10": "float64",
+        "volatility_20": "float64",
+        "candle_body": "float64",
+        "candle_range": "float64",
+        "upper_wick": "float64",
+        "lower_wick": "float64",
+        "minutes_since_open": "float64",
+        "minutes_until_close": "float64",
+        "day_of_week": "int32",
+        "time_sin": "float64",
+        "time_cos": "float64"
+      }
+    }
+  },
+  "all_ready_rows_before_purge": 7358,
+  "class_order_for_reports": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "old_twelvedata_reference": {
+    "source": "data/processed/model_datasets/experiment_B/train.csv (target column only)",
+    "rows": 62440,
+    "class_distribution": {
+      "DOWN": {
+        "count": 16480,
+        "percent": 26.393337604099937
+      },
+      "NEUTRAL": {
+        "count": 29415,
+        "percent": 47.109224855861626
+      },
+      "UP": {
+        "count": 16545,
+        "percent": 26.497437540038437
+      }
+    }
+  },
+  "limitations": [
+    "One year is adequate to create chronological partitions, but the resulting validation/test portions are small and represent only this period.",
+    "Alpaca IEX is a different venue feed from the old Twelve Data feed; class distribution comparison is descriptive only."
+  ],
+  "joined_candle_rows_before_warmup_and_target_filter": 18734
+}

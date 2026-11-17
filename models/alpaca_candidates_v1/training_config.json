@@ -1,0 +1,115 @@
+{
+  "data_inputs": [
+    "data/alpaca_rebuild_v1/train.csv",
+    "data/alpaca_rebuild_v1/validation.csv"
+  ],
+  "test_data_accessed": false,
+  "train_sha256": "b38005521485be7e22dc6a617bb422deaad075546f9a2db9603a5e737f96486b",
+  "validation_sha256": "1767ccd6d69d8c416a9087e710d93f9f69de0e2e0b8f4521edd1074f8d6365cf",
+  "train_rows": 4883,
+  "validation_rows": 1161,
+  "train_date_range": [
+    "2025-11-13",
+    "2026-08-05"
+  ],
+  "validation_date_range": [
+    "2026-08-06",
+    "2026-09-24"
+  ],
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "feature_columns_exact_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "feature_count": 24,
+  "categorical_feature": {
+    "day_of_week": "int64, imputed most-frequent and one-hot encoded"
+  },
+  "numeric_preprocessing": "Median imputation fit inside train pipeline; StandardScaler for logistic regression only. Tree models use unscaled numeric features.",
+  "target": "Saved target labels; project definition +15m, UP > +0.10%, DOWN < -0.10%, otherwise NEUTRAL.",
+  "split": "Chronological train 2025-11-13\u20132026-08-05; validation 2026-08-06\u20132026-09-24. Validation is never used in fit.",
+  "purge_check": "max training future_datetime < first validation decision timestamp",
+  "seed": 42,
+  "parameters": {
+    "lightgbm_conservative": {
+      "objective": "multiclass",
+      "num_class": 3,
+      "n_estimators": 350,
+      "learning_rate": 0.02,
+      "num_leaves": 15,
+      "max_depth": -1,
+      "min_child_samples": 60,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 5.0,
+      "class_weight": null,
+      "random_state": 42,
+      "n_jobs": -1,
+      "verbosity": -1
+    },
+    "lightgbm_balanced": {
+      "objective": "multiclass",
+      "num_class": 3,
+      "n_estimators": 500,
+      "learning_rate": 0.03,
+      "num_leaves": 31,
+      "max_depth": -1,
+      "min_child_samples": 40,
+      "subsample": 0.8,
+      "subsample_freq": 1,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 1.0,
+      "class_weight": "balanced",
+      "random_state": 42,
+      "n_jobs": -1,
+      "verbosity": -1
+    },
+    "logistic_regression": {
+      "C": 1.0,
+      "max_iter": 2000,
+      "solver": "lbfgs",
+      "class_weight": null,
+      "random_state": 42
+    }
+  },
+  "class_probability_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "software_versions": {
+    "python": "3.14.3",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1",
+    "lightgbm": "4.7.0"
+  },
+  "selection_guidance": "Compare validation macro-F1 and directional F1/precision/recall with coverage; also consider accuracy and log loss. No single-metric automatic selection."
+}

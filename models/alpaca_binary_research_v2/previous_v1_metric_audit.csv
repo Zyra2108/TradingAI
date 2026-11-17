@@ -1,0 +1,11 @@
+model,coverage_target,unthresholded_accuracy_matches,unthresholded_up_precision_matches,unthresholded_down_precision_matches,unthresholded_macro_precision_matches,unthresholded_macro_recall_matches,unthresholded_macro_f1_matches,unthresholded_confusion_matches,all_reported_values_match,recalculated_up_precision_eligible,recalculated_down_precision_eligible,recalculated_accuracy_emitted_eligible,recalculated_accuracy_all_emitted,recalculated_emitted,eligible_precision_up_matches,eligible_precision_down_matches,eligible_accuracy_matches,all_emission_accuracy_matches,emission_count_matches
+xgboost_binary,unthresholded,True,True,True,True,True,True,True,True,,,,,,,,,,
+xgboost_binary,0.2,,,,,,,,True,0.5555555555555556,0.5303030303030303,0.5405405405405406,0.2575107296137339,233.0,True,True,True,True,True
+xgboost_binary,0.3,,,,,,,,True,0.547945205479452,0.5172413793103449,0.53125,0.24355300859598855,349.0,True,True,True,True,True
+xgboost_binary,0.4,,,,,,,,True,0.53,0.4636363636363636,0.49523809523809526,0.22365591397849463,465.0,True,True,True,True,True
+xgboost_binary,0.5,,,,,,,,True,0.5581395348837209,0.4696969696969697,0.5134099616858238,0.2306368330464716,581.0,True,True,True,True,True
+lightgbm_binary,unthresholded,True,True,True,True,True,True,True,True,,,,,,,,,,
+lightgbm_binary,0.2,,,,,,,,True,0.5333333333333333,0.532258064516129,0.5327102803738317,0.2446351931330472,233.0,True,True,True,True,True
+lightgbm_binary,0.3,,,,,,,,True,0.5692307692307692,0.5061728395061729,0.5342465753424658,0.22349570200573066,349.0,True,True,True,True,True
+lightgbm_binary,0.4,,,,,,,,True,0.5888888888888889,0.5047619047619047,0.5435897435897435,0.22795698924731184,465.0,True,True,True,True,True
+lightgbm_binary,0.5,,,,,,,,True,0.5378151260504201,0.5080645161290323,0.522633744855967,0.21858864027538727,581.0,True,True,True,True,True

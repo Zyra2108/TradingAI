@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "asset": "ECL",
+  "feed": "Alpaca IEX",
+  "interval_minutes": 5,
+  "label_price": "close at exact future timestamp",
+  "targets": [
+    {"id": "fixed_010_h10", "horizon_minutes": 10, "method": "fixed_pct", "threshold_pct": 0.10},
+    {"id": "fixed_010_h15", "horizon_minutes": 15, "method": "fixed_pct", "threshold_pct": 0.10},
+    {"id": "fixed_010_h30", "horizon_minutes": 30, "method": "fixed_pct", "threshold_pct": 0.10},
+    {"id": "fixed_010_h60", "horizon_minutes": 60, "method": "fixed_pct", "threshold_pct": 0.10},
+    {"id": "sqrt_fixed_h10", "horizon_minutes": 10, "method": "fixed_pct_sqrt_horizon", "anchor_horizon_minutes": 15, "anchor_threshold_pct": 0.10},
+    {"id": "sqrt_fixed_h30", "horizon_minutes": 30, "method": "fixed_pct_sqrt_horizon", "anchor_horizon_minutes": 15, "anchor_threshold_pct": 0.10},
+    {"id": "sqrt_fixed_h60", "horizon_minutes": 60, "method": "fixed_pct_sqrt_horizon", "anchor_horizon_minutes": 15, "anchor_threshold_pct": 0.10},
+    {"id": "fixed_015_h15", "horizon_minutes": 15, "method": "fixed_pct", "threshold_pct": 0.15},
+    {"id": "fixed_015_h30", "horizon_minutes": 30, "method": "fixed_pct", "threshold_pct": 0.15},
+    {"id": "vol_05_h10", "horizon_minutes": 10, "method": "vol_scaled", "multiplier": 0.5, "volatility_feature": "volatility_20", "scaling": "sqrt(horizon_bars)"},
+    {"id": "vol_05_h15", "horizon_minutes": 15, "method": "vol_scaled", "multiplier": 0.5, "volatility_feature": "volatility_20", "scaling": "sqrt(horizon_bars)"},
+    {"id": "vol_05_h30", "horizon_minutes": 30, "method": "vol_scaled", "multiplier": 0.5, "volatility_feature": "volatility_20", "scaling": "sqrt(horizon_bars)"},
+    {"id": "vol_05_h60", "horizon_minutes": 60, "method": "vol_scaled", "multiplier": 0.5, "volatility_feature": "volatility_20", "scaling": "sqrt(horizon_bars)"},
+    {"id": "event_floor_h15", "horizon_minutes": 15, "method": "no_trade_floor", "fixed_floor_pct": 0.10, "volatility_multiplier": 0.5, "volatility_feature": "volatility_20"},
+    {"id": "event_floor_h30", "horizon_minutes": 30, "method": "no_trade_floor", "fixed_floor_pct": 0.10, "volatility_multiplier": 0.5, "volatility_feature": "volatility_20"}
+  ],
+  "models": {
+    "logistic_regression": {"C": 0.2, "max_iter": 500, "class_weight": "balanced"},
+    "lightgbm": {"n_estimators": 180, "num_leaves": 7, "learning_rate": 0.03, "min_child_samples": 35, "reg_lambda": 10, "class_weight": "balanced"},
+    "xgboost": {"n_estimators": 180, "max_depth": 2, "learning_rate": 0.03, "min_child_weight": 8, "reg_lambda": 10, "scale_pos_weight": "fold-specific DOWN/UP count"}
+  },
+  "walk_forward": {"folds": 3, "method": "expanding chronological by trading date", "initial_train_date_fraction": 0.4, "purge": "exclude any fit row whose target endpoint is at or after evaluation start"},
+  "confidence_coverage_levels_of_eligible_events": [0.2, 0.3, 0.4, 0.5],
+  "selection_rule": "Use training-only OOF. Among configurations with at least 20% OOF eligible-event coverage and at least 75 total OOF emitted eligible predictions, select by mean fold macro directional precision, then emitted eligible directional accuracy, then log loss. One target/model/coverage policy is confirmed on validation.",
+  "catboost": "Not included; package is not installed.",
+  "data_limitations": "Permitted train.csv and validation.csv contain close and the existing causal features, but no raw open/high/low/volume fields. Close-to-close labels are generated from exact timestamp matches; volume is not used."
+}

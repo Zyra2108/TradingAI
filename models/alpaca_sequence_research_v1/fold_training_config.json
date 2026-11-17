@@ -1,0 +1,11 @@
+{
+  "epochs": 20,
+  "batch_size": 32,
+  "shuffle": false,
+  "learning_rate": 0.001,
+  "loss": "binary_crossentropy",
+  "seed": 42,
+  "architecture": "causal Conv1D(8,3)+GlobalAveragePooling1D+Dense(8,L2=0.01)+Dropout(0.20)+sigmoid",
+  "no_threshold_search": true,
+  "class_weighting": "none; Directional UP/DOWN classes in the approved train split are close to balanced."
+}

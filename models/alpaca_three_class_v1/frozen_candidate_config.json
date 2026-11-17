@@ -1,0 +1,318 @@
+{
+  "selected_candidate": "xgboost_multiclass",
+  "selected_artifact": "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_train_only.joblib",
+  "artifact_sha256": "08aea3085131c3e20625a7b9c56fd161741f58408c02a7d30e807bbc4bea228b",
+  "features": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "target": {
+    "UP": "future_return > 0.10 percentage points",
+    "DOWN": "future_return < -0.10 percentage points",
+    "NEUTRAL": "otherwise"
+  },
+  "horizon_minutes": 15,
+  "selection": {
+    "selected_candidate": "xgboost_multiclass",
+    "selection_metric": "mean chronological OOF fold macro-F1",
+    "tie_breaks": [
+      "mean fold balanced accuracy",
+      "mean fold directional macro-F1"
+    ],
+    "guardrail_passed": true,
+    "ridge_neutral_threshold_percentage_points": 0.025,
+    "ridge_zero_boundary_is_binary_only": true,
+    "candidates_passing_guardrail": [
+      "xgboost_multiclass",
+      "hist_gradient_boosting_multiclass"
+    ],
+    "all_candidate_oof_metrics": {
+      "ridge_regression_to_3class": {
+        "n": 2248,
+        "accuracy": 0.4390569395017794,
+        "balanced_accuracy": 0.3572884324496457,
+        "macro_f1": 0.33799871152642585,
+        "weighted_f1": 0.3926227770430854,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.30528846153846156,
+            "recall": 0.2,
+            "f1": 0.241674595623216,
+            "support": 635
+          },
+          "NEUTRAL": {
+            "precision": 0.4962311557788945,
+            "recall": 0.7452830188679245,
+            "f1": 0.5957767722473605,
+            "support": 1060
+          },
+          "UP": {
+            "precision": 0.2916666666666667,
+            "recall": 0.12658227848101267,
+            "f1": 0.17654476670870115,
+            "support": 553
+          }
+        },
+        "directional_macro_precision": 0.2984775641025641,
+        "directional_macro_recall": 0.16329113924050634,
+        "directional_macro_f1": 0.20910968116595857,
+        "directional_prediction_coverage_all_rows": 0.2918149466192171,
+        "directional_prediction_coverage_actual_directional": 0.32491582491582494,
+        "directional_accuracy_actual_directional": 0.16582491582491582,
+        "accuracy_among_directional_predictions": 0.3003048780487805,
+        "prediction_distribution": {
+          "DOWN": 416,
+          "NEUTRAL": 1592,
+          "UP": 240
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            127,
+            432,
+            76
+          ],
+          [
+            176,
+            790,
+            94
+          ],
+          [
+            113,
+            370,
+            70
+          ]
+        ],
+        "log_loss": null,
+        "guardrail": {
+          "passed": false,
+          "minimum_directional_coverage": 0.42846975088967976,
+          "actual_neutral_share": 0.47153024911032027,
+          "predicted_class_share": {
+            "DOWN": 0.18505338078291814,
+            "NEUTRAL": 0.708185053380783,
+            "UP": 0.10676156583629894
+          }
+        },
+        "mean_fold_accuracy": 0.4412024880061628,
+        "std_fold_accuracy": 0.015383892573686362,
+        "mean_fold_balanced_accuracy": 0.35677192457889667,
+        "std_fold_balanced_accuracy": 0.010781441745807481,
+        "mean_fold_macro_f1": 0.33727460656634806,
+        "std_fold_macro_f1": 0.011278129984211573,
+        "mean_fold_weighted_f1": 0.39492271043633587,
+        "std_fold_weighted_f1": 0.014636571733375516,
+        "mean_fold_directional_macro_precision": 0.31645218318163365,
+        "std_fold_directional_macro_precision": 0.05034454216570072,
+        "mean_fold_directional_macro_recall": 0.1606517741070156,
+        "std_fold_directional_macro_recall": 0.009413283902024472,
+        "mean_fold_directional_macro_f1": 0.20703924124672846,
+        "std_fold_directional_macro_f1": 0.011337298848825957
+      },
+      "xgboost_multiclass": {
+        "n": 2248,
+        "accuracy": 0.38523131672597866,
+        "balanced_accuracy": 0.3804375748708508,
+        "macro_f1": 0.3750801340638689,
+        "weighted_f1": 0.394645005743004,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.288265306122449,
+            "recall": 0.35590551181102364,
+            "f1": 0.31853417899929526,
+            "support": 635
+          },
+          "NEUTRAL": {
+            "precision": 0.5613577023498695,
+            "recall": 0.4056603773584906,
+            "f1": 0.4709748083242059,
+            "support": 1060
+          },
+          "UP": {
+            "precision": 0.3008595988538682,
+            "recall": 0.379746835443038,
+            "f1": 0.33573141486810554,
+            "support": 553
+          }
+        },
+        "directional_macro_precision": 0.2945624524881586,
+        "directional_macro_recall": 0.36782617362703085,
+        "directional_macro_f1": 0.3271327969337004,
+        "directional_prediction_coverage_all_rows": 0.6592526690391459,
+        "directional_prediction_coverage_actual_directional": 0.7171717171717171,
+        "directional_accuracy_actual_directional": 0.367003367003367,
+        "accuracy_among_directional_predictions": 0.2941970310391363,
+        "prediction_distribution": {
+          "DOWN": 784,
+          "NEUTRAL": 766,
+          "UP": 698
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            226,
+            206,
+            203
+          ],
+          [
+            345,
+            430,
+            285
+          ],
+          [
+            213,
+            130,
+            210
+          ]
+        ],
+        "log_loss": null,
+        "guardrail": {
+          "passed": true,
+          "minimum_directional_coverage": 0.42846975088967976,
+          "actual_neutral_share": 0.47153024911032027,
+          "predicted_class_share": {
+            "DOWN": 0.3487544483985765,
+            "NEUTRAL": 0.3407473309608541,
+            "UP": 0.3104982206405694
+          }
+        },
+        "mean_fold_accuracy": 0.39488504221678145,
+        "std_fold_accuracy": 0.0551032722565319,
+        "mean_fold_balanced_accuracy": 0.3835756508801014,
+        "std_fold_balanced_accuracy": 0.014445821819311682,
+        "mean_fold_macro_f1": 0.3670452001601341,
+        "std_fold_macro_f1": 0.03886478104605876,
+        "mean_fold_weighted_f1": 0.3877082421048752,
+        "std_fold_weighted_f1": 0.06572082269237242,
+        "mean_fold_directional_macro_precision": 0.2994650562222682,
+        "std_fold_directional_macro_precision": 0.012134160084894081,
+        "mean_fold_directional_macro_recall": 0.35564720043871345,
+        "std_fold_directional_macro_recall": 0.07929854648848901,
+        "mean_fold_directional_macro_f1": 0.31865088328665647,
+        "std_fold_directional_macro_f1": 0.02321209759785731
+      },
+      "hist_gradient_boosting_multiclass": {
+        "n": 2248,
+        "accuracy": 0.38389679715302494,
+        "balanced_accuracy": 0.3613682081834349,
+        "macro_f1": 0.36097189582224526,
+        "weighted_f1": 0.38879455340360014,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.28512396694214875,
+            "recall": 0.32598425196850395,
+            "f1": 0.3041880969875092,
+            "support": 635
+          },
+          "NEUTRAL": {
+            "precision": 0.5232558139534884,
+            "recall": 0.4669811320754717,
+            "f1": 0.4935194416749751,
+            "support": 1060
+          },
+          "UP": {
+            "precision": 0.2795138888888889,
+            "recall": 0.2911392405063291,
+            "f1": 0.28520814880425155,
+            "support": 553
+          }
+        },
+        "directional_macro_precision": 0.2823189279155188,
+        "directional_macro_recall": 0.3085617462374165,
+        "directional_macro_f1": 0.2946981228958804,
+        "directional_prediction_coverage_all_rows": 0.5791814946619217,
+        "directional_prediction_coverage_actual_directional": 0.6203703703703703,
+        "directional_accuracy_actual_directional": 0.30976430976430974,
+        "accuracy_among_directional_predictions": 0.282642089093702,
+        "prediction_distribution": {
+          "DOWN": 726,
+          "NEUTRAL": 946,
+          "UP": 576
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            207,
+            263,
+            165
+          ],
+          [
+            315,
+            495,
+            250
+          ],
+          [
+            204,
+            188,
+            161
+          ]
+        ],
+        "log_loss": null,
+        "guardrail": {
+          "passed": true,
+          "minimum_directional_coverage": 0.42846975088967976,
+          "actual_neutral_share": 0.47153024911032027,
+          "predicted_class_share": {
+            "DOWN": 0.32295373665480426,
+            "NEUTRAL": 0.4208185053380783,
+            "UP": 0.25622775800711745
+          }
+        },
+        "mean_fold_accuracy": 0.38794750932430266,
+        "std_fold_accuracy": 0.035688492503440666,
+        "mean_fold_balanced_accuracy": 0.36164690632343516,
+        "std_fold_balanced_accuracy": 0.020536771675537947,
+        "mean_fold_macro_f1": 0.35487386959852435,
+        "std_fold_macro_f1": 0.024628158161978202,
+        "mean_fold_weighted_f1": 0.38458626289373316,
+        "std_fold_weighted_f1": 0.03193358506394328,
+        "mean_fold_directional_macro_precision": 0.2813227411207059,
+        "std_fold_directional_macro_precision": 0.02506569035120018,
+        "mean_fold_directional_macro_recall": 0.2983777310454706,
+        "std_fold_directional_macro_recall": 0.05967023672440333,
+        "mean_fold_directional_macro_f1": 0.28498722283056216,
+        "std_fold_directional_macro_f1": 0.03383686685242237
+      }
+    },
+    "validation_seen": false
+  },
+  "model_config": {
+    "n_estimators": 250,
+    "max_depth": 3,
+    "min_child_weight": 5,
+    "learning_rate": 0.04,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 2.0,
+    "objective": "multi:softprob",
+    "eval_metric": "mlogloss",
+    "class_weights": "balanced sample weights computed from that fold's training labels",
+    "n_jobs": 1
+  },
+  "threshold_policy": null,
+  "validation_evaluated": false
+}

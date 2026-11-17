@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECL · Historical Indicator Replay</title>
+  <link rel="stylesheet" href="/static/alpaca.css">
+  <link rel="stylesheet" href="/static/alpaca_replay.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">E</span><div><div class="eyebrow">ECL · NYSE · 5 MIN</div><h1>Historical Indicator Replay</h1></div></div>
+    <div class="top-meta"><a class="mode-link" href="/">Live Mode</a><span class="source-tag">ALPACA IEX</span><span class="replay-tag">RETROSPECTIVE · NOT LIVE</span></div>
+  </header>
+  <main>
+    <div class="replay-warning"><strong>Historical Replay</strong><span>Retrospective frozen-model predictions from pre-test Alpaca IEX candles. No live predictions or live database records are created.</span><span>Available NYSE dates end September 24, 2026. Five-minute bars · 15-minute horizon.</span></div>
+    <section class="replay-controls panel">
+      <label>Trading date (New York)<select id="replay-date" disabled><option>Loading dates…</option></select></label>
+      <label>Completed five-minute candle<select id="replay-candle" disabled><option>Select a date first</option></select></label>
+      <button id="run-replay" disabled>Replay selected candle</button>
+      <span id="replay-state" role="status">Loading permitted historical dates…</span>
+    </section>
+    <section class="panel replay-chart-panel">
+      <div class="panel-head"><div><span class="eyebrow">HISTORICAL CANDLES</span><h2>ECL · Alpaca IEX</h2></div><div class="chart-tools"><span class="chart-note">Wheel to zoom · drag to pan · select a candle</span><button id="replay-chart-reset" class="chart-control" type="button" title="Show the latest candles">Reset view</button></div></div>
+      <div id="replay-chart"><canvas id="replay-canvas" aria-label="ECL historical candlestick chart"></canvas></div><div class="chart-legend"><span>Selected candle is marked in blue.</span><span>Times shown in America/New_York.</span></div>
+    </section>
+    <section class="replay-results">
+      <article class="panel replay-prediction">
+        <span class="eyebrow">FROZEN MODEL · RETROSPECTIVE</span><h2>Model prediction</h2>
+        <div class="signal-box"><span id="replay-signal" class="signal-pill neutral">—</span><div id="replay-candle-time" class="signal-time">Select a completed candle to begin</div></div>
+        <div class="reference-price"><span>Reference close at selected candle</span><strong id="replay-reference">—</strong><small>Prediction horizon: 15 minutes</small></div>
+        <div class="prob-list">
+          <div class="prob-row"><span>DOWN</span><div class="track"><i id="replay-bar-down" class="bar down-bar"></i></div><b id="replay-prob-down">—</b></div>
+          <div class="prob-row"><span>NEUTRAL</span><div class="track"><i id="replay-bar-neutral" class="bar neutral-bar"></i></div><b id="replay-prob-neutral">—</b></div>
+          <div class="prob-row"><span>UP</span><div class="track"><i id="replay-bar-up" class="bar up-bar"></i></div><b id="replay-prob-up">—</b></div>
+        </div>
+        <div class="confidence"><span>Model confidence</span><b id="replay-confidence">—</b></div>
+      </article>
+      <article class="panel replay-outcome">
+        <span class="eyebrow">OBSERVED AFTER 15 MINUTES</span><h2>Actual outcome</h2>
+        <div class="outcome-price"><span>Target candle close</span><strong id="replay-target-close">—</strong><small id="replay-target-time">Target time —</small></div>
+        <div class="outcome-label"><span>Actual label</span><b id="replay-actual" class="state-chip pending">Not evaluated</b></div>
+        <div class="outcome-label"><span>Prediction correct?</span><b id="replay-correct">—</b></div>
+        <p id="replay-outcome-note" class="side-note">Actual outcome is shown separately from the model prediction and requires the complete same-session candle path.</p>
+      </article>
+    </section>
+    <footer><span>Research replay · Not financial advice.</span><span>Source: Alpaca IEX · Pre-test history only</span></footer>
+  </main>
+  <script src="/static/alpaca_chart_viewport.js"></script>
+  <script src="/static/alpaca_replay.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "trial_date": "2026-11-13",
+  "capture_start_utc": "2026-11-13T16:57:43.097184+00:00",
+  "capture_end_utc": "2026-11-13T17:24:35.587645+00:00",
+  "capture_start_new_york": "2026-11-13T11:57:43.097184-05:00",
+  "capture_end_new_york": "2026-11-13T12:24:35.587645-05:00",
+  "elapsed_seconds": 1612.490461,
+  "capture_completed_requested_duration": false,
+  "early_stop_reason": "Alpaca connection_limit_exceeded (WebSocket status 406); capture stopped without retry/bypass",
+  "preflight": {
+    "regular_market_open": true,
+    "mode": "alpaca_iex",
+    "symbol": "ECL",
+    "display_authorized": true,
+    "credentials_present": true,
+    "model_integrity": "PASS",
+    "model_sha256": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "feature_count": 24,
+    "class_order": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ],
+    "horizon_minutes": 15,
+    "port_8000_initially_free": true,
+    "other_local_python_or_project_server_found": false
+  },
+  "server": {
+    "started": true,
+    "bound_to": "127.0.0.1:8000",
+    "health_and_status_http_200": true,
+    "stopped_cleanly": true
+  },
+  "provider": {
+    "authentication_observed": true,
+    "subscription_observed": true,
+    "initial_reconnect_count": 3,
+    "final_reconnect_count": 4,
+    "final_state": "connection_limit_exceeded",
+    "final_connected": false,
+    "final_authenticated": false,
+    "final_subscribed": false,
+    "final_error_category": "connection_limit_exceeded",
+    "final_error_status_code": 406
+  },
+  "data": {
+    "minute_bars_received": 20,
+    "unique_minute_timestamps": 20,
+    "first_event_timestamp_new_york": "2026-11-13T11:57:00-05:00",
+    "last_event_timestamp_new_york": "2026-11-13T12:20:00-05:00",
+    "new_finalized_five_minute_candles": 0,
+    "unique_new_five_minute_candles": 0,
+    "new_predictions": 0,
+    "new_settled_outcomes": 0,
+    "aggregation_gap_records_detected": 5
+  },
+  "dashboard": {
+    "health_status_assets_loaded": true,
+    "html_css_js_loaded": true,
+    "api_polling_succeeded": true,
+    "visual_browser_check": "not performed"
+  },
+  "database_runner_access": "read-only for evidence checks; app persisted only real Alpaca events; no synthetic rows inserted",
+  "full_prediction_and_settlement_cycle": false,
+  "evidence_reconstruction_note": "Runner was safely interrupted after the 406 blocker and therefore did not write its normal final summary; this summary was reconstructed from its observations.jsonl and read-only SQLite counts.",
+  "evidence_directory": "D:\\ML_project\\reports\\live_market_verification_runs\\20261113T165742Z"
+}

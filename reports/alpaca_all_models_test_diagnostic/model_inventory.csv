@@ -1,0 +1,25 @@
+model,artifacts,status,reason
+logistic_regression_3class,models/alpaca_baselines_v1/logistic_regression.joblib,PASS,Included in requested evaluation.
+random_forest_classifier_3class,models/alpaca_baselines_v1/random_forest.joblib,PASS,Included in requested evaluation.
+xgboost_classifier_3class,models/alpaca_baselines_v1/xgboost.joblib,PASS,Included in requested evaluation.
+hist_gradient_boosting_classifier_3class,models/alpaca_baselines_v1/hist_gradient_boosting.joblib,PASS,Included in requested evaluation.
+frozen_balanced_lightgbm_B_reference,models/alpaca_final_freeze_v1/candidate_pipeline.joblib,PASS,Included in requested evaluation.
+binary_random_forest_v3,models/alpaca_binary_research_v3/random_forest.joblib,PASS,Included in requested evaluation.
+binary_xgboost_v3,models/alpaca_binary_research_v3/xgboost.joblib,PASS,Included in requested evaluation.
+binary_xgboost_v1_additional,models/alpaca_binary_research_v1/xgboost_binary.joblib,PASS,Included in requested evaluation.
+ridge_regression,models/alpaca_return_regression_v1/ridge_full_train.joblib,PASS,Included in requested evaluation.
+random_forest_regression,models/alpaca_return_regression_v1/random_forest_regressor_full_train.joblib,PASS,Included in requested evaluation.
+xgboost_regression,models/alpaca_return_regression_v1/xgboost_regressor_full_train.joblib,PASS,Included in requested evaluation.
+hist_gradient_boosting_regression,models/alpaca_return_regression_v1/hist_gradient_boosting_regressor_full_train.joblib,PASS,Included in requested evaluation.
+cnn_6_candles,models/alpaca_sequence_research_v1/causal_1d_cnn_len6.keras;models/alpaca_sequence_research_v1/channel_scaler_len6.joblib,PASS,Included in requested evaluation.
+cnn_12_candles,models/alpaca_sequence_research_v1/causal_1d_cnn_len12.keras;models/alpaca_sequence_research_v1/channel_scaler_len12.joblib,PASS,Included in requested evaluation.
+cnn_24_candles,models/alpaca_sequence_research_v1/causal_1d_cnn_len24.keras;models/alpaca_sequence_research_v1/channel_scaler_len24.joblib,PASS,Included in requested evaluation.
+cnn_36_candles,models/alpaca_sequence_research_v1/causal_1d_cnn_len36.keras;models/alpaca_sequence_research_v1/channel_scaler_len36.joblib,PASS,Included in requested evaluation.
+alpaca_binary_research_v1_lightgbm_binary,models/alpaca_binary_research_v1/lightgbm_binary.joblib,NOT_IN_REQUESTED_MODEL_SET,The request adds separate binary Random Forest and XGBoost baselines; this separate LightGBM binary candidate is outside that specified set.
+alpaca_binary_research_v3_logistic_and_hist_gradient_boosting_binary,models/alpaca_binary_research_v3/logistic_regression.joblib; models/alpaca_binary_research_v3/hist_gradient_boosting.joblib,NOT_IN_REQUESTED_MODEL_SET,The requested additional binary artifacts are Random Forest and XGBoost; the named four-model classification group is the three-class baseline suite.
+one_minute_and_alternative_horizon_research_artifacts,models/alpaca_1min_research_v1/; models/alpaca_1min_horizon_research_v1/; models/alpaca_target_research_v1/,INCOMPATIBLE_TASK_CONTRACT,"Different candle frequency, horizon, or target/policy; not comparable to ECL five-minute, 15-minute +/-0.10% evaluation."
+alpaca_candidates_v1_additional_ensembles,models/alpaca_candidates_v1/ensemble/,NOT_IN_REQUESTED_MODEL_SET,Ensemble candidates are outside the explicit model list; the frozen Balanced LightGBM B is included as an additional three-class reference.
+alpaca_candidates_v1_lightgbm_conservative,models/alpaca_candidates_v1/lightgbm_conservative.joblib,NOT_IN_REQUESTED_MODEL_SET,"Compatible 24-feature three-class LightGBM artifact, but LightGBM was not among the four named classifier families; frozen Balanced B was included as the production reference."
+alpaca_candidates_v1_multinomial_logistic,models/alpaca_candidates_v1/multinomial_logistic.joblib,NOT_IN_REQUESTED_MODEL_SET,Additional candidate logistic pipeline outside the named alpaca_baselines_v1 classifier set.
+alpaca_candidates_v1_dummy,models/alpaca_candidates_v1/dummy_most_frequent.joblib,BASELINE_RECOMPUTED_FROM_TRAIN,The training-majority and always-neutral baselines were computed directly from the canonical training labels and applied to the test rows.
+alpaca_binary_research_v2_selective_logistic,models/alpaca_binary_research_v2/selected_binary_pipeline.joblib,NOT_IN_REQUESTED_MODEL_SET,This artifact applies a validation-selected NO SIGNAL policy; no selective policy was requested for this diagnostic. The original raw binary RF/XGBoost baselines were evaluated.

@@ -1,0 +1,13 @@
+model,class,predicted_count,predicted_fraction,actual_count
+dummy_most_frequent,DOWN,0,0.0,277
+dummy_most_frequent,NEUTRAL,1161,1.0,623
+dummy_most_frequent,UP,0,0.0,261
+multinomial_logistic,DOWN,31,0.026701119724375538,277
+multinomial_logistic,NEUTRAL,1106,0.9526270456503014,623
+multinomial_logistic,UP,24,0.020671834625323,261
+lightgbm_conservative,DOWN,103,0.08871662360034453,277
+lightgbm_conservative,NEUTRAL,906,0.7803617571059431,623
+lightgbm_conservative,UP,152,0.13092161929371232,261
+lightgbm_balanced_B_start,DOWN,269,0.23169681309216192,277
+lightgbm_balanced_B_start,NEUTRAL,541,0.46597760551248923,623
+lightgbm_balanced_B_start,UP,351,0.3023255813953488,261

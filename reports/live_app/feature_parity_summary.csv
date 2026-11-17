@@ -1,0 +1,2 @@
+model,validation_rows,feature_count,feature_order_matches,all_feature_values_match_1e_12,historical_missing_cells,application_missing_cells,model_sha256,split_accessed
+Balanced LightGBM B,13538,24,True,True,0,0,f900adbacb051917e47585279957e3457effbbcae4e5d9f3f78cd7d05b09f527,validation only; test not loaded

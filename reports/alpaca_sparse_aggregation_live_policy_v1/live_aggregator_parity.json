@@ -1,0 +1,56 @@
+{
+  "source": {
+    "symbol": "ECL",
+    "feed": "iex",
+    "period": [
+      "2025-11-13",
+      "2026-09-24"
+    ],
+    "train_validation_only": true,
+    "network_requests": false,
+    "credential_values_saved": false
+  },
+  "minute_data_quality": {
+    "source_file": "raw_ecl_iex_1min_train_validation.csv",
+    "rows_total": 49348,
+    "date_min_new_york": "2025-11-13",
+    "date_max_new_york": "2026-09-24",
+    "duplicate_rows": 0,
+    "invalid_ohlc_rows": 0,
+    "out_of_session_or_nonexistent_session_rows": 1,
+    "unaligned_rows": 0,
+    "volume_missing_rows": 0,
+    "trade_count_missing_rows": 0
+  },
+  "native_5min_data_quality": {
+    "source_file": "raw_ecl_iex_5min_train_validation.csv",
+    "rows_total": 16060,
+    "date_min_new_york": "2025-11-13",
+    "date_max_new_york": "2026-09-24",
+    "duplicate_rows": 0,
+    "invalid_ohlc_rows": 0,
+    "out_of_session_or_nonexistent_session_rows": 1,
+    "unaligned_rows": 0,
+    "volume_missing_rows": 0,
+    "trade_count_missing_rows": 0
+  },
+  "excluded_minute_rows": 1,
+  "excluded_native_5min_rows": 1,
+  "live_aggregator": "live_app.alpaca_aggregation.AlpacaFiveMinuteAggregator",
+  "aggregation_method": "observed_minute_ohlc_v2",
+  "counts": {
+    "valid_minute_rows": 49347,
+    "live_aggregated_buckets": 16059,
+    "native_buckets": 16059,
+    "matched_buckets": 16059,
+    "live_only_buckets": 0,
+    "native_only_buckets": 0,
+    "mismatched_matched_buckets": 0
+  },
+  "parity": {
+    "exact_ohlc": 16059,
+    "ohlc_rate": 1.0,
+    "all_fields_exact": 16059,
+    "all_fields_rate": 1.0
+  }
+}

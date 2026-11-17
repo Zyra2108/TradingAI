@@ -1,0 +1,82 @@
+{
+  "source_audit": {
+    "path": "D:\\ML_project\\models\\alpaca_1min_research_v1\\raw_ecl_iex_1min_train_validation.csv",
+    "sha256": "7d5bce7c8925b9cb1f27aba122f9ce97b0459a1bdce826bdee1f70f3d109880c",
+    "test_data_accessed": false,
+    "raw_rows": 49348,
+    "valid_regular_rows": 49347,
+    "trading_dates": 216,
+    "date_min": "2025-11-13",
+    "date_max": "2026-09-24",
+    "session_calendar": "NYSE"
+  },
+  "horizons": {
+    "10": {
+      "rows": 49347,
+      "feature_ready": 4085,
+      "eligible_feature_ready": 2500,
+      "purged_train_rows": 0,
+      "train_dates": [
+        "2025-11-13",
+        "2026-08-05"
+      ],
+      "validation_dates": [
+        "2026-08-06",
+        "2026-09-24"
+      ],
+      "output": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\dataset_10min.csv"
+    },
+    "15": {
+      "rows": 49347,
+      "feature_ready": 4085,
+      "eligible_feature_ready": 2251,
+      "purged_train_rows": 0,
+      "train_dates": [
+        "2025-11-13",
+        "2026-08-05"
+      ],
+      "validation_dates": [
+        "2026-08-06",
+        "2026-09-24"
+      ],
+      "output": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\dataset_15min.csv"
+    }
+  },
+  "source_path": "D:\\ML_project\\models\\alpaca_1min_research_v1\\raw_ecl_iex_1min_train_validation.csv",
+  "source_sha256": "7d5bce7c8925b9cb1f27aba122f9ce97b0459a1bdce826bdee1f70f3d109880c",
+  "test_period_accessed": false,
+  "models_trained": false,
+  "feature_order": [
+    "close",
+    "return_1_pct",
+    "return_3_pct",
+    "return_5_pct",
+    "return_10_pct",
+    "realized_vol_3",
+    "realized_vol_5",
+    "realized_vol_10",
+    "range_pct",
+    "body_pct",
+    "upper_wick_pct",
+    "lower_wick_pct",
+    "volume_log1p",
+    "volume_ratio_10",
+    "volume_zscore_10",
+    "sma_ratio_3",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "ema_ratio_3",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "rsi_7",
+    "trend_agreement_3_10",
+    "momentum_acceleration_3_10",
+    "minutes_since_open",
+    "minutes_until_close",
+    "session_progress",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "definition": "A endpoint-only exact t+H; same NYSE session; \u00b10.10%"
+}

@@ -1,0 +1,26 @@
+{
+  "source_path": "models\\alpaca_1min_research_v1\\raw_ecl_iex_5min_train_validation.csv",
+  "symbol": "ECL",
+  "feed": "IEX",
+  "timeframe": "5Min",
+  "rows": 16060,
+  "first_timestamp_utc": "2025-11-13T14:30:00+00:00",
+  "last_timestamp_utc": "2026-09-24T19:55:00+00:00",
+  "new_york_trading_dates": 216,
+  "duplicate_timestamps": 0,
+  "invalid_ohlc_rows": 0,
+  "zero_volume_rows": 0,
+  "out_of_regular_session_rows": 1,
+  "within_session_gaps_over_five_minutes": 581,
+  "gap_minutes_distribution": {
+    "10.0": 497,
+    "15.0": 57,
+    "20.0": 17,
+    "25.0": 6,
+    "30.0": 2,
+    "35.0": 2
+  },
+  "gaps_are_preserved_as_sequence_resets": true,
+  "source_sha256": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+  "metadata_sha256": "b06bf0b93ee6ee962a040709d82adbc0673855782a416103e3b77aaf3eabff02"
+}

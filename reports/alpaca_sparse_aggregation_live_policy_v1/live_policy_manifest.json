@@ -1,0 +1,67 @@
+{
+  "data_scope": {
+    "symbol": "ECL",
+    "feed": "iex",
+    "permitted_dates_ny": [
+      "2025-11-13",
+      "2026-09-24"
+    ],
+    "only_named_train_validation_caches_read": true,
+    "test_dataset_or_test_period_accessed": false,
+    "network_requests_made": false
+  },
+  "input_sha256": {
+    "models/alpaca_1min_research_v1/raw_ecl_iex_1min_train_validation.csv": "7d5bce7c8925b9cb1f27aba122f9ce97b0459a1bdce826bdee1f70f3d109880c",
+    "models/alpaca_1min_research_v1/raw_ecl_iex_5min_train_validation.csv": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+    "models/alpaca_1min_research_v1/fetch_metadata.json": "655d3ec7456e873bbe9eeb9bb879269d18671d1651c786e94eada0194ba8d78b",
+    "models/alpaca_1min_research_v1/fetch_5min_metadata.json": "b06bf0b93ee6ee962a040709d82adbc0673855782a416103e3b77aaf3eabff02",
+    "models/alpaca_final_freeze_v1/frozen_candidate_spec.json": "b4f51daaabd59aa586c850ce04aaa82bd813ddc2325ededd2e51f159de9f688e",
+    "models/alpaca_final_freeze_v1/candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "live_app/alpaca_aggregation.py": "8ef1f22baf4535e1c0d1cd5e80dc83250839b639eb6739312746cf157c5532b7",
+    "live_app/alpaca_storage.py": "c215cfd6de8ab15fedf572efcb7cb4c91c957bb732fbd3b2920342bd09fa76e9",
+    "live_app/alpaca_provider.py": "4b1bf154a7519f7426acfaad4f7bd8a5bd248d9e2e12918ba98c24d4b4a140fd",
+    "live_app/alpaca_engine.py": "771c5dedbd0f624ebe645c4d3ba645813cfc11f17d8f18fdeece39e53303b0fa",
+    "live_app/features.py": "f935a7bf11da766d079588e6b2affd16a03d58030e10a0c598a848c3a3433b78",
+    "live_app/app.py": "1ccdd8d5ad431996d356e903abf3772d29fe3a8ea6ccb8d6dd52918fbddbd5ee",
+    "reports/alpaca_sparse_aggregation_live_policy_v1/validate_live_aggregator.py": "8a4559289864d865e9667278cb892e2a72923ffe95a3e5dc274fb233b6b9263d"
+  },
+  "frozen_contract": {
+    "model_sha256": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "feature_count": 24,
+    "feature_order": [
+      "close",
+      "return_1",
+      "return_3",
+      "return_6",
+      "return_12",
+      "sma_ratio_5",
+      "sma_ratio_10",
+      "sma_ratio_20",
+      "ema_ratio_5",
+      "ema_ratio_10",
+      "ema_ratio_20",
+      "rsi_14",
+      "volatility_5",
+      "volatility_10",
+      "volatility_20",
+      "candle_body",
+      "candle_range",
+      "upper_wick",
+      "lower_wick",
+      "minutes_since_open",
+      "minutes_until_close",
+      "day_of_week",
+      "time_sin",
+      "time_cos"
+    ],
+    "class_order": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ],
+    "horizon_minutes": 15,
+    "prediction_policy": "raw three-class argmax"
+  },
+  "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0"
+}

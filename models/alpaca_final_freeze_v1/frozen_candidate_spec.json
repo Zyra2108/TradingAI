@@ -1,0 +1,88 @@
+{
+  "freeze_name": "alpaca_final_freeze_v1",
+  "candidate": "lightgbm_balanced_B_start",
+  "status": "research candidate freeze; not the official live model",
+  "asset": "ECL",
+  "features_exact_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "feature_count": 24,
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "prediction_policy": "raw three-class argmax",
+  "target": {
+    "horizon_minutes": 15,
+    "up": "future return > +0.10%",
+    "down": "future return < -0.10%",
+    "neutral": "otherwise"
+  },
+  "preprocessing": "Median imputation on numeric features, weekday most-frequent imputation and one-hot encoding; fitted only on train.csv.",
+  "lightgbm_parameters": {
+    "objective": "multiclass",
+    "num_class": 3,
+    "n_estimators": 500,
+    "learning_rate": 0.03,
+    "num_leaves": 31,
+    "max_depth": -1,
+    "min_child_samples": 40,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 1.0,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "n_jobs": -1,
+    "verbosity": -1
+  },
+  "train_rows": 4883,
+  "validation_rows": 1161,
+  "train_date_range": [
+    "2025-11-13",
+    "2026-08-05"
+  ],
+  "validation_date_range": [
+    "2026-08-06",
+    "2026-09-24"
+  ],
+  "train_csv_sha256": "b38005521485be7e22dc6a617bb422deaad075546f9a2db9603a5e737f96486b",
+  "validation_csv_sha256": "1767ccd6d69d8c416a9087e710d93f9f69de0e2e0b8f4521edd1074f8d6365cf",
+  "source_candidate_sha256": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+  "training_config_sha256": "138f7af347fd9110f59c6c4c6e67742b8b925810a10bc3cad2eae783b5739400",
+  "validation_metrics": {
+    "accuracy": 0.4117140396210164,
+    "balanced_accuracy": 0.37801106284623015,
+    "macro_f1_3class": 0.374067311301999,
+    "directional_precision_macro": 0.28248022114193116,
+    "directional_recall_macro": 0.32223328768828585,
+    "directional_f1_macro": 0.29907347554406377,
+    "directional_coverage": 0.5340223944875108,
+    "log_loss": 1.1380294033415914
+  },
+  "test_data_accessed": false
+}

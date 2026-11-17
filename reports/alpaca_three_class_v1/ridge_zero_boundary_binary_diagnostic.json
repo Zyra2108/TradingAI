@@ -1,0 +1,28 @@
+{
+  "n": 1188,
+  "accuracy": 0.5404040404040404,
+  "balanced_accuracy": 0.5322492916233572,
+  "macro_f1": 0.5291080575656557,
+  "down_precision": 0.5603799185888738,
+  "down_recall": 0.6503937007874016,
+  "down_f1": 0.6020408163265306,
+  "up_precision": 0.5077605321507761,
+  "up_recall": 0.4141048824593128,
+  "up_f1": 0.45617529880478086,
+  "confusion_matrix_actual_rows_predicted_columns_down_up": [
+    [
+      413,
+      222
+    ],
+    [
+      324,
+      229
+    ]
+  ],
+  "prediction_distribution": {
+    "DOWN": 737,
+    "UP": 451
+  },
+  "n_all_rows": 2248,
+  "all_candle_accuracy_neutral_counted_wrong": 0.28558718861209964
+}

@@ -1,0 +1,58 @@
+{
+  "selected_model": "xgboost",
+  "artifact": "models/alpaca_baselines_v1/xgboost.joblib",
+  "artifact_sha256": "343915e56469b6e80711e31c93d7d94070651a37d8f95bedb848eccfdbbeab79",
+  "selection": {
+    "selected_model": "xgboost",
+    "selection_rule": "Validation macro-F1 highest; ties broken by balanced accuracy, directional macro-F1, then lower log loss. No test data used.",
+    "validation_ranking": [
+      "xgboost",
+      "random_forest",
+      "logistic_regression",
+      "hist_gradient_boosting"
+    ],
+    "test_opened": false,
+    "test_evaluated": false
+  },
+  "feature_schema": {
+    "feature_count": 24,
+    "feature_order": [
+      "close",
+      "return_1",
+      "return_3",
+      "return_6",
+      "return_12",
+      "sma_ratio_5",
+      "sma_ratio_10",
+      "sma_ratio_20",
+      "ema_ratio_5",
+      "ema_ratio_10",
+      "ema_ratio_20",
+      "rsi_14",
+      "volatility_5",
+      "volatility_10",
+      "volatility_20",
+      "candle_body",
+      "candle_range",
+      "upper_wick",
+      "lower_wick",
+      "minutes_since_open",
+      "minutes_until_close",
+      "day_of_week",
+      "time_sin",
+      "time_cos"
+    ],
+    "class_order": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ],
+    "target_horizon_minutes": 15,
+    "target_thresholds_pct": {
+      "down_lt": -0.1,
+      "up_gt": 0.1
+    },
+    "prediction_policy": "raw three-class argmax",
+    "volume_as_feature": false
+  }
+}

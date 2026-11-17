@@ -1,0 +1,232 @@
+{
+  "experiment": "alpaca_binary_research_v3",
+  "source_manifest_sha256": "66425cac1e9c3914b6d9a2958195ca4bef5025166b2d8946e87b78a069cbcf3f",
+  "train_csv_sha256": "2ce45ace668933989f2538f4f4b51834ca29e3fcc1ec711975fcf7417d9689a2",
+  "validation_csv_sha256": "1866964eafede03ef28d73b000f9092ab2a66d439db5daf3f05159703752aa94",
+  "test_csv_accessed": false,
+  "post_2026_09_24_data_accessed": false,
+  "feature_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "class_order": [
+    "DOWN",
+    "UP"
+  ],
+  "seed": 42,
+  "xgboost_version": "3.4.1",
+  "sklearn_version": "1.9.1",
+  "python_version": "3.14.3",
+  "fold_boundaries": [
+    {
+      "fold": 1,
+      "train_start": "2025-11-13",
+      "train_end": "2026-04-29",
+      "validation_start": "2026-04-30",
+      "validation_end": "2026-05-21",
+      "purged_rows": 0,
+      "train_rows_all_classes": 2635,
+      "train_rows_directional": 1331,
+      "train_down": 688,
+      "train_up": 643,
+      "validation_rows_all_classes": 685,
+      "validation_rows_directional": 361,
+      "validation_neutral": 324,
+      "validation_down": 200,
+      "validation_up": 161
+    },
+    {
+      "fold": 2,
+      "train_start": "2025-11-13",
+      "train_end": "2026-05-21",
+      "validation_start": "2026-05-22",
+      "validation_end": "2026-06-17",
+      "purged_rows": 0,
+      "train_rows_all_classes": 3320,
+      "train_rows_directional": 1692,
+      "train_down": 888,
+      "train_up": 804,
+      "validation_rows_all_classes": 638,
+      "validation_rows_directional": 335,
+      "validation_neutral": 303,
+      "validation_down": 170,
+      "validation_up": 165
+    },
+    {
+      "fold": 3,
+      "train_start": "2025-11-13",
+      "train_end": "2026-06-17",
+      "validation_start": "2026-06-18",
+      "validation_end": "2026-07-14",
+      "purged_rows": 0,
+      "train_rows_all_classes": 3958,
+      "train_rows_directional": 2027,
+      "train_down": 1058,
+      "train_up": 969,
+      "validation_rows_all_classes": 375,
+      "validation_rows_directional": 190,
+      "validation_neutral": 185,
+      "validation_down": 119,
+      "validation_up": 71
+    },
+    {
+      "fold": 4,
+      "train_start": "2025-11-13",
+      "train_end": "2026-07-14",
+      "validation_start": "2026-07-15",
+      "validation_end": "2026-08-05",
+      "purged_rows": 0,
+      "train_rows_all_classes": 4333,
+      "train_rows_directional": 2217,
+      "train_down": 1177,
+      "train_up": 1040,
+      "validation_rows_all_classes": 550,
+      "validation_rows_directional": 302,
+      "validation_neutral": 248,
+      "validation_down": 146,
+      "validation_up": 156
+    }
+  ],
+  "family_selected_configs_by_training_oof": {
+    "logistic_regression": "lr_c1_balanced",
+    "random_forest": "rf_compact_unweighted",
+    "xgboost": "xgb_shallow_unweighted",
+    "hist_gradient_boosting": "hgb_regular_weighted"
+  },
+  "candidate_model_hashes": {
+    "logistic_regression": "5f0c7a7d6f6adb9b890385e3104412151d214534831e3719999b426336c00082",
+    "random_forest": "290bac9418bba346f024eaafb1e41cebdee3fad9a15db168bd4880d26bc1a77b",
+    "xgboost": "b9fc849ec1c867c91128ce6ae62b6d39d73d64226160380988822e7ee5055daa",
+    "hist_gradient_boosting": "4b9f54584755333a8aa59c16e8e8b78e57e7a41e27cce7eb8b89fa6476c270c0"
+  },
+  "selected_family": null,
+  "selection_status": "no_candidate_met_validation_accuracy_balance_and_class_recall_guardrails",
+  "validation_evaluation_count": 1,
+  "validation_used_for_training_or_tuning": false,
+  "configuration": {
+    "experiment": "ECL Alpaca IEX binary UP/DOWN research v3",
+    "symbol": "ECL",
+    "feed": "IEX",
+    "timeframe": "5Min",
+    "horizon_minutes": 15,
+    "target": {
+      "up": "future_return > +0.10%",
+      "down": "future_return < -0.10%",
+      "neutral": "otherwise; excluded from binary fit and binary directional metrics"
+    },
+    "class_order": [
+      "DOWN",
+      "UP"
+    ],
+    "features": "Exact 24 frozen B features in data/alpaca_ml_pipeline_v1/reproducibility_manifest.json order; no volume input",
+    "source_splits": {
+      "train": "data/alpaca_ml_pipeline_v1/train.csv",
+      "validation": "data/alpaca_ml_pipeline_v1/validation.csv",
+      "allowed_max_date": "2026-09-24"
+    },
+    "walk_forward": {
+      "scheme": "Expanding chronological by whole trading dates",
+      "initial_training_date_fraction": 0.6,
+      "validation_folds": 4,
+      "shuffle": false,
+      "purge": "Drop training rows whose future_datetime is at or after the first validation decision timestamp"
+    },
+    "selection": {
+      "per_family_config": "Training walk-forward only: among configurations with mean balanced accuracy >= 0.50 and mean UP/DOWN recall >= 0.40, rank by mean binary accuracy, balanced accuracy, macro-F1, then lower log loss; if none qualify, rank by balanced accuracy, accuracy, macro-F1, lower log loss.",
+      "validation_confirmation": "Evaluate one preselected configuration per family once; a candidate qualifies only if validation binary accuracy >= 0.55, balanced accuracy >= 0.50, and UP and DOWN recall are each >= 0.40. Among qualifying candidates, rank by macro-F1, balanced accuracy, accuracy, and lower log loss. If none qualify, no model is promoted or called successful.",
+      "confidence_warning": "Set the low-confidence boundary to the 25th percentile of the selected configuration's training-only out-of-fold max-probability distribution over all held-out fold rows. Predictions remain UP or DOWN."
+    },
+    "seed": 42,
+    "fixed_configurations": {
+      "logistic_regression": [
+        {
+          "name": "lr_c01_unweighted",
+          "C": 0.1,
+          "class_weight": null
+        },
+        {
+          "name": "lr_c1_balanced",
+          "C": 1.0,
+          "class_weight": "balanced"
+        }
+      ],
+      "random_forest": [
+        {
+          "name": "rf_compact_unweighted",
+          "n_estimators": 300,
+          "max_depth": 8,
+          "min_samples_leaf": 10,
+          "class_weight": null
+        },
+        {
+          "name": "rf_balanced",
+          "n_estimators": 400,
+          "max_depth": 12,
+          "min_samples_leaf": 5,
+          "class_weight": "balanced_subsample"
+        }
+      ],
+      "xgboost": [
+        {
+          "name": "xgb_shallow_unweighted",
+          "n_estimators": 250,
+          "max_depth": 2,
+          "learning_rate": 0.04,
+          "sample_weight": false
+        },
+        {
+          "name": "xgb_shallow_weighted",
+          "n_estimators": 250,
+          "max_depth": 2,
+          "learning_rate": 0.04,
+          "sample_weight": "balanced train-fold weights"
+        }
+      ],
+      "hist_gradient_boosting": [
+        {
+          "name": "hgb_regular_unweighted",
+          "max_iter": 200,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "sample_weight": false
+        },
+        {
+          "name": "hgb_regular_weighted",
+          "max_iter": 200,
+          "learning_rate": 0.05,
+          "max_leaf_nodes": 15,
+          "sample_weight": "balanced train-fold weights"
+        }
+      ]
+    },
+    "baselines": {
+      "always_up": "Always predict UP",
+      "always_down": "Always predict DOWN",
+      "training_majority": "Most frequent directional class in the current training fold",
+      "rsi_50": "RSI >= 50 predicts UP; otherwise DOWN; fixed, causal, untuned"
+    },
+    "low_confidence_policy": "Emit UP or DOWN for every inference row; low_confidence=true when max(P(UP), P(DOWN)) is below the training-OOF 25th percentile boundary. No neutral conversion or abstention."
+  }
+}

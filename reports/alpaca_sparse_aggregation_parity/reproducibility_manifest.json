@@ -1,0 +1,30 @@
+{
+  "script": "D:\\ML_project\\reports\\alpaca_sparse_aggregation_parity\\compare_sparse_aggregation.py",
+  "script_sha256": "07319e7c2fcc800974b92c48d066660d663b34e7397820553a05123d7c7d0158",
+  "input_files": {
+    "models\\alpaca_1min_research_v1\\raw_ecl_iex_1min_train_validation.csv": "7d5bce7c8925b9cb1f27aba122f9ce97b0459a1bdce826bdee1f70f3d109880c",
+    "models\\alpaca_1min_research_v1\\raw_ecl_iex_5min_train_validation.csv": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+    "models\\alpaca_1min_research_v1\\fetch_metadata.json": "655d3ec7456e873bbe9eeb9bb879269d18671d1651c786e94eada0194ba8d78b",
+    "models\\alpaca_1min_research_v1\\fetch_5min_metadata.json": "b06bf0b93ee6ee962a040709d82adbc0673855782a416103e3b77aaf3eabff02",
+    "models\\alpaca_final_freeze_v1\\frozen_candidate_spec.json": "b4f51daaabd59aa586c850ce04aaa82bd813ddc2325ededd2e51f159de9f688e",
+    "reports\\alpaca_sparse_aggregation_parity\\compare_sparse_aggregation.py": "07319e7c2fcc800974b92c48d066660d663b34e7397820553a05123d7c7d0158",
+    "reports\\alpaca_sparse_aggregation_parity\\test_sparse_aggregation.py": "b7aaf13c1ce43622be49ad9dfc2691107bf20949ec45d73b01aa70291c3fc783"
+  },
+  "date_boundary_assertion": "Both train_validation cache files were verified against provenance metadata and all NY dates were <= 2026-09-24 before aggregation.",
+  "test_dataset_or_period_read": false,
+  "network_requests_made": false,
+  "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "pandas": "3.1.1",
+  "numpy": "2.5.4",
+  "calendar": "live_app.calendar.session_for_date; America/New_York; regular session/early close aware",
+  "bucket_definition": "5 minutes from NYSE regular session open; [start, start+5m); no fill; omit zero-observation buckets",
+  "aggregation": {
+    "open": "first observed minute open",
+    "high": "max observed minute high",
+    "low": "min observed minute low",
+    "close": "last observed minute close",
+    "volume": "sum available observed minute volumes",
+    "trade_count": "sum available counts"
+  }
+}

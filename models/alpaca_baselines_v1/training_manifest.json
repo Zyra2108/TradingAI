@@ -1,0 +1,108 @@
+{
+  "source_manifest_sha256": "66425cac1e9c3914b6d9a2958195ca4bef5025166b2d8946e87b78a069cbcf3f",
+  "train_csv_sha256": "2ce45ace668933989f2538f4f4b51834ca29e3fcc1ec711975fcf7417d9689a2",
+  "validation_csv_sha256": "1866964eafede03ef28d73b000f9092ab2a66d439db5daf3f05159703752aa94",
+  "test_csv_read": false,
+  "model_artifacts": {
+    "logistic_regression": "3f496be3e07a67f792132f7d415021403af416bcda64ac04a9239e4e66e194a8",
+    "random_forest": "891203b89b76da21ef406a1425a39688be72efd41f6d5a6f2c904535d7c943fa",
+    "xgboost": "343915e56469b6e80711e31c93d7d94070651a37d8f95bedb848eccfdbbeab79",
+    "hist_gradient_boosting": "c77a4705e5f92e2cdcb3a4629b62cc1014fcb15e9eaba4da2be6493b2c40bbd4"
+  },
+  "feature_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "config": {
+    "selection_rule": "Validation macro-F1 highest; ties broken by balanced accuracy, directional macro-F1, then lower log loss. No test data used.",
+    "random_seed": 42,
+    "class_order": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ],
+    "models": {
+      "logistic_regression": {
+        "class_weight": "balanced",
+        "C": 1.0,
+        "max_iter": 2000,
+        "solver": "lbfgs",
+        "preprocessing": "median imputation and StandardScaler fitted within train-only sklearn pipeline"
+      },
+      "random_forest": {
+        "n_estimators": 400,
+        "max_depth": 12,
+        "min_samples_leaf": 5,
+        "max_features": "sqrt",
+        "class_weight": "balanced_subsample",
+        "n_jobs": -1
+      },
+      "xgboost": {
+        "n_estimators": 350,
+        "learning_rate": 0.04,
+        "max_depth": 3,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 2.0,
+        "objective": "multi:softprob",
+        "eval_metric": "mlogloss",
+        "class_imbalance": "compute_sample_weight balanced from train labels only",
+        "n_jobs": -1
+      },
+      "hist_gradient_boosting": {
+        "max_iter": 250,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 2.0,
+        "class_imbalance": "compute_sample_weight balanced from train labels only"
+      },
+      "rsi_baseline": {
+        "rule": "RSI <= 30 predicts UP; RSI >= 70 predicts DOWN; otherwise NEUTRAL. Fixed, untuned rule."
+      }
+    }
+  },
+  "selected_by_validation_only": "xgboost",
+  "reproducibility_environment": {
+    "python": "3.14.3",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "random_seed": 42,
+    "xgboost_was_installed_before_experiment": true
+  },
+  "code_sha256": {
+    "dataset_builder": "80e1d3def95a145e2a9eb6b2e18c3b246df5378171846a3da51e0b0ee19d7fb9",
+    "training_script": "46580f7c3c62a9f0d2b3758be6b9e7d26098b2199d5a934739394953f4ce5ad0",
+    "final_evaluator": "5089aa25d3fe83ff9a436d015203e5300031dc293505eb352b0234e788714a13"
+  }
+}

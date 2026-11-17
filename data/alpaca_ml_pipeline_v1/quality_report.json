@@ -1,0 +1,30 @@
+{
+  "canonical_rows": 18789,
+  "source_rejected_rows_across_all_audited_sources": 2,
+  "canonical_rejected_rows": 1,
+  "feature_ready_target_rows": 7413,
+  "expected_regular_session_buckets": 19584,
+  "missing_expected_canonical_intervals": 795,
+  "zero_volume_canonical_rows": 0,
+  "duplicate_canonical_timestamps": 0,
+  "invalid_ohlc_canonical_rows": 0,
+  "rejected_source_rows": [
+    {
+      "timestamp_utc": "2026-09-18T13:25:00+00:00",
+      "source_id": "one_year_primary",
+      "reason": "outside_or_misaligned_nyse_regular_session"
+    },
+    {
+      "timestamp_utc": "2026-09-18T13:25:00+00:00",
+      "source_id": "native_cache_verification",
+      "reason": "outside_or_misaligned_nyse_regular_session"
+    }
+  ],
+  "feature_warmup_or_nonfinite_rows": 10506,
+  "target_endpoint_or_gap_rows": 2438,
+  "split_purged_rows": {
+    "train": 0,
+    "validation": 0
+  },
+  "missing_intervals_note": "Absent Alpaca IEX observations are preserved as genuine gaps; no candles or prices were fabricated."
+}

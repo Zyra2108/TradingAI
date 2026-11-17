@@ -1,0 +1,22 @@
+{
+  "models\\alpaca_baselines_v1\\logistic_regression.joblib": "3f496be3e07a67f792132f7d415021403af416bcda64ac04a9239e4e66e194a8",
+  "models\\alpaca_baselines_v1\\random_forest.joblib": "891203b89b76da21ef406a1425a39688be72efd41f6d5a6f2c904535d7c943fa",
+  "models\\alpaca_baselines_v1\\xgboost.joblib": "343915e56469b6e80711e31c93d7d94070651a37d8f95bedb848eccfdbbeab79",
+  "models\\alpaca_baselines_v1\\hist_gradient_boosting.joblib": "c77a4705e5f92e2cdcb3a4629b62cc1014fcb15e9eaba4da2be6493b2c40bbd4",
+  "models\\alpaca_final_freeze_v1\\candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+  "models\\alpaca_binary_research_v3\\random_forest.joblib": "290bac9418bba346f024eaafb1e41cebdee3fad9a15db168bd4880d26bc1a77b",
+  "models\\alpaca_binary_research_v3\\xgboost.joblib": "b9fc849ec1c867c91128ce6ae62b6d39d73d64226160380988822e7ee5055daa",
+  "models\\alpaca_binary_research_v1\\xgboost_binary.joblib": "e989e9491107de3a4f47f6ab3db994d3184fe4fab8a7ca19b0e8308d702e9a00",
+  "models\\alpaca_return_regression_v1\\ridge_full_train.joblib": "dc01a3cca5aa519a3a953aede4e6ce4fc6053d8d0b2d3e257561c8535959f3b7",
+  "models\\alpaca_return_regression_v1\\random_forest_regressor_full_train.joblib": "bf55b7aa0b5516885cef86224e7ab2f319ec01d7a45722b821bde72af2ea5e95",
+  "models\\alpaca_return_regression_v1\\xgboost_regressor_full_train.joblib": "db5285fb0c7574ed7570777c379a18ad117465aa4bf5ba71867cf516a95f49cb",
+  "models\\alpaca_return_regression_v1\\hist_gradient_boosting_regressor_full_train.joblib": "9cfbf09e28945352d396f63cfbe776010af87def2708cb9c7daa20795d5484c0",
+  "models\\alpaca_sequence_research_v1\\causal_1d_cnn_len6.keras": "6f1c509e11dd7c3ee55f16293adaf0131d84302d06dd41a38fddc0fbd2269fd5",
+  "models\\alpaca_sequence_research_v1\\channel_scaler_len6.joblib": "5c8c61c3ed4b0292ad15349f0918a765285bdc2056be6736603580095fce1197",
+  "models\\alpaca_sequence_research_v1\\causal_1d_cnn_len12.keras": "b8311b8f775a1eaf0e0ef02ff38ea28837fdd26d9e03ad7e09abf8bda27e67fe",
+  "models\\alpaca_sequence_research_v1\\channel_scaler_len12.joblib": "982bd28beabc462e0ecbce5d4ba940d350ffd3090f8634ed4ddb9836f5348aeb",
+  "models\\alpaca_sequence_research_v1\\causal_1d_cnn_len24.keras": "027fffdcf22061413e9e2035a2e2a6814440210690d773effa68516300ef3be0",
+  "models\\alpaca_sequence_research_v1\\channel_scaler_len24.joblib": "68f04807854ed51d519cc27a4665f280be83bc8ecd865719468406cee62fee86",
+  "models\\alpaca_sequence_research_v1\\causal_1d_cnn_len36.keras": "8bea255a7b4f431d0b3ebc1fe236192a87eab19b7ef0b6789d3d13b838f48e7a",
+  "models\\alpaca_sequence_research_v1\\channel_scaler_len36.joblib": "e9465dc94b59dd048720e05643cc6de80c688b6ed9e7fc4a305af55a0dd161e6"
+}

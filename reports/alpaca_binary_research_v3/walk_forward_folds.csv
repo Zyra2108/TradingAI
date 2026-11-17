@@ -1,0 +1,5 @@
+fold,train_start,train_end,validation_start,validation_end,purged_rows,train_rows_all_classes,train_rows_directional,train_down,train_up,validation_rows_all_classes,validation_rows_directional,validation_neutral,validation_down,validation_up
+1,2025-11-13,2026-04-29,2026-04-30,2026-05-21,0,2635,1331,688,643,685,361,324,200,161
+2,2025-11-13,2026-05-21,2026-05-22,2026-06-17,0,3320,1692,888,804,638,335,303,170,165
+3,2025-11-13,2026-06-17,2026-06-18,2026-07-14,0,3958,2027,1058,969,375,190,185,119,71
+4,2025-11-13,2026-07-14,2026-07-15,2026-08-05,0,4333,2217,1177,1040,550,302,248,146,156

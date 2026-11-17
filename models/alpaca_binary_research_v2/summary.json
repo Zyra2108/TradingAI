@@ -1,0 +1,553 @@
+{
+  "selected_model": "logistic_regression",
+  "selected_feature_set": "original_24",
+  "selected_walk_forward_mean_macro_precision_eligible": 0.5602950830731244,
+  "selected_walk_forward_mean_emitted_accuracy_eligible": 0.5492451593526589,
+  "selected_walk_forward_mean_eligible_coverage": 0.3004777478394252,
+  "validation_confirmation": {
+    "selected_model": "logistic_regression",
+    "selected_feature_set": "original_24",
+    "rows": 1161,
+    "date_range": [
+      "2026-08-06 14:35:00",
+      "2026-09-24 12:25:00"
+    ],
+    "class_distribution": {
+      "DOWN": 277,
+      "NEUTRAL": 623,
+      "UP": 261
+    },
+    "eligible_directional_rows": 538,
+    "binary_accuracy_all_eligible_directional": {
+      "n_eligible": 538,
+      "accuracy": 0.4944237918215613,
+      "balanced_accuracy": 0.4930909996265405,
+      "up_precision": 0.4775510204081633,
+      "down_precision": 0.5085324232081911,
+      "macro_directional_precision": 0.4930417218081772,
+      "macro_directional_recall": 0.4930909996265405,
+      "macro_directional_f1": 0.49262880521461755,
+      "confusion_labels_rows_actual_cols_prediction": [
+        "DOWN",
+        "UP"
+      ],
+      "confusion_matrix": [
+        [
+          149,
+          128
+        ],
+        [
+          144,
+          117
+        ]
+      ]
+    },
+    "calibration_eligible_directional": {
+      "n": 538,
+      "log_loss": 0.7040089859713053,
+      "brier": 0.2553422850390124,
+      "ece_10_equal_width": 0.058401995466180315,
+      "p_up_mean": 0.49668734597548336,
+      "p_up_std": 0.06698124424089073,
+      "confidence_quantiles": {
+        "0.05": 0.5054291642667128,
+        "0.25": 0.5189141409428825,
+        "0.5": 0.5431545418600405,
+        "0.75": 0.5795809015279723,
+        "0.95": 0.6362925717830259
+      },
+      "reliability_bins": [
+        {
+          "bin": 3,
+          "count": 38,
+          "mean_predicted_p_up": 0.37528845885024803,
+          "observed_up_rate": 0.5526315789473685,
+          "lower": 0.30000000000000004,
+          "upper": 0.4
+        },
+        {
+          "bin": 4,
+          "count": 255,
+          "mean_predicted_p_up": 0.459363913139973,
+          "observed_up_rate": 0.4823529411764706,
+          "lower": 0.4,
+          "upper": 0.5
+        },
+        {
+          "bin": 5,
+          "count": 209,
+          "mean_predicted_p_up": 0.5401415486624681,
+          "observed_up_rate": 0.47368421052631576,
+          "lower": 0.5,
+          "upper": 0.6000000000000001
+        },
+        {
+          "bin": 6,
+          "count": 36,
+          "mean_predicted_p_up": 0.6369291438153251,
+          "observed_up_rate": 0.5,
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001
+        }
+      ]
+    },
+    "selective_policies": [
+      {
+        "model": "logistic_regression",
+        "feature_set": "original_24",
+        "target_oof_coverage_eligible_directional": 0.2,
+        "threshold_learned_from_training_oof": 0.6254043347822652,
+        "threshold": 0.6254043347822652,
+        "validation_or_oof_rows": 1161,
+        "eligible_directional_rows": 538,
+        "emitted_predictions": 77,
+        "no_signal_count": 1084,
+        "coverage_all_candles": 0.06632213608957795,
+        "eligible_emitted_predictions": 35,
+        "coverage_eligible_directional": 0.06505576208178439,
+        "eligible_directional_metrics_on_emissions": {
+          "n_eligible": 35,
+          "accuracy": 0.6571428571428571,
+          "balanced_accuracy": 0.6552287581699346,
+          "up_precision": 0.65,
+          "down_precision": 0.6666666666666666,
+          "macro_directional_precision": 0.6583333333333333,
+          "macro_directional_recall": 0.6552287581699346,
+          "macro_directional_f1": 0.6546052631578947,
+          "confusion_labels_rows_actual_cols_prediction": [
+            "DOWN",
+            "UP"
+          ],
+          "confusion_matrix": [
+            [
+              10,
+              7
+            ],
+            [
+              5,
+              13
+            ]
+          ]
+        },
+        "up_precision_operational_neutral_false": 0.325,
+        "down_precision_operational_neutral_false": 0.2702702702702703,
+        "macro_precision_operational_neutral_false": 0.2976351351351352,
+        "accuracy_all_emissions_neutral_counted_wrong": 0.2987012987012987,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "NEUTRAL",
+          "UP",
+          "NO_SIGNAL"
+        ],
+        "confusion_matrix_all_rows": [
+          [
+            10,
+            0,
+            7,
+            260
+          ],
+          [
+            22,
+            0,
+            20,
+            581
+          ],
+          [
+            5,
+            0,
+            13,
+            243
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "model": "logistic_regression",
+        "feature_set": "original_24",
+        "target_oof_coverage_eligible_directional": 0.3,
+        "threshold_learned_from_training_oof": 0.5992327319579205,
+        "threshold": 0.5992327319579205,
+        "validation_or_oof_rows": 1161,
+        "eligible_directional_rows": 538,
+        "emitted_predictions": 157,
+        "no_signal_count": 1004,
+        "coverage_all_candles": 0.13522825150732126,
+        "eligible_emitted_predictions": 75,
+        "coverage_eligible_directional": 0.13940520446096655,
+        "eligible_directional_metrics_on_emissions": {
+          "n_eligible": 75,
+          "accuracy": 0.4666666666666667,
+          "balanced_accuracy": 0.4668803418803419,
+          "up_precision": 0.4864864864864865,
+          "down_precision": 0.4473684210526316,
+          "macro_directional_precision": 0.466927453769559,
+          "macro_directional_recall": 0.4668803418803419,
+          "macro_directional_f1": 0.4665718349928876,
+          "confusion_labels_rows_actual_cols_prediction": [
+            "DOWN",
+            "UP"
+          ],
+          "confusion_matrix": [
+            [
+              17,
+              19
+            ],
+            [
+              21,
+              18
+            ]
+          ]
+        },
+        "up_precision_operational_neutral_false": 0.24,
+        "down_precision_operational_neutral_false": 0.2073170731707317,
+        "macro_precision_operational_neutral_false": 0.22365853658536583,
+        "accuracy_all_emissions_neutral_counted_wrong": 0.2229299363057325,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "NEUTRAL",
+          "UP",
+          "NO_SIGNAL"
+        ],
+        "confusion_matrix_all_rows": [
+          [
+            17,
+            0,
+            19,
+            241
+          ],
+          [
+            44,
+            0,
+            38,
+            541
+          ],
+          [
+            21,
+            0,
+            18,
+            222
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "model": "logistic_regression",
+        "feature_set": "original_24",
+        "target_oof_coverage_eligible_directional": 0.4,
+        "threshold_learned_from_training_oof": 0.5794384811445138,
+        "threshold": 0.5794384811445138,
+        "validation_or_oof_rows": 1161,
+        "eligible_directional_rows": 538,
+        "emitted_predictions": 281,
+        "no_signal_count": 880,
+        "coverage_all_candles": 0.24203273040482343,
+        "eligible_emitted_predictions": 135,
+        "coverage_eligible_directional": 0.25092936802973975,
+        "eligible_directional_metrics_on_emissions": {
+          "n_eligible": 135,
+          "accuracy": 0.4740740740740741,
+          "balanced_accuracy": 0.47612235915492956,
+          "up_precision": 0.5,
+          "down_precision": 0.4520547945205479,
+          "macro_directional_precision": 0.476027397260274,
+          "macro_directional_recall": 0.47612235915492956,
+          "macro_directional_f1": 0.4739586191756764,
+          "confusion_labels_rows_actual_cols_prediction": [
+            "DOWN",
+            "UP"
+          ],
+          "confusion_matrix": [
+            [
+              33,
+              31
+            ],
+            [
+              40,
+              31
+            ]
+          ]
+        },
+        "up_precision_operational_neutral_false": 0.23484848484848486,
+        "down_precision_operational_neutral_false": 0.2214765100671141,
+        "macro_precision_operational_neutral_false": 0.22816249745779948,
+        "accuracy_all_emissions_neutral_counted_wrong": 0.2277580071174377,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "NEUTRAL",
+          "UP",
+          "NO_SIGNAL"
+        ],
+        "confusion_matrix_all_rows": [
+          [
+            33,
+            0,
+            31,
+            213
+          ],
+          [
+            76,
+            0,
+            70,
+            477
+          ],
+          [
+            40,
+            0,
+            31,
+            190
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "model": "logistic_regression",
+        "feature_set": "original_24",
+        "target_oof_coverage_eligible_directional": 0.5,
+        "threshold_learned_from_training_oof": 0.5650200623696877,
+        "threshold": 0.5650200623696877,
+        "validation_or_oof_rows": 1161,
+        "eligible_directional_rows": 538,
+        "emitted_predictions": 381,
+        "no_signal_count": 780,
+        "coverage_all_candles": 0.3281653746770026,
+        "eligible_emitted_predictions": 180,
+        "coverage_eligible_directional": 0.3345724907063197,
+        "eligible_directional_metrics_on_emissions": {
+          "n_eligible": 180,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5016685205784205,
+          "up_precision": 0.5185185185185185,
+          "down_precision": 0.48484848484848486,
+          "macro_directional_precision": 0.5016835016835017,
+          "macro_directional_recall": 0.5016685205784205,
+          "macro_directional_f1": 0.4994438264738599,
+          "confusion_labels_rows_actual_cols_prediction": [
+            "DOWN",
+            "UP"
+          ],
+          "confusion_matrix": [
+            [
+              48,
+              39
+            ],
+            [
+              51,
+              42
+            ]
+          ]
+        },
+        "up_precision_operational_neutral_false": 0.24561403508771928,
+        "down_precision_operational_neutral_false": 0.22857142857142856,
+        "macro_precision_operational_neutral_false": 0.2370927318295739,
+        "accuracy_all_emissions_neutral_counted_wrong": 0.23622047244094488,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "NEUTRAL",
+          "UP",
+          "NO_SIGNAL"
+        ],
+        "confusion_matrix_all_rows": [
+          [
+            48,
+            0,
+            39,
+            190
+          ],
+          [
+            111,
+            0,
+            90,
+            422
+          ],
+          [
+            51,
+            0,
+            42,
+            168
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    ],
+    "use_note": "Single final confirmation after all feature/model/threshold selection on chronological training-only OOF predictions. Existing validation has been used in earlier research; this is not pristine holdout data."
+  },
+  "previous_v1_audit": {
+    "source": "models/alpaca_binary_research_v1/validation_predictions.csv",
+    "saved_predictions_rows": 1161,
+    "eligible_directional_rows": 538,
+    "actual_class_distribution": {
+      "DOWN": 277,
+      "NEUTRAL": 623,
+      "UP": 261
+    },
+    "raw_model_predictions": {
+      "xgboost_binary": {
+        "DOWN": 583,
+        "UP": 578
+      },
+      "lightgbm_binary": {
+        "DOWN": 594,
+        "UP": 567
+      }
+    },
+    "recalculated_unthresholded": {
+      "xgboost_binary": {
+        "n_eligible": 538,
+        "accuracy": 0.5037174721189591,
+        "balanced_accuracy": 0.5034441263122951,
+        "up_precision": 0.48863636363636365,
+        "down_precision": 0.5182481751824818,
+        "macro_directional_precision": 0.5034422694094227,
+        "macro_directional_recall": 0.5034441263122951,
+        "macro_directional_f1": 0.5034275343531243,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "UP"
+        ],
+        "confusion_matrix": [
+          [
+            142,
+            135
+          ],
+          [
+            132,
+            129
+          ]
+        ]
+      },
+      "lightgbm_binary": {
+        "n_eligible": 538,
+        "accuracy": 0.533457249070632,
+        "balanced_accuracy": 0.5332102300233759,
+        "up_precision": 0.5189393939393939,
+        "down_precision": 0.5474452554744526,
+        "macro_directional_precision": 0.5331923247069232,
+        "macro_directional_recall": 0.5332102300233759,
+        "macro_directional_f1": 0.5331846858525624,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "UP"
+        ],
+        "confusion_matrix": [
+          [
+            150,
+            127
+          ],
+          [
+            124,
+            137
+          ]
+        ]
+      }
+    },
+    "report_metrics_consistent_with_saved_predictions": true,
+    "precision_scope": "Saved v1 reports both eligible directional precision (actual neutral excluded) and operational precision (neutral actual directional signals are false positives).",
+    "coverage_scope": "V1 main target coverage is emitted predictions/all validation candles; eligible coverage is separately reported."
+  },
+  "validation_limitation": "Previously used validation set; this one-time confirmation is not independent final test evidence.",
+  "test_dataset_accessed": false,
+  "target_attainment": {
+    "minimum_eligible_directional_coverage": 0.2,
+    "precision_target": 0.65,
+    "accuracy_target": 0.55,
+    "both_targets_met_at_minimum_coverage": false,
+    "best_macro_precision_at_coverage_at_least_20pct": 0.5016835016835017,
+    "best_accuracy_at_coverage_at_least_20pct": 0.5,
+    "best_macro_precision_any_coverage": 0.6583333333333333,
+    "best_accuracy_any_coverage": 0.6571428571428571,
+    "highest_precision_accuracy_policy": {
+      "model": "logistic_regression",
+      "feature_set": "original_24",
+      "target_oof_coverage_eligible_directional": 0.2,
+      "threshold_learned_from_training_oof": 0.6254043347822652,
+      "threshold": 0.6254043347822652,
+      "validation_or_oof_rows": 1161,
+      "eligible_directional_rows": 538,
+      "emitted_predictions": 77,
+      "no_signal_count": 1084,
+      "coverage_all_candles": 0.06632213608957795,
+      "eligible_emitted_predictions": 35,
+      "coverage_eligible_directional": 0.06505576208178439,
+      "eligible_directional_metrics_on_emissions": {
+        "n_eligible": 35,
+        "accuracy": 0.6571428571428571,
+        "balanced_accuracy": 0.6552287581699346,
+        "up_precision": 0.65,
+        "down_precision": 0.6666666666666666,
+        "macro_directional_precision": 0.6583333333333333,
+        "macro_directional_recall": 0.6552287581699346,
+        "macro_directional_f1": 0.6546052631578947,
+        "confusion_labels_rows_actual_cols_prediction": [
+          "DOWN",
+          "UP"
+        ],
+        "confusion_matrix": [
+          [
+            10,
+            7
+          ],
+          [
+            5,
+            13
+          ]
+        ]
+      },
+      "up_precision_operational_neutral_false": 0.325,
+      "down_precision_operational_neutral_false": 0.2702702702702703,
+      "macro_precision_operational_neutral_false": 0.2976351351351352,
+      "accuracy_all_emissions_neutral_counted_wrong": 0.2987012987012987,
+      "confusion_labels_rows_actual_cols_prediction": [
+        "DOWN",
+        "NEUTRAL",
+        "UP",
+        "NO_SIGNAL"
+      ],
+      "confusion_matrix_all_rows": [
+        [
+          10,
+          0,
+          7,
+          260
+        ],
+        [
+          22,
+          0,
+          20,
+          581
+        ],
+        [
+          5,
+          0,
+          13,
+          243
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  }
+}

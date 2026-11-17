@@ -1,0 +1,73 @@
+{
+  "source": "models/alpaca_binary_research_v1/validation_predictions.csv",
+  "saved_predictions_rows": 1161,
+  "eligible_directional_rows": 538,
+  "actual_class_distribution": {
+    "DOWN": 277,
+    "NEUTRAL": 623,
+    "UP": 261
+  },
+  "raw_model_predictions": {
+    "xgboost_binary": {
+      "DOWN": 583,
+      "UP": 578
+    },
+    "lightgbm_binary": {
+      "DOWN": 594,
+      "UP": 567
+    }
+  },
+  "recalculated_unthresholded": {
+    "xgboost_binary": {
+      "n_eligible": 538,
+      "accuracy": 0.5037174721189591,
+      "balanced_accuracy": 0.5034441263122951,
+      "up_precision": 0.48863636363636365,
+      "down_precision": 0.5182481751824818,
+      "macro_directional_precision": 0.5034422694094227,
+      "macro_directional_recall": 0.5034441263122951,
+      "macro_directional_f1": 0.5034275343531243,
+      "confusion_labels_rows_actual_cols_prediction": [
+        "DOWN",
+        "UP"
+      ],
+      "confusion_matrix": [
+        [
+          142,
+          135
+        ],
+        [
+          132,
+          129
+        ]
+      ]
+    },
+    "lightgbm_binary": {
+      "n_eligible": 538,
+      "accuracy": 0.533457249070632,
+      "balanced_accuracy": 0.5332102300233759,
+      "up_precision": 0.5189393939393939,
+      "down_precision": 0.5474452554744526,
+      "macro_directional_precision": 0.5331923247069232,
+      "macro_directional_recall": 0.5332102300233759,
+      "macro_directional_f1": 0.5331846858525624,
+      "confusion_labels_rows_actual_cols_prediction": [
+        "DOWN",
+        "UP"
+      ],
+      "confusion_matrix": [
+        [
+          150,
+          127
+        ],
+        [
+          124,
+          137
+        ]
+      ]
+    }
+  },
+  "report_metrics_consistent_with_saved_predictions": true,
+  "precision_scope": "Saved v1 reports both eligible directional precision (actual neutral excluded) and operational precision (neutral actual directional signals are false positives).",
+  "coverage_scope": "V1 main target coverage is emitted predictions/all validation candles; eligible coverage is separately reported."
+}

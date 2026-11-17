@@ -1,0 +1,8 @@
+{
+  "candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+  "class_order.json": "72cede399bdc360fe29067f2043aaf53ca96905080532874c33fc5a4d2de6e2f",
+  "feature_columns.json": "be6e23d6bda7410dd6377fe4e44e3a86f62399db9da1d5327376eae3e12e9f65",
+  "frozen_candidate_spec.json": "b4f51daaabd59aa586c850ce04aaa82bd813ddc2325ededd2e51f159de9f688e",
+  "lightgbm_estimator.joblib": "a46470a26360002b213cb764d228ee18b0040d7842956f235ec42cda284ea4cf",
+  "preprocessing_pipeline.joblib": "0b5bb1609decec0712846762fd55d8becca956e541091a967041b3070f597af6"
+}

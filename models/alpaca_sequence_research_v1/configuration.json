@@ -1,0 +1,45 @@
+{
+  "experiment": "ECL Alpaca IEX OHLCV sequence binary research v1",
+  "symbol": "ECL",
+  "provider": "Alpaca",
+  "feed": "IEX",
+  "timeframe": "5Min",
+  "horizon_minutes": 15,
+  "target_definition": {
+    "UP": "future return strictly greater than +0.10%",
+    "DOWN": "future return strictly less than -0.10%",
+    "NEUTRAL": "otherwise; excluded from binary fitting and directional metrics"
+  },
+  "approved_dates": {
+    "first": "2025-11-13",
+    "last": "2026-09-24",
+    "train_first": "2025-11-13",
+    "train_last": "2026-08-05",
+    "validation_first": "2026-08-06",
+    "validation_last": "2026-09-24"
+  },
+  "source_policy": "Only the approved pre-test raw ECL IEX 5-minute train-validation cache, existing train.csv and validation.csv, and saved v3 OOF/validation predictions for baseline alignment may be read. No canonical file spanning the test dates is used.",
+  "sequence": {
+    "lengths": [6, 12, 24, 36],
+    "channels": ["open", "high", "low", "close", "volume"],
+    "price_transform": "For each sequence, each OHLC value is 100 * (price / current sequence-end close - 1).",
+    "volume_transform": "log1p(volume); channel scaling is StandardScaler fit on training sequence windows only within each fold/model fit.",
+    "continuity": "Every adjacent source timestamp must differ by exactly five minutes and share the same America/New_York session date. No session crossing, missing-bar filling, interpolation or fabricated observations.",
+    "sample_time": "Sequence ends at the labeled decision candle; no source candle after that candle is included."
+  },
+  "models": {
+    "sequence_model": "Small regularized 1D CNN: causal Conv1D(8, kernel=3), global average pooling, Dense(8, relu, L2=0.01), Dropout(0.20), sigmoid output; Adam 0.001; binary cross entropy; 20 fixed epochs; batch 32; shuffle false.",
+    "baselines": "Saved v3 Random Forest and XGBoost OOF/validation predictions are aligned to the identical eligible timestamps for each sequence length. No baseline rules or indicators are used.",
+    "binary_decision": "UP if predicted P(UP) >= 0.5, else DOWN; no threshold search or abstention."
+  },
+  "walk_forward": {
+    "folds": "Reuse the four established expanding chronological train-date folds in reports/alpaca_binary_research_v3/walk_forward_folds.csv.",
+    "purge": "For each fold, remove training samples with future_datetime at or after the first held-out decision timestamp.",
+    "preprocessing": "Fit channel scaler separately on each fold's training sequences only."
+  },
+  "validation": "All four predeclared sequence lengths are evaluated once on the existing validation period for diagnostic comparison; this period has prior research exposure and is not a pristine holdout. Validation results are not used for selection or tuning.",
+  "random_seed": 42,
+  "tensorflow_epochs": 20,
+  "tensorflow_batch_size": 32,
+  "selection": "No promotion. Compare OOF fold consistency and matched-timestamp baseline results; report validation as limited confirmation only."
+}

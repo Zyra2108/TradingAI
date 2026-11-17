@@ -1,0 +1,13 @@
+{
+  "selected_model": "xgboost",
+  "selection_rule": "Validation macro-F1 highest; ties broken by balanced accuracy, directional macro-F1, then lower log loss. No test data used.",
+  "validation_ranking": [
+    "xgboost",
+    "random_forest",
+    "logistic_regression",
+    "hist_gradient_boosting"
+  ],
+  "test_opened": true,
+  "test_evaluated": true,
+  "test_evaluation_report": "reports/alpaca_baselines_v1/final_test_report.md"
+}

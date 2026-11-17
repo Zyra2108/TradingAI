@@ -1,0 +1,12 @@
+{
+  "source_path": "models\\alpaca_1min_research_v1\\raw_ecl_iex_5min_train_validation.csv",
+  "symbol": "ECL",
+  "feed": "IEX",
+  "timeframe": "5Min",
+  "rows": 16060,
+  "first_utc": "2025-11-13T14:30:00+00:00",
+  "last_utc": "2026-09-24T19:55:00+00:00",
+  "source_sha256": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+  "target_return_verified_against_raw_close": true,
+  "decision_endpoint_and_intervening_5m_timestamps_verified": true
+}

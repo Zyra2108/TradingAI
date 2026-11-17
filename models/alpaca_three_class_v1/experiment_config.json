@@ -1,0 +1,31 @@
+{
+  "experiment": "ECL Alpaca IEX three-class model comparison v1",
+  "symbol": "ECL",
+  "provider": "Alpaca",
+  "feed": "IEX",
+  "timeframe": "5Min",
+  "horizon_minutes": 15,
+  "target": {"UP": "future_return > 0.10 percentage points", "DOWN": "future_return < -0.10 percentage points", "NEUTRAL": "otherwise"},
+  "classes": ["DOWN", "NEUTRAL", "UP"],
+  "features_source": "Existing frozen B 24-feature schema, exact order; no new features",
+  "splits": "Existing Alpaca rebuild train.csv and validation.csv; four fixed expanding date folds from binary research v3; no test input",
+  "fold_purge": "Keep training decisions through each fold train_end only when future_datetime is earlier than the first validation decision timestamp",
+  "seed": 42,
+  "estimators": {
+    "ridge_regression_to_3class": {"alpha": 10.0, "preprocessing": "median imputer and StandardScaler fit inside each fold"},
+    "xgboost_multiclass": {"n_estimators": 250, "max_depth": 3, "min_child_weight": 5, "learning_rate": 0.04, "subsample": 0.8, "colsample_bytree": 0.8, "reg_lambda": 2.0, "objective": "multi:softprob", "eval_metric": "mlogloss", "class_weights": "balanced sample weights computed from that fold's training labels", "n_jobs": 1},
+    "catboost_multiclass": {"status": "not run; CatBoost was not installed; no package installation"},
+    "hist_gradient_boosting_multiclass": {"max_iter": 200, "learning_rate": 0.05, "max_leaf_nodes": 15, "min_samples_leaf": 20, "l2_regularization": 1.0, "class_weights": "balanced sample weights computed from that fold's training labels"}
+  },
+  "ridge_neutral_threshold_selection": {
+    "primary": "Select one symmetric predicted-return boundary from pooled chronological OOF predictions only; maximize three-class macro-F1 subject to predicted directional coverage >= max(40%, OOF actual directional prevalence - 10 percentage points), predicted neutral share <= OOF actual neutral share + 5 percentage points, and each predicted class >= 5% of OOF rows.",
+    "fixed_grid_percentage_points": [0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.2, 0.25, 0.3],
+    "tie_breaks": ["higher balanced accuracy", "higher directional macro-F1", "lower neutral prediction share", "lower threshold"],
+    "if_no_threshold_is_feasible": "Record the highest unconstrained macro-F1 grid point as a diagnostic only; mark Ridge threshold selection as guardrail-failed and exclude Ridge from candidate eligibility.",
+    "diagnostic_zero_boundary": "Sign only: positive=UP, nonpositive=DOWN; binary diagnostic, not a three-class neutral boundary"
+  },
+  "candidate_selection": "Training OOF only: among candidates passing the same class-distribution guardrails, highest mean fold macro-F1; ties by mean balanced accuracy then mean directional macro-F1. If none pass, select the highest macro-F1 candidate for limited validation diagnosis and mark guardrail failure.",
+  "validation": "After OOF selection and config freeze, fit the selected candidate on train.csv only and evaluate it once on validation.csv. Existing baseline validation predictions are read-only reference outputs; no model is refit on validation.",
+  "catboost_installation": false,
+  "protected_test_access": false
+}

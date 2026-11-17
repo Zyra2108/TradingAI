@@ -1,0 +1,15 @@
+{
+  "raw_rows": 16060,
+  "duplicate_timestamps": 0,
+  "invalid_ohlc_rows": 0,
+  "valid_regular_session_rows": 16059,
+  "out_of_session_or_unaligned_rows": 1,
+  "expected_regular_5min_intervals": 16776,
+  "missing_expected_regular_5min_intervals": 717,
+  "regular_interval_coverage": 0.9572603719599427,
+  "trading_dates_with_bars": 216,
+  "zero_volume_rows": 0,
+  "missing_volume_rows": 0,
+  "bar_source": "Alpaca IEX historical 5Min endpoint",
+  "missing_bars_filled": false
+}

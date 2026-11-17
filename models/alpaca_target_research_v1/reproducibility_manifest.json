@@ -1,0 +1,28 @@
+{
+  "inputs_opened": [
+    "data/alpaca_rebuild_v1/train.csv",
+    "data/alpaca_rebuild_v1/validation.csv",
+    "models/alpaca_target_research_v1/experiment_matrix.json"
+  ],
+  "input_sha256": {
+    "train.csv": "b38005521485be7e22dc6a617bb422deaad075546f9a2db9603a5e737f96486b",
+    "validation.csv": "1767ccd6d69d8c416a9087e710d93f9f69de0e2e0b8f4521edd1074f8d6365cf",
+    "experiment_matrix.json": "4890d1369fce55a190b2c35bf4dcd738b97cbb40475973fb3a08382b0355a6a2"
+  },
+  "test_dataset_accessed": false,
+  "test_period_observations_accessed": false,
+  "validation_is_pristine": false,
+  "seed": 20261115,
+  "versions": {
+    "python": "3.14.3",
+    "pandas": "3.1.1",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1"
+  },
+  "selected_model_sha256": "a15a07754b02fc903c478657670fd93132f915aa3892b735b2d8e293e2504c42",
+  "target_generation_script_sha256": "27c010a0c60ad8fff39370c68dcfcb6ef572853f43e6c15ebac6b52ab4f80871",
+  "training_evaluation_script_sha256": "55051c3bbd79dd0e23acfe0c7f7c1fa2d907f9e122ea4a8c4db5c518daec78ec",
+  "experiment_matrix_sha256": "4890d1369fce55a190b2c35bf4dcd738b97cbb40475973fb3a08382b0355a6a2",
+  "saved_results_finalizer_sha256": "97e86bc3d5dc5e6b3df26c3f8fc1b0cb52a418c265c92008e735807510345e03"
+}

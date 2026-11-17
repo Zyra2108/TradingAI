@@ -1,0 +1,16 @@
+{
+  "channels": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume"
+  ],
+  "formulas": {
+    "open_high_low_close": "100 * (bar_price / current_sequence_end_close - 1) within each sample",
+    "volume": "log1p(raw IEX volume), then channel-wise StandardScaler fitted on training windows only"
+  },
+  "continuity": "same New York session date and exact 5-minute timestamps for all bars in the selected sequence",
+  "no_volume_fabrication": true,
+  "future_candles_in_input": false
+}

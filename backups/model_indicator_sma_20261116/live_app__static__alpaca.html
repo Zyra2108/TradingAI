@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECL · Unified Market Timeline</title>
+  <link rel="stylesheet" href="/static/alpaca.css">
+  <script src="/static/alpaca_chart_viewport.js"></script>
+  <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">E</span><div><div class="eyebrow">ECL · NYSE · 5 MIN</div><h1>Market Timeline</h1></div></div>
+    <div class="top-meta"><span class="source-tag">ALPACA IEX · EXCHANGE-SPECIFIC</span></div>
+  </header>
+  <main>
+    <section class="overview">
+      <article class="status-card"><span class="label">Stream</span><strong id="stream-state">Checking…</strong><small id="stream-message">Waiting for status</small></article>
+      <article class="status-card"><span class="label">Market session</span><strong id="market-state">—</strong><small>America/New_York · official NYSE calendar</small></article>
+      <article class="status-card"><span class="label">Last IEX event</span><strong id="last-event">—</strong><small id="event-delay">Receive delay —</small></article>
+      <article class="status-card"><span class="label">Available timeline</span><strong id="history-range">Loading permitted history…</strong><small id="last-candle">Last completed candle — · Reconnects: 0</small></article>
+    </section>
+    <section id="auth-notice" class="notice hidden"></section>
+    <section id="warnings" class="warnings hidden"></section>
+    <section class="workspace">
+      <section class="panel chart-panel">
+        <div class="panel-head">
+          <div><span class="eyebrow">ONE HISTORICAL + LIVE TIMELINE</span><h2>ECL price</h2><p id="chart-coverage" class="chart-note">Loading verified Alpaca IEX candles…</p></div>
+          <div class="chart-tools">
+            <label class="indicator-control"><input id="indicator-toggle" type="checkbox" checked><span class="toggle-track"></span><span>Indicator <b id="indicator-state">ON</b></span></label>
+            <span class="chart-note">SMA · 20 completed 5-minute closes</span>
+            <button id="return-latest" class="chart-control" type="button">Return to latest</button>
+            <button id="chart-reset" class="chart-control" type="button" title="Fit the most recent available candles">Reset view</button>
+            <a class="chart-control export-control" href="/api/report.csv">Export prediction log</a>
+          </div>
+        </div>
+        <p id="indicator-explanation" class="indicator-explanation" aria-live="polite">SMA 20 · resets each NYSE session and after missing candles.</p>
+        <div id="chart"><div id="chart-state" role="status" class="chart-state hidden"></div></div>
+        <div class="chart-foot"><span class="chart-legend"><i class="up-dot"></i>Up candle <i class="down-dot"></i>Down candle <span>Crosshair time:</span><b id="crosshair-time">Move over chart</b></span><span id="selected-time" class="selected-time">Select a candle for details</span></div>
+      </section>
+      <aside class="panel detail-panel" aria-live="polite">
+        <section class="side-section latest-model-section">
+          <div class="panel-title"><span class="eyebrow">LATEST MODEL PREDICTION</span><h2>Latest saved signal</h2><p id="latest-prediction-time" class="detail-time">Reading the prediction ledger…</p></div>
+          <div class="prediction-title"><span>IMMUTABLE RECORD</span><span id="latest-settlement-chip" class="state-chip neutral-chip">CHECKING</span></div>
+          <div id="latest-prediction-empty" class="empty-context">Reading the latest saved prediction. No inference is run for this panel.</div>
+          <div class="pipeline-diagnostics" aria-live="polite">
+            <p id="latest-provider-status">Provider status —</p>
+            <p id="latest-market-status">Market status —</p>
+            <p id="latest-aggregation-status">Aggregation status —</p>
+            <p id="latest-attempt-status">Prediction attempt —</p>
+          </div>
+          <div id="latest-prediction-content" class="hidden">
+            <div class="signal-box"><span id="latest-signal-pill" class="signal-pill neutral">—</span><div class="latest-meta"><div id="latest-confidence">Confidence —</div><div id="latest-created-time" class="signal-time">Created —</div></div></div>
+            <div class="reference-price"><span id="latest-reference-label">Reference close · horizon</span><strong id="latest-reference-close">—</strong><small id="latest-outcome-time">Endpoint —</small></div>
+            <div class="prob-list">
+              <div class="prob-row"><span>DOWN</span><div class="track"><i id="latest-bar-down" class="bar down-bar"></i></div><b id="latest-prob-down">—</b></div>
+              <div class="prob-row"><span>NEUTRAL</span><div class="track"><i id="latest-bar-neutral" class="bar neutral-bar"></i></div><b id="latest-prob-neutral">—</b></div>
+              <div class="prob-row"><span>UP</span><div class="track"><i id="latest-bar-up" class="bar up-bar"></i></div><b id="latest-prob-up">—</b></div>
+            </div>
+            <div id="latest-outcome-context" class="outcome-context hidden"></div>
+          </div>
+          <p class="latest-source-note">Source: most recent persisted model prediction. The panel never triggers inference.</p>
+        </section>
+        <div class="divider"></div>
+        <section class="side-section selected-candle-section">
+        <div class="panel-title"><span class="eyebrow" id="detail-kind">SELECTED CANDLE</span><h2 id="detail-heading">No candle selected</h2><p id="detail-time" class="detail-time">Select a candle on the timeline to inspect it.</p></div>
+        <div class="ohlc-grid">
+          <div><span>OPEN</span><b id="detail-open">—</b></div><div><span>HIGH</span><b id="detail-high">—</b></div>
+          <div><span>LOW</span><b id="detail-low">—</b></div><div><span>CLOSE</span><b id="detail-close">—</b></div>
+          <div><span>VOLUME</span><b id="detail-volume">—</b></div><div><span>SMA 20</span><b id="detail-indicator">—</b></div>
+        </div>
+        <div class="prediction-context selected-prediction-context">
+          <div class="prediction-title"><span>SELECTED CANDLE · RECORDED PREDICTION</span><span id="settlement-chip" class="state-chip neutral-chip">—</span></div>
+          <div id="prediction-empty" class="empty-context">Select a candle to inspect its immutable prediction record.</div>
+          <div id="prediction-content" class="hidden">
+            <div class="signal-box"><span id="signal-pill" class="signal-pill neutral">—</span><div id="signal-time" class="signal-time">—</div></div>
+            <div class="reference-price"><span>Reference close · 15-minute horizon</span><strong id="reference-close">—</strong><small id="outcome-time">Endpoint —</small></div>
+            <div class="prob-list">
+              <div class="prob-row"><span>DOWN</span><div class="track"><i id="bar-down" class="bar down-bar"></i></div><b id="prob-down">—</b></div>
+              <div class="prob-row"><span>NEUTRAL</span><div class="track"><i id="bar-neutral" class="bar neutral-bar"></i></div><b id="prob-neutral">—</b></div>
+              <div class="prob-row"><span>UP</span><div class="track"><i id="bar-up" class="bar up-bar"></i></div><b id="prob-up">—</b></div>
+            </div>
+            <div id="outcome-context" class="outcome-context hidden"></div>
+          </div>
+        </div>
+        </section>
+        <p class="side-note">Historical candles without a saved prediction are never inferred retroactively. IEX shows venue-specific activity, not consolidated US market data.</p>
+      </aside>
+    </section>
+    <footer><span>Historical data range is shown above and limited to the verified permitted cache.</span><span>Source: Alpaca IEX · local application · not financial advice</span></footer>
+  </main>
+  <script src="/static/alpaca.js"></script>
+</body>
+</html>

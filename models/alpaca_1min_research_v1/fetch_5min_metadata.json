@@ -1,0 +1,86 @@
+{
+  "started_utc": "2026-11-13T12:47:03.461070+00:00",
+  "endpoint": "https://data.alpaca.markets/v2/stocks/bars",
+  "symbol": "ECL",
+  "feed": "iex",
+  "timeframe": "5Min",
+  "permitted_new_york_date_range": [
+    "2025-11-13",
+    "2026-09-24"
+  ],
+  "permitted_split_date_ranges": {
+    "train_start": "2025-11-13",
+    "train_end": "2026-08-05",
+    "validation_start": "2026-08-06",
+    "validation_end": "2026-09-24"
+  },
+  "credential_values_saved": false,
+  "request_headers_saved": false,
+  "page_statuses": [
+    {
+      "page": 1,
+      "http_status": 200,
+      "bars_returned": 3633
+    },
+    {
+      "page": 2,
+      "http_status": 200,
+      "bars_returned": 3320
+    },
+    {
+      "page": 3,
+      "http_status": 200,
+      "bars_returned": 3078
+    },
+    {
+      "page": 4,
+      "http_status": 200,
+      "bars_returned": 3147
+    },
+    {
+      "page": 5,
+      "http_status": 200,
+      "bars_returned": 2882
+    }
+  ],
+  "rate_limit_headers": [
+    {
+      "page": 1,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794574026"
+    },
+    {
+      "page": 2,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794574029"
+    },
+    {
+      "page": 3,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794574053"
+    },
+    {
+      "page": 4,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794574056"
+    },
+    {
+      "page": 5,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794574129"
+    }
+  ],
+  "request_success": true,
+  "bars_returned": 16060,
+  "first_timestamp_utc": "2025-11-13T14:30:00.000000Z",
+  "last_timestamp_utc": "2026-09-24T19:55:00.000000Z",
+  "raw_csv": "raw_ecl_iex_5min_train_validation.csv",
+  "raw_csv_sha256": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+  "raw_csv_bytes": 1200557,
+  "finished_utc": "2026-11-13T12:48:49.409995+00:00"
+}

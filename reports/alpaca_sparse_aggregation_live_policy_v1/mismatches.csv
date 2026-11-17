@@ -1,0 +1,1 @@
+timestamp_utc,open_live,high_live,low_live,close_live,volume_live,trade_count_live,observed_minute_count,date_ny,open_native,high_native,low_native,close_native,volume_native,trade_count_native,vwap,ohlc_valid,session_valid,aligned,bucket_start_utc,missing_minutes,_merge,open_exact,high_exact,low_exact,close_exact,volume_exact,trade_count_exact,ohlc_exact,all_fields_exact

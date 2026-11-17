@@ -1,0 +1,3 @@
+regime,training_volatility_median,rows,eligible_rows,signals,eligible_signals,eligible_coverage,eligible_directional_accuracy
+below_training_volatility_median,0.10025105281130679,1634,775,380,177,0.22838709677419355,0.5706214689265536
+at_or_above_training_volatility_median,0.10025105281130679,1741,1019,610,362,0.35525024533856725,0.5276243093922652

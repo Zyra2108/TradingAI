@@ -1,0 +1,110 @@
+{
+  "seed": 20261114,
+  "classes": [
+    "DOWN",
+    "NO_SIGNAL",
+    "UP"
+  ],
+  "features": [
+    "close",
+    "return_1_pct",
+    "return_3_pct",
+    "return_5_pct",
+    "return_10_pct",
+    "realized_vol_3",
+    "realized_vol_5",
+    "realized_vol_10",
+    "range_pct",
+    "body_pct",
+    "upper_wick_pct",
+    "lower_wick_pct",
+    "volume_log1p",
+    "volume_ratio_10",
+    "volume_zscore_10",
+    "sma_ratio_3",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "ema_ratio_3",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "rsi_7",
+    "trend_agreement_3_10",
+    "momentum_acceleration_3_10",
+    "minutes_since_open",
+    "minutes_until_close",
+    "session_progress",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "model_specs": [
+    {
+      "name": "logistic_regression",
+      "family": "sklearn",
+      "params": {
+        "C": 0.3,
+        "max_iter": 1500,
+        "solver": "lbfgs",
+        "class_weight": "balanced",
+        "random_state": 20261114
+      }
+    },
+    {
+      "name": "lightgbm",
+      "family": "lightgbm",
+      "params": {
+        "n_estimators": 120,
+        "learning_rate": 0.05,
+        "num_leaves": 7,
+        "min_child_samples": 30,
+        "reg_lambda": 2.0,
+        "class_weight": "balanced",
+        "random_state": 20261114,
+        "n_jobs": 1,
+        "verbosity": -1,
+        "deterministic": true,
+        "force_col_wise": true
+      }
+    },
+    {
+      "name": "xgboost",
+      "family": "xgboost",
+      "params": {
+        "n_estimators": 120,
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "min_child_weight": 10,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 2.0,
+        "objective": "multi:softprob",
+        "num_class": 3,
+        "eval_metric": "mlogloss",
+        "tree_method": "hist",
+        "n_jobs": 1,
+        "random_state": 20261114
+      }
+    }
+  ],
+  "threshold_grid": [
+    0.0,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7
+  ],
+  "threshold_selection": "training-only pooled chronological OOF; maximize 3-class macro-F1 subject to >=20% all-row signal coverage and >=30 signals",
+  "folds": 3,
+  "initial_training_date_fraction": 0.5,
+  "split": {
+    "train_end": "2026-08-05",
+    "validation_start": "2026-08-06"
+  },
+  "label": "exact endpoint close at t+H, same NYSE session, strict \u00b10.10%, NO_SIGNAL otherwise",
+  "test_data_accessed": false,
+  "models_trained": true
+}

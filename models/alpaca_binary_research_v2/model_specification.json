@@ -1,0 +1,56 @@
+{
+  "model_file": "selected_binary_pipeline.joblib",
+  "selected_model": "logistic_regression",
+  "feature_set": "original_24",
+  "feature_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "class_order": [
+    "DOWN",
+    "UP"
+  ],
+  "encoded_classes": {
+    "DOWN": 0,
+    "UP": 1
+  },
+  "target": {
+    "horizon_minutes": 15,
+    "up": "future return > +0.10%",
+    "down": "future return < -0.10%",
+    "neutral": "otherwise",
+    "neutral_excluded_from_binary_training_and_directional_metrics": true
+  },
+  "preprocessing": "Median imputation; weekday most-frequent imputation and one-hot encoding. Logistic numeric features additionally standardized. All fit inside each fold or full-train final fit.",
+  "threshold_source": "Training-only chronological OOF confidence quantiles among actual UP/DOWN rows.",
+  "selective_policy_thresholds": {
+    "0.2": 0.6254043347822652,
+    "0.3": 0.5992327319579205,
+    "0.4": 0.5794384811445138,
+    "0.5": 0.5650200623696877
+  },
+  "decision": "Return UP or DOWN when max class probability meets the selected confidence threshold; otherwise NO SIGNAL. Equal probabilities predict DOWN.",
+  "test_data_accessed": false
+}

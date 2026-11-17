@@ -1,0 +1,205 @@
+{
+  "evaluation": "one-time held-out test evaluation",
+  "candidate": "lightgbm_balanced_B_start",
+  "asset": "ECL",
+  "test_rows": 1314,
+  "test_date_range": [
+    "2026-09-25",
+    "2026-11-11"
+  ],
+  "target_class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "test_actual_class_counts": {
+    "DOWN": 319,
+    "NEUTRAL": 660,
+    "UP": 335
+  },
+  "frozen_candidate_metrics": {
+    "accuracy": 0.3812785388127854,
+    "balanced_accuracy": 0.34967794257552365,
+    "macro_f1_3class": 0.34841407642480027,
+    "directional_precision_macro": 0.2582908163265306,
+    "directional_recall_macro": 0.2881532774996491,
+    "directional_f1_macro": 0.2722198305280511,
+    "directional_coverage": 0.5540334855403348,
+    "log_loss": 1.1758222209872715,
+    "per_class": {
+      "DOWN": {
+        "precision": 0.24107142857142858,
+        "recall": 0.25391849529780564,
+        "f1": 0.24732824427480915,
+        "support": 319
+      },
+      "NEUTRAL": {
+        "precision": 0.5324232081911263,
+        "recall": 0.4727272727272727,
+        "f1": 0.5008025682182986,
+        "support": 660
+      },
+      "UP": {
+        "precision": 0.2755102040816326,
+        "recall": 0.32238805970149254,
+        "f1": 0.297111416781293,
+        "support": 335
+      }
+    },
+    "confusion_matrix_rows_actual_columns_predicted": [
+      [
+        81,
+        137,
+        101
+      ],
+      [
+        165,
+        312,
+        183
+      ],
+      [
+        90,
+        137,
+        108
+      ]
+    ],
+    "predicted_class_counts": {
+      "DOWN": 336,
+      "NEUTRAL": 586,
+      "UP": 392
+    }
+  },
+  "majority_baseline": {
+    "training_majority_class": "NEUTRAL",
+    "training_class_counts": {
+      "DOWN": 1323,
+      "NEUTRAL": 2364,
+      "UP": 1196
+    },
+    "test_metrics": {
+      "accuracy": 0.502283105022831,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1_3class": 0.22289766970618033,
+      "directional_precision_macro": 0.0,
+      "directional_recall_macro": 0.0,
+      "directional_f1_macro": 0.0,
+      "directional_coverage": 0.0,
+      "log_loss": 17.9395352484647,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 319
+        },
+        "NEUTRAL": {
+          "precision": 0.502283105022831,
+          "recall": 1.0,
+          "f1": 0.668693009118541,
+          "support": 660
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 335
+        }
+      },
+      "confusion_matrix_rows_actual_columns_predicted": [
+        [
+          0,
+          319,
+          0
+        ],
+        [
+          0,
+          660,
+          0
+        ],
+        [
+          0,
+          335,
+          0
+        ]
+      ],
+      "predicted_class_counts": {
+        "DOWN": 0,
+        "NEUTRAL": 1314,
+        "UP": 0
+      }
+    }
+  },
+  "validation_comparison": {
+    "accuracy": {
+      "validation": 0.4117140396210164,
+      "test": 0.3812785388127854,
+      "test_minus_validation": -0.030435500808230986
+    },
+    "balanced_accuracy": {
+      "validation": 0.37801106284623015,
+      "test": 0.34967794257552365,
+      "test_minus_validation": -0.028333120270706502
+    },
+    "macro_f1_3class": {
+      "validation": 0.374067311301999,
+      "test": 0.34841407642480027,
+      "test_minus_validation": -0.025653234877198727
+    },
+    "directional_precision_macro": {
+      "validation": 0.28248022114193116,
+      "test": 0.2582908163265306,
+      "test_minus_validation": -0.02418940481540055
+    },
+    "directional_recall_macro": {
+      "validation": 0.32223328768828585,
+      "test": 0.2881532774996491,
+      "test_minus_validation": -0.03408001018863677
+    },
+    "directional_f1_macro": {
+      "validation": 0.29907347554406377,
+      "test": 0.2722198305280511,
+      "test_minus_validation": -0.026853645016012673
+    },
+    "directional_coverage": {
+      "validation": 0.5340223944875108,
+      "test": 0.5540334855403348,
+      "test_minus_validation": 0.02001109105282406
+    },
+    "log_loss": {
+      "validation": 1.1380294033415914,
+      "test": 1.1758222209872715,
+      "test_minus_validation": 0.0377928176456801
+    }
+  },
+  "prediction_integrity": {
+    "prediction_count": 1314,
+    "probability_shape": [
+      1314,
+      3
+    ],
+    "all_predictions_in_class_order": true,
+    "all_probabilities_finite_nonnegative": true,
+    "probability_sum_max_abs_error": 2.220446049250313e-16,
+    "class_probability_columns": [
+      "p_down",
+      "p_neutral",
+      "p_up"
+    ],
+    "prediction_policy": "raw three-class argmax"
+  },
+  "frozen_hashes_before": {
+    "candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "lightgbm_estimator.joblib": "a46470a26360002b213cb764d228ee18b0040d7842956f235ec42cda284ea4cf",
+    "preprocessing_pipeline.joblib": "0b5bb1609decec0712846762fd55d8becca956e541091a967041b3070f597af6"
+  },
+  "frozen_hashes_after": {
+    "candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "lightgbm_estimator.joblib": "a46470a26360002b213cb764d228ee18b0040d7842956f235ec42cda284ea4cf",
+    "preprocessing_pipeline.joblib": "0b5bb1609decec0712846762fd55d8becca956e541091a967041b3070f597af6"
+  },
+  "frozen_artifacts_unchanged": true,
+  "test_evaluation_count": 1,
+  "tuning_after_test": false,
+  "model_changed_after_test": false,
+  "interpretation_limit": "Classification results are not trading profitability; no backtest or live performance was measured."
+}

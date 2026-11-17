@@ -1,0 +1,81 @@
+{
+  "selected_candidate": "xgboost_multiclass",
+  "n": 1161,
+  "date_start": "2026-08-06",
+  "date_end": "2026-09-24",
+  "class_distribution": {
+    "DOWN": 277,
+    "NEUTRAL": 623,
+    "UP": 261
+  },
+  "metrics": {
+    "n": 1161,
+    "accuracy": 0.4082687338501292,
+    "balanced_accuracy": 0.36725643928236607,
+    "macro_f1": 0.3632675913221739,
+    "weighted_f1": 0.41911803303731515,
+    "per_class": {
+      "DOWN": {
+        "precision": 0.24555160142348753,
+        "recall": 0.2490974729241877,
+        "f1": 0.24731182795698925,
+        "support": 277
+      },
+      "NEUTRAL": {
+        "precision": 0.5992366412213741,
+        "recall": 0.5040128410914928,
+        "f1": 0.5475152571926766,
+        "support": 623
+      },
+      "UP": {
+        "precision": 0.2556179775280899,
+        "recall": 0.3486590038314176,
+        "f1": 0.29497568881685576,
+        "support": 261
+      }
+    },
+    "directional_macro_precision": 0.2505847894757887,
+    "directional_macro_recall": 0.2988782383778027,
+    "directional_macro_f1": 0.2711437583869225,
+    "directional_prediction_coverage_all_rows": 0.5486649440137812,
+    "directional_prediction_coverage_actual_directional": 0.6096654275092936,
+    "directional_accuracy_actual_directional": 0.29739776951672864,
+    "accuracy_among_directional_predictions": 0.25117739403453687,
+    "prediction_distribution": {
+      "DOWN": 281,
+      "NEUTRAL": 524,
+      "UP": 356
+    },
+    "confusion_matrix_actual_rows_predicted_columns": [
+      [
+        69,
+        115,
+        93
+      ],
+      [
+        137,
+        314,
+        172
+      ],
+      [
+        75,
+        95,
+        91
+      ]
+    ],
+    "log_loss": 1.0875756785604482
+  },
+  "guardrail": {
+    "passed": true,
+    "minimum_directional_coverage": 0.4,
+    "actual_neutral_share": 0.5366063738156761,
+    "predicted_class_share": {
+      "DOWN": 0.24203273040482343,
+      "NEUTRAL": 0.45133505598621876,
+      "UP": 0.3066322136089578
+    }
+  },
+  "artifact_sha256": "08aea3085131c3e20625a7b9c56fd161741f58408c02a7d30e807bbc4bea228b",
+  "frozen_config_sha256_before_validation": "899913b044f9c38840cb5ca6658fcb29453db5ee6782b0b6f840d7e8eb23f8ba",
+  "validation_used_for_selection": false
+}

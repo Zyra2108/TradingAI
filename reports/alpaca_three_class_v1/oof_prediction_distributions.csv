@@ -1,0 +1,4 @@
+model,DOWN,NEUTRAL,UP
+ridge_regression_to_3class,416,1592,240
+xgboost_multiclass,784,766,698
+hist_gradient_boosting_multiclass,726,946,576

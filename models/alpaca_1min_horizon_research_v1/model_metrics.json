@@ -1,0 +1,1920 @@
+{
+  "class_order": [
+    "DOWN",
+    "NO_SIGNAL",
+    "UP"
+  ],
+  "feature_order": [
+    "close",
+    "return_1_pct",
+    "return_3_pct",
+    "return_5_pct",
+    "return_10_pct",
+    "realized_vol_3",
+    "realized_vol_5",
+    "realized_vol_10",
+    "range_pct",
+    "body_pct",
+    "upper_wick_pct",
+    "lower_wick_pct",
+    "volume_log1p",
+    "volume_ratio_10",
+    "volume_zscore_10",
+    "sma_ratio_3",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "ema_ratio_3",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "rsi_7",
+    "trend_agreement_3_10",
+    "momentum_acceleration_3_10",
+    "minutes_since_open",
+    "minutes_until_close",
+    "session_progress",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "seed": 20261114,
+  "threshold_grid": [
+    0.0,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7
+  ],
+  "minimum_signal_coverage": 0.2,
+  "minimum_signal_count": 30,
+  "horizons": {
+    "10": {
+      "dataset_rows": 49347,
+      "feature_ready_rows": 4085,
+      "warmup_or_missing_feature_rows": 45262,
+      "train_eligible_rows": 1957,
+      "validation_eligible_rows": 543,
+      "train_date_range": [
+        "2025-11-13",
+        "2026-08-05"
+      ],
+      "validation_date_range": [
+        "2026-08-06",
+        "2026-09-24"
+      ],
+      "train_eligible_dates": 118,
+      "validation_eligible_dates": 25,
+      "validation_actual_distribution": {
+        "DOWN": 132,
+        "NO_SIGNAL": 271,
+        "UP": 140
+      },
+      "target_unavailable_among_feature_ready": 1585,
+      "feature_ready_missing_endpoint": 459,
+      "feature_ready_session_boundary": 1126,
+      "models": {
+        "logistic_regression": {
+          "threshold_selection": {
+            "selected": {
+              "threshold": 0.4,
+              "macro_f1": 0.3488368938571011,
+              "signal_coverage": 0.458863443596268,
+              "signals": 541
+            },
+            "coverage_floor_met": true,
+            "grid_results": [
+              {
+                "threshold": 0.0,
+                "macro_f1": 0.3399738680308799,
+                "signal_coverage": 0.6234096692111959,
+                "signals": 735
+              },
+              {
+                "threshold": 0.35,
+                "macro_f1": 0.34626211872662177,
+                "signal_coverage": 0.6030534351145038,
+                "signals": 711
+              },
+              {
+                "threshold": 0.4,
+                "macro_f1": 0.3488368938571011,
+                "signal_coverage": 0.458863443596268,
+                "signals": 541
+              },
+              {
+                "threshold": 0.45,
+                "macro_f1": 0.30875404162458936,
+                "signal_coverage": 0.2748091603053435,
+                "signals": 324
+              },
+              {
+                "threshold": 0.5,
+                "macro_f1": 0.2585786750400045,
+                "signal_coverage": 0.13231552162849872,
+                "signals": 156
+              },
+              {
+                "threshold": 0.55,
+                "macro_f1": 0.24256338020130838,
+                "signal_coverage": 0.06700593723494487,
+                "signals": 79
+              },
+              {
+                "threshold": 0.6,
+                "macro_f1": 0.22578078313126612,
+                "signal_coverage": 0.030534351145038167,
+                "signals": 36
+              },
+              {
+                "threshold": 0.65,
+                "macro_f1": 0.21488223420176997,
+                "signal_coverage": 0.016963528413910092,
+                "signals": 20
+              },
+              {
+                "threshold": 0.7,
+                "macro_f1": 0.2090983032572563,
+                "signal_coverage": 0.008481764206955046,
+                "signals": 10
+              }
+            ],
+            "selection_source": "pooled chronological training OOF only"
+          },
+          "training_oof_raw_metrics": {
+            "n": 1179,
+            "accuracy": 0.35877862595419846,
+            "balanced_accuracy": 0.34435044800898457,
+            "macro_f1": 0.3399738680308799,
+            "up_precision": 0.24175824175824176,
+            "up_recall": 0.20121951219512196,
+            "down_precision": 0.2878787878787879,
+            "down_recall": 0.3993993993993994,
+            "directional_macro_precision": 0.2648185148185148,
+            "directional_macro_recall": 0.30030945579726065,
+            "directional_macro_f1": 0.277112569198087,
+            "signal_coverage_all_eligible": 0.6234096692111959,
+            "eligible_signal_count": 735,
+            "eligible_signal_accuracy": 0.2707482993197279,
+            "directional_accuracy_on_actual_directional": 0.3010590015128593,
+            "actual_directional_count": 661,
+            "no_signal_prediction_count": 444,
+            "actual_distribution": {
+              "DOWN": 333,
+              "NO_SIGNAL": 518,
+              "UP": 328
+            },
+            "predicted_distribution": {
+              "DOWN": 462,
+              "NO_SIGNAL": 444,
+              "UP": 273
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.2878787878787879,
+                "recall": 0.3993993993993994,
+                "f1": 0.33459119496855344,
+                "support": 333
+              },
+              "NO_SIGNAL": {
+                "precision": 0.5045045045045045,
+                "recall": 0.43243243243243246,
+                "f1": 0.4656964656964657,
+                "support": 518
+              },
+              "UP": {
+                "precision": 0.24175824175824176,
+                "recall": 0.20121951219512196,
+                "f1": 0.21963394342762063,
+                "support": 328
+              }
+            },
+            "confusion_matrix": [
+              [
+                133,
+                107,
+                93
+              ],
+              [
+                180,
+                224,
+                114
+              ],
+              [
+                149,
+                113,
+                66
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1219468359545521
+          },
+          "training_oof_fold_macro_f1": [
+            0.3341238121793935,
+            0.3422524814387769,
+            0.33034597828276496
+          ],
+          "validation_raw_metrics": {
+            "n": 543,
+            "accuracy": 0.42357274401473294,
+            "balanced_accuracy": 0.4246404477031784,
+            "macro_f1": 0.4112548690013338,
+            "up_precision": 0.29411764705882354,
+            "up_recall": 0.35714285714285715,
+            "down_precision": 0.35135135135135137,
+            "down_recall": 0.49242424242424243,
+            "directional_macro_precision": 0.32273449920508746,
+            "directional_macro_recall": 0.4247835497835498,
+            "directional_macro_f1": 0.36633764119263257,
+            "signal_coverage_all_eligible": 0.6537753222836096,
+            "eligible_signal_count": 355,
+            "eligible_signal_accuracy": 0.323943661971831,
+            "directional_accuracy_on_actual_directional": 0.4227941176470588,
+            "actual_directional_count": 272,
+            "no_signal_prediction_count": 188,
+            "actual_distribution": {
+              "DOWN": 132,
+              "NO_SIGNAL": 271,
+              "UP": 140
+            },
+            "predicted_distribution": {
+              "DOWN": 185,
+              "NO_SIGNAL": 188,
+              "UP": 170
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.35135135135135137,
+                "recall": 0.49242424242424243,
+                "f1": 0.41009463722397477,
+                "support": 132
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6117021276595744,
+                "recall": 0.42435424354243545,
+                "f1": 0.5010893246187363,
+                "support": 271
+              },
+              "UP": {
+                "precision": 0.29411764705882354,
+                "recall": 0.35714285714285715,
+                "f1": 0.3225806451612903,
+                "support": 140
+              }
+            },
+            "confusion_matrix": [
+              [
+                65,
+                38,
+                29
+              ],
+              [
+                65,
+                115,
+                91
+              ],
+              [
+                55,
+                35,
+                50
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.10480311240625
+          },
+          "validation_threshold_metrics": {
+            "n": 543,
+            "accuracy": 0.4677716390423573,
+            "balanced_accuracy": 0.3869629345644106,
+            "macro_f1": 0.38000931701719104,
+            "up_precision": 0.275,
+            "up_recall": 0.15714285714285714,
+            "down_precision": 0.3838383838383838,
+            "down_recall": 0.2878787878787879,
+            "directional_macro_precision": 0.3294191919191919,
+            "directional_macro_recall": 0.22251082251082252,
+            "directional_macro_f1": 0.2645021645021645,
+            "signal_coverage_all_eligible": 0.3296500920810313,
+            "eligible_signal_count": 179,
+            "eligible_signal_accuracy": 0.33519553072625696,
+            "directional_accuracy_on_actual_directional": 0.22058823529411764,
+            "actual_directional_count": 272,
+            "no_signal_prediction_count": 364,
+            "actual_distribution": {
+              "DOWN": 132,
+              "NO_SIGNAL": 271,
+              "UP": 140
+            },
+            "predicted_distribution": {
+              "DOWN": 99,
+              "NO_SIGNAL": 364,
+              "UP": 80
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.3838383838383838,
+                "recall": 0.2878787878787879,
+                "f1": 0.329004329004329,
+                "support": 132
+              },
+              "NO_SIGNAL": {
+                "precision": 0.532967032967033,
+                "recall": 0.7158671586715867,
+                "f1": 0.6110236220472441,
+                "support": 271
+              },
+              "UP": {
+                "precision": 0.275,
+                "recall": 0.15714285714285714,
+                "f1": 0.2,
+                "support": 140
+              }
+            },
+            "confusion_matrix": [
+              [
+                38,
+                83,
+                11
+              ],
+              [
+                30,
+                194,
+                47
+              ],
+              [
+                31,
+                87,
+                22
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.10480311240625
+          },
+          "artifact": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\artifacts\\10min_logistic_regression.joblib",
+          "parameters": {
+            "C": 0.3,
+            "max_iter": 1500,
+            "solver": "lbfgs",
+            "class_weight": "balanced",
+            "random_state": 20261114
+          }
+        },
+        "lightgbm": {
+          "threshold_selection": {
+            "selected": {
+              "threshold": 0.4,
+              "macro_f1": 0.36942495048676394,
+              "signal_coverage": 0.635284139100933,
+              "signals": 749
+            },
+            "coverage_floor_met": true,
+            "grid_results": [
+              {
+                "threshold": 0.0,
+                "macro_f1": 0.36442917812780823,
+                "signal_coverage": 0.7116200169635284,
+                "signals": 839
+              },
+              {
+                "threshold": 0.35,
+                "macro_f1": 0.36483822314357783,
+                "signal_coverage": 0.7048346055979644,
+                "signals": 831
+              },
+              {
+                "threshold": 0.4,
+                "macro_f1": 0.36942495048676394,
+                "signal_coverage": 0.635284139100933,
+                "signals": 749
+              },
+              {
+                "threshold": 0.45,
+                "macro_f1": 0.35605312256283583,
+                "signal_coverage": 0.5156912637828668,
+                "signals": 608
+              },
+              {
+                "threshold": 0.5,
+                "macro_f1": 0.3656367431345711,
+                "signal_coverage": 0.3927056827820187,
+                "signals": 463
+              },
+              {
+                "threshold": 0.55,
+                "macro_f1": 0.34470422483648555,
+                "signal_coverage": 0.28498727735368956,
+                "signals": 336
+              },
+              {
+                "threshold": 0.6,
+                "macro_f1": 0.3154553582629884,
+                "signal_coverage": 0.20610687022900764,
+                "signals": 243
+              },
+              {
+                "threshold": 0.65,
+                "macro_f1": 0.29657260204477415,
+                "signal_coverage": 0.14079728583545378,
+                "signals": 166
+              },
+              {
+                "threshold": 0.7,
+                "macro_f1": 0.26970167136311435,
+                "signal_coverage": 0.09245122985581,
+                "signals": 109
+              }
+            ],
+            "selection_source": "pooled chronological training OOF only"
+          },
+          "training_oof_raw_metrics": {
+            "n": 1179,
+            "accuracy": 0.3672603901611535,
+            "balanced_accuracy": 0.36996404069574806,
+            "macro_f1": 0.36442917812780823,
+            "up_precision": 0.2895927601809955,
+            "up_recall": 0.3902439024390244,
+            "down_precision": 0.30730478589420657,
+            "down_recall": 0.3663663663663664,
+            "directional_macro_precision": 0.29844877303760103,
+            "directional_macro_recall": 0.3783051344026954,
+            "directional_macro_f1": 0.33335705390499915,
+            "signal_coverage_all_eligible": 0.7116200169635284,
+            "eligible_signal_count": 839,
+            "eligible_signal_accuracy": 0.29797377830750893,
+            "directional_accuracy_on_actual_directional": 0.37821482602118,
+            "actual_directional_count": 661,
+            "no_signal_prediction_count": 340,
+            "actual_distribution": {
+              "DOWN": 333,
+              "NO_SIGNAL": 518,
+              "UP": 328
+            },
+            "predicted_distribution": {
+              "DOWN": 397,
+              "NO_SIGNAL": 340,
+              "UP": 442
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.30730478589420657,
+                "recall": 0.3663663663663664,
+                "f1": 0.33424657534246577,
+                "support": 333
+              },
+              "NO_SIGNAL": {
+                "precision": 0.538235294117647,
+                "recall": 0.3532818532818533,
+                "f1": 0.42657342657342656,
+                "support": 518
+              },
+              "UP": {
+                "precision": 0.2895927601809955,
+                "recall": 0.3902439024390244,
+                "f1": 0.33246753246753247,
+                "support": 328
+              }
+            },
+            "confusion_matrix": [
+              [
+                122,
+                87,
+                124
+              ],
+              [
+                145,
+                183,
+                190
+              ],
+              [
+                130,
+                70,
+                128
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.218527990084642
+          },
+          "training_oof_fold_macro_f1": [
+            0.28763316850362936,
+            0.3464189816475862,
+            0.4223131478450628
+          ],
+          "validation_raw_metrics": {
+            "n": 543,
+            "accuracy": 0.3701657458563536,
+            "balanced_accuracy": 0.35975330532526106,
+            "macro_f1": 0.35452164197564856,
+            "up_precision": 0.24336283185840707,
+            "up_recall": 0.39285714285714285,
+            "down_precision": 0.25,
+            "down_recall": 0.2878787878787879,
+            "directional_macro_precision": 0.24668141592920353,
+            "directional_macro_recall": 0.3403679653679654,
+            "directional_macro_f1": 0.2840760409451243,
+            "signal_coverage_all_eligible": 0.6961325966850829,
+            "eligible_signal_count": 378,
+            "eligible_signal_accuracy": 0.24603174603174602,
+            "directional_accuracy_on_actual_directional": 0.34191176470588236,
+            "actual_directional_count": 272,
+            "no_signal_prediction_count": 165,
+            "actual_distribution": {
+              "DOWN": 132,
+              "NO_SIGNAL": 271,
+              "UP": 140
+            },
+            "predicted_distribution": {
+              "DOWN": 152,
+              "NO_SIGNAL": 165,
+              "UP": 226
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.25,
+                "recall": 0.2878787878787879,
+                "f1": 0.2676056338028169,
+                "support": 132
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6545454545454545,
+                "recall": 0.3985239852398524,
+                "f1": 0.4954128440366973,
+                "support": 271
+              },
+              "UP": {
+                "precision": 0.24336283185840707,
+                "recall": 0.39285714285714285,
+                "f1": 0.3005464480874317,
+                "support": 140
+              }
+            },
+            "confusion_matrix": [
+              [
+                38,
+                26,
+                68
+              ],
+              [
+                60,
+                108,
+                103
+              ],
+              [
+                54,
+                31,
+                55
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1382289340866274
+          },
+          "validation_threshold_metrics": {
+            "n": 543,
+            "accuracy": 0.4014732965009208,
+            "balanced_accuracy": 0.367137372672428,
+            "macro_f1": 0.3660473291633484,
+            "up_precision": 0.2564102564102564,
+            "up_recall": 0.35714285714285715,
+            "down_precision": 0.256,
+            "down_recall": 0.24242424242424243,
+            "directional_macro_precision": 0.2562051282051282,
+            "directional_macro_recall": 0.2997835497835498,
+            "directional_macro_f1": 0.27376735002032637,
+            "signal_coverage_all_eligible": 0.5893186003683242,
+            "eligible_signal_count": 320,
+            "eligible_signal_accuracy": 0.25625,
+            "directional_accuracy_on_actual_directional": 0.3014705882352941,
+            "actual_directional_count": 272,
+            "no_signal_prediction_count": 223,
+            "actual_distribution": {
+              "DOWN": 132,
+              "NO_SIGNAL": 271,
+              "UP": 140
+            },
+            "predicted_distribution": {
+              "DOWN": 125,
+              "NO_SIGNAL": 223,
+              "UP": 195
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.256,
+                "recall": 0.24242424242424243,
+                "f1": 0.2490272373540856,
+                "support": 132
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6098654708520179,
+                "recall": 0.5018450184501845,
+                "f1": 0.5506072874493927,
+                "support": 271
+              },
+              "UP": {
+                "precision": 0.2564102564102564,
+                "recall": 0.35714285714285715,
+                "f1": 0.29850746268656714,
+                "support": 140
+              }
+            },
+            "confusion_matrix": [
+              [
+                32,
+                43,
+                57
+              ],
+              [
+                47,
+                136,
+                88
+              ],
+              [
+                46,
+                44,
+                50
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1382289340866274
+          },
+          "artifact": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\artifacts\\10min_lightgbm.joblib",
+          "parameters": {
+            "n_estimators": 120,
+            "learning_rate": 0.05,
+            "num_leaves": 7,
+            "min_child_samples": 30,
+            "reg_lambda": 2.0,
+            "class_weight": "balanced",
+            "random_state": 20261114,
+            "n_jobs": 1,
+            "verbosity": -1,
+            "deterministic": true,
+            "force_col_wise": true
+          }
+        },
+        "xgboost": {
+          "threshold_selection": {
+            "selected": {
+              "threshold": 0.35,
+              "macro_f1": 0.3674165837496868,
+              "signal_coverage": 0.732824427480916,
+              "signals": 864
+            },
+            "coverage_floor_met": true,
+            "grid_results": [
+              {
+                "threshold": 0.0,
+                "macro_f1": 0.3659223373850453,
+                "signal_coverage": 0.7370653095843935,
+                "signals": 869
+              },
+              {
+                "threshold": 0.35,
+                "macro_f1": 0.3674165837496868,
+                "signal_coverage": 0.732824427480916,
+                "signals": 864
+              },
+              {
+                "threshold": 0.4,
+                "macro_f1": 0.36666909269648995,
+                "signal_coverage": 0.6234096692111959,
+                "signals": 735
+              },
+              {
+                "threshold": 0.45,
+                "macro_f1": 0.36331303966298956,
+                "signal_coverage": 0.47837150127226463,
+                "signals": 564
+              },
+              {
+                "threshold": 0.5,
+                "macro_f1": 0.3549003788193171,
+                "signal_coverage": 0.3418150975402884,
+                "signals": 403
+              },
+              {
+                "threshold": 0.55,
+                "macro_f1": 0.32113116746232384,
+                "signal_coverage": 0.22646310432569974,
+                "signals": 267
+              },
+              {
+                "threshold": 0.6,
+                "macro_f1": 0.30556983408353056,
+                "signal_coverage": 0.14673452078032231,
+                "signals": 173
+              },
+              {
+                "threshold": 0.65,
+                "macro_f1": 0.26981651651187627,
+                "signal_coverage": 0.08057675996607294,
+                "signals": 95
+              },
+              {
+                "threshold": 0.7,
+                "macro_f1": 0.24394753946992753,
+                "signal_coverage": 0.05004240882103478,
+                "signals": 59
+              }
+            ],
+            "selection_source": "pooled chronological training OOF only"
+          },
+          "training_oof_raw_metrics": {
+            "n": 1179,
+            "accuracy": 0.3672603901611535,
+            "balanced_accuracy": 0.37321206223645254,
+            "macro_f1": 0.3659223373850453,
+            "up_precision": 0.2850877192982456,
+            "up_recall": 0.39634146341463417,
+            "down_precision": 0.31234866828087166,
+            "down_recall": 0.38738738738738737,
+            "directional_macro_precision": 0.29871819378955866,
+            "directional_macro_recall": 0.39186442540101074,
+            "directional_macro_f1": 0.3387385785413361,
+            "signal_coverage_all_eligible": 0.7370653095843935,
+            "eligible_signal_count": 869,
+            "eligible_signal_accuracy": 0.29804372842347526,
+            "directional_accuracy_on_actual_directional": 0.3918305597579425,
+            "actual_directional_count": 661,
+            "no_signal_prediction_count": 310,
+            "actual_distribution": {
+              "DOWN": 333,
+              "NO_SIGNAL": 518,
+              "UP": 328
+            },
+            "predicted_distribution": {
+              "DOWN": 413,
+              "NO_SIGNAL": 310,
+              "UP": 456
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.31234866828087166,
+                "recall": 0.38738738738738737,
+                "f1": 0.34584450402144773,
+                "support": 333
+              },
+              "NO_SIGNAL": {
+                "precision": 0.5612903225806452,
+                "recall": 0.3359073359073359,
+                "f1": 0.42028985507246375,
+                "support": 518
+              },
+              "UP": {
+                "precision": 0.2850877192982456,
+                "recall": 0.39634146341463417,
+                "f1": 0.33163265306122447,
+                "support": 328
+              }
+            },
+            "confusion_matrix": [
+              [
+                129,
+                79,
+                125
+              ],
+              [
+                143,
+                174,
+                201
+              ],
+              [
+                141,
+                57,
+                130
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1646999384927816
+          },
+          "training_oof_fold_macro_f1": [
+            0.2497905412222312,
+            0.37092870691816243,
+            0.435048454923971
+          ],
+          "validation_raw_metrics": {
+            "n": 543,
+            "accuracy": 0.39226519337016574,
+            "balanced_accuracy": 0.3985423555534257,
+            "macro_f1": 0.3837033194688593,
+            "up_precision": 0.27530364372469635,
+            "up_recall": 0.4857142857142857,
+            "down_precision": 0.3284671532846715,
+            "down_recall": 0.3409090909090909,
+            "directional_macro_precision": 0.30188539850468393,
+            "directional_macro_recall": 0.4133116883116883,
+            "directional_macro_f1": 0.34299683966840533,
+            "signal_coverage_all_eligible": 0.7071823204419889,
+            "eligible_signal_count": 384,
+            "eligible_signal_accuracy": 0.2942708333333333,
+            "directional_accuracy_on_actual_directional": 0.41544117647058826,
+            "actual_directional_count": 272,
+            "no_signal_prediction_count": 159,
+            "actual_distribution": {
+              "DOWN": 132,
+              "NO_SIGNAL": 271,
+              "UP": 140
+            },
+            "predicted_distribution": {
+              "DOWN": 137,
+              "NO_SIGNAL": 159,
+              "UP": 247
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.3284671532846715,
+                "recall": 0.3409090909090909,
+                "f1": 0.3345724907063197,
+                "support": 132
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6289308176100629,
+                "recall": 0.36900369003690037,
+                "f1": 0.46511627906976744,
+                "support": 271
+              },
+              "UP": {
+                "precision": 0.27530364372469635,
+                "recall": 0.4857142857142857,
+                "f1": 0.35142118863049093,
+                "support": 140
+              }
+            },
+            "confusion_matrix": [
+              [
+                45,
+                28,
+                59
+              ],
+              [
+                51,
+                100,
+                120
+              ],
+              [
+                41,
+                31,
+                68
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1112563960455664
+          },
+          "validation_threshold_metrics": {
+            "n": 543,
+            "accuracy": 0.39226519337016574,
+            "balanced_accuracy": 0.39609617524746676,
+            "macro_f1": 0.3825052471114214,
+            "up_precision": 0.2757201646090535,
+            "up_recall": 0.4785714285714286,
+            "down_precision": 0.3283582089552239,
+            "down_recall": 0.3333333333333333,
+            "directional_macro_precision": 0.3020391867821387,
+            "directional_macro_recall": 0.40595238095238095,
+            "directional_macro_f1": 0.3403482596831504,
+            "signal_coverage_all_eligible": 0.6942909760589319,
+            "eligible_signal_count": 377,
+            "eligible_signal_accuracy": 0.29442970822281167,
+            "directional_accuracy_on_actual_directional": 0.40808823529411764,
+            "actual_directional_count": 272,
+            "no_signal_prediction_count": 166,
+            "actual_distribution": {
+              "DOWN": 132,
+              "NO_SIGNAL": 271,
+              "UP": 140
+            },
+            "predicted_distribution": {
+              "DOWN": 134,
+              "NO_SIGNAL": 166,
+              "UP": 243
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.3283582089552239,
+                "recall": 0.3333333333333333,
+                "f1": 0.3308270676691729,
+                "support": 132
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6144578313253012,
+                "recall": 0.3763837638376384,
+                "f1": 0.4668192219679634,
+                "support": 271
+              },
+              "UP": {
+                "precision": 0.2757201646090535,
+                "recall": 0.4785714285714286,
+                "f1": 0.34986945169712796,
+                "support": 140
+              }
+            },
+            "confusion_matrix": [
+              [
+                44,
+                31,
+                57
+              ],
+              [
+                50,
+                102,
+                119
+              ],
+              [
+                40,
+                33,
+                67
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1112563960455664
+          },
+          "artifact": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\artifacts\\10min_xgboost.joblib",
+          "parameters": {
+            "n_estimators": 120,
+            "max_depth": 3,
+            "learning_rate": 0.05,
+            "min_child_weight": 10,
+            "subsample": 0.8,
+            "colsample_bytree": 0.8,
+            "reg_lambda": 2.0,
+            "objective": "multi:softprob",
+            "num_class": 3,
+            "eval_metric": "mlogloss",
+            "tree_method": "hist",
+            "n_jobs": 1,
+            "random_state": 20261114
+          }
+        }
+      }
+    },
+    "15": {
+      "dataset_rows": 49347,
+      "feature_ready_rows": 4085,
+      "warmup_or_missing_feature_rows": 45262,
+      "train_eligible_rows": 1754,
+      "validation_eligible_rows": 497,
+      "train_date_range": [
+        "2025-11-13",
+        "2026-08-05"
+      ],
+      "validation_date_range": [
+        "2026-08-06",
+        "2026-09-24"
+      ],
+      "train_eligible_dates": 112,
+      "validation_eligible_dates": 22,
+      "validation_actual_distribution": {
+        "DOWN": 158,
+        "NO_SIGNAL": 197,
+        "UP": 142
+      },
+      "target_unavailable_among_feature_ready": 1834,
+      "feature_ready_missing_endpoint": 416,
+      "feature_ready_session_boundary": 1418,
+      "models": {
+        "logistic_regression": {
+          "threshold_selection": {
+            "selected": {
+              "threshold": 0.0,
+              "macro_f1": 0.3557720959094632,
+              "signal_coverage": 0.5682242990654206,
+              "signals": 608
+            },
+            "coverage_floor_met": true,
+            "grid_results": [
+              {
+                "threshold": 0.0,
+                "macro_f1": 0.3557720959094632,
+                "signal_coverage": 0.5682242990654206,
+                "signals": 608
+              },
+              {
+                "threshold": 0.35,
+                "macro_f1": 0.35288697788697787,
+                "signal_coverage": 0.5616822429906542,
+                "signals": 601
+              },
+              {
+                "threshold": 0.4,
+                "macro_f1": 0.35112887811210086,
+                "signal_coverage": 0.4514018691588785,
+                "signals": 483
+              },
+              {
+                "threshold": 0.45,
+                "macro_f1": 0.29573454941714056,
+                "signal_coverage": 0.24485981308411214,
+                "signals": 262
+              },
+              {
+                "threshold": 0.5,
+                "macro_f1": 0.24740172633827914,
+                "signal_coverage": 0.10747663551401869,
+                "signals": 115
+              },
+              {
+                "threshold": 0.55,
+                "macro_f1": 0.21654115420682554,
+                "signal_coverage": 0.05794392523364486,
+                "signals": 62
+              },
+              {
+                "threshold": 0.6,
+                "macro_f1": 0.19983794410233438,
+                "signal_coverage": 0.018691588785046728,
+                "signals": 20
+              },
+              {
+                "threshold": 0.65,
+                "macro_f1": 0.19265800941132116,
+                "signal_coverage": 0.005607476635514018,
+                "signals": 6
+              },
+              {
+                "threshold": 0.7,
+                "macro_f1": 0.19253108425354318,
+                "signal_coverage": 0.004672897196261682,
+                "signals": 5
+              }
+            ],
+            "selection_source": "pooled chronological training OOF only"
+          },
+          "training_oof_raw_metrics": {
+            "n": 1070,
+            "accuracy": 0.3691588785046729,
+            "balanced_accuracy": 0.3571820093665911,
+            "macro_f1": 0.3557720959094632,
+            "up_precision": 0.3020833333333333,
+            "up_recall": 0.28338762214983715,
+            "down_precision": 0.31875,
+            "down_recall": 0.29651162790697677,
+            "directional_macro_precision": 0.3104166666666667,
+            "directional_macro_recall": 0.28994962502840693,
+            "directional_macro_f1": 0.2998329452262833,
+            "signal_coverage_all_eligible": 0.5682242990654206,
+            "eligible_signal_count": 608,
+            "eligible_signal_accuracy": 0.31085526315789475,
+            "directional_accuracy_on_actual_directional": 0.2903225806451613,
+            "actual_directional_count": 651,
+            "no_signal_prediction_count": 462,
+            "actual_distribution": {
+              "DOWN": 344,
+              "NO_SIGNAL": 419,
+              "UP": 307
+            },
+            "predicted_distribution": {
+              "DOWN": 320,
+              "NO_SIGNAL": 462,
+              "UP": 288
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.31875,
+                "recall": 0.29651162790697677,
+                "f1": 0.3072289156626506,
+                "support": 344
+              },
+              "NO_SIGNAL": {
+                "precision": 0.4458874458874459,
+                "recall": 0.4916467780429594,
+                "f1": 0.4676503972758229,
+                "support": 419
+              },
+              "UP": {
+                "precision": 0.3020833333333333,
+                "recall": 0.28338762214983715,
+                "f1": 0.292436974789916,
+                "support": 307
+              }
+            },
+            "confusion_matrix": [
+              [
+                102,
+                150,
+                92
+              ],
+              [
+                104,
+                206,
+                109
+              ],
+              [
+                114,
+                106,
+                87
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.127863966912946
+          },
+          "training_oof_fold_macro_f1": [
+            0.32654664468389955,
+            0.36491340374835524,
+            0.3644910568326012
+          ],
+          "validation_raw_metrics": {
+            "n": 497,
+            "accuracy": 0.38028169014084506,
+            "balanced_accuracy": 0.36934281048797873,
+            "macro_f1": 0.3715678070515595,
+            "up_precision": 0.2375,
+            "up_recall": 0.2676056338028169,
+            "down_precision": 0.36875,
+            "down_recall": 0.37341772151898733,
+            "directional_macro_precision": 0.303125,
+            "directional_macro_recall": 0.3205116776609021,
+            "directional_macro_f1": 0.31136240576450497,
+            "signal_coverage_all_eligible": 0.6438631790744467,
+            "eligible_signal_count": 320,
+            "eligible_signal_accuracy": 0.303125,
+            "directional_accuracy_on_actual_directional": 0.3233333333333333,
+            "actual_directional_count": 300,
+            "no_signal_prediction_count": 177,
+            "actual_distribution": {
+              "DOWN": 158,
+              "NO_SIGNAL": 197,
+              "UP": 142
+            },
+            "predicted_distribution": {
+              "DOWN": 160,
+              "NO_SIGNAL": 177,
+              "UP": 160
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.36875,
+                "recall": 0.37341772151898733,
+                "f1": 0.3710691823899371,
+                "support": 158
+              },
+              "NO_SIGNAL": {
+                "precision": 0.519774011299435,
+                "recall": 0.467005076142132,
+                "f1": 0.4919786096256685,
+                "support": 197
+              },
+              "UP": {
+                "precision": 0.2375,
+                "recall": 0.2676056338028169,
+                "f1": 0.25165562913907286,
+                "support": 142
+              }
+            },
+            "confusion_matrix": [
+              [
+                59,
+                35,
+                64
+              ],
+              [
+                47,
+                92,
+                58
+              ],
+              [
+                54,
+                50,
+                38
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1057201122559683
+          },
+          "validation_threshold_metrics": {
+            "n": 497,
+            "accuracy": 0.38028169014084506,
+            "balanced_accuracy": 0.36934281048797873,
+            "macro_f1": 0.3715678070515595,
+            "up_precision": 0.2375,
+            "up_recall": 0.2676056338028169,
+            "down_precision": 0.36875,
+            "down_recall": 0.37341772151898733,
+            "directional_macro_precision": 0.303125,
+            "directional_macro_recall": 0.3205116776609021,
+            "directional_macro_f1": 0.31136240576450497,
+            "signal_coverage_all_eligible": 0.6438631790744467,
+            "eligible_signal_count": 320,
+            "eligible_signal_accuracy": 0.303125,
+            "directional_accuracy_on_actual_directional": 0.3233333333333333,
+            "actual_directional_count": 300,
+            "no_signal_prediction_count": 177,
+            "actual_distribution": {
+              "DOWN": 158,
+              "NO_SIGNAL": 197,
+              "UP": 142
+            },
+            "predicted_distribution": {
+              "DOWN": 160,
+              "NO_SIGNAL": 177,
+              "UP": 160
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.36875,
+                "recall": 0.37341772151898733,
+                "f1": 0.3710691823899371,
+                "support": 158
+              },
+              "NO_SIGNAL": {
+                "precision": 0.519774011299435,
+                "recall": 0.467005076142132,
+                "f1": 0.4919786096256685,
+                "support": 197
+              },
+              "UP": {
+                "precision": 0.2375,
+                "recall": 0.2676056338028169,
+                "f1": 0.25165562913907286,
+                "support": 142
+              }
+            },
+            "confusion_matrix": [
+              [
+                59,
+                35,
+                64
+              ],
+              [
+                47,
+                92,
+                58
+              ],
+              [
+                54,
+                50,
+                38
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1057201122559683
+          },
+          "artifact": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\artifacts\\15min_logistic_regression.joblib",
+          "parameters": {
+            "C": 0.3,
+            "max_iter": 1500,
+            "solver": "lbfgs",
+            "class_weight": "balanced",
+            "random_state": 20261114
+          }
+        },
+        "lightgbm": {
+          "threshold_selection": {
+            "selected": {
+              "threshold": 0.4,
+              "macro_f1": 0.37288719657157005,
+              "signal_coverage": 0.6401869158878505,
+              "signals": 685
+            },
+            "coverage_floor_met": true,
+            "grid_results": [
+              {
+                "threshold": 0.0,
+                "macro_f1": 0.3715157399706239,
+                "signal_coverage": 0.6953271028037383,
+                "signals": 744
+              },
+              {
+                "threshold": 0.35,
+                "macro_f1": 0.37229983247763054,
+                "signal_coverage": 0.6915887850467289,
+                "signals": 740
+              },
+              {
+                "threshold": 0.4,
+                "macro_f1": 0.37288719657157005,
+                "signal_coverage": 0.6401869158878505,
+                "signals": 685
+              },
+              {
+                "threshold": 0.45,
+                "macro_f1": 0.35671581975892486,
+                "signal_coverage": 0.5261682242990654,
+                "signals": 563
+              },
+              {
+                "threshold": 0.5,
+                "macro_f1": 0.34805237523778465,
+                "signal_coverage": 0.42429906542056073,
+                "signals": 454
+              },
+              {
+                "threshold": 0.55,
+                "macro_f1": 0.3154856572488841,
+                "signal_coverage": 0.30467289719626167,
+                "signals": 326
+              },
+              {
+                "threshold": 0.6,
+                "macro_f1": 0.29995869192397745,
+                "signal_coverage": 0.21962616822429906,
+                "signals": 235
+              },
+              {
+                "threshold": 0.65,
+                "macro_f1": 0.2707329203666711,
+                "signal_coverage": 0.1588785046728972,
+                "signals": 170
+              },
+              {
+                "threshold": 0.7,
+                "macro_f1": 0.23866982241744764,
+                "signal_coverage": 0.10747663551401869,
+                "signals": 115
+              }
+            ],
+            "selection_source": "pooled chronological training OOF only"
+          },
+          "training_oof_raw_metrics": {
+            "n": 1070,
+            "accuracy": 0.3719626168224299,
+            "balanced_accuracy": 0.37226833120631575,
+            "macro_f1": 0.3715157399706239,
+            "up_precision": 0.27906976744186046,
+            "up_recall": 0.39087947882736157,
+            "down_precision": 0.3821656050955414,
+            "down_recall": 0.3488372093023256,
+            "directional_macro_precision": 0.3306176862687009,
+            "directional_macro_recall": 0.3698583440648436,
+            "directional_macro_f1": 0.3451930730431842,
+            "signal_coverage_all_eligible": 0.6953271028037383,
+            "eligible_signal_count": 744,
+            "eligible_signal_accuracy": 0.3225806451612903,
+            "directional_accuracy_on_actual_directional": 0.3686635944700461,
+            "actual_directional_count": 651,
+            "no_signal_prediction_count": 326,
+            "actual_distribution": {
+              "DOWN": 344,
+              "NO_SIGNAL": 419,
+              "UP": 307
+            },
+            "predicted_distribution": {
+              "DOWN": 314,
+              "NO_SIGNAL": 326,
+              "UP": 430
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.3821656050955414,
+                "recall": 0.3488372093023256,
+                "f1": 0.364741641337386,
+                "support": 344
+              },
+              "NO_SIGNAL": {
+                "precision": 0.48466257668711654,
+                "recall": 0.37708830548926014,
+                "f1": 0.42416107382550333,
+                "support": 419
+              },
+              "UP": {
+                "precision": 0.27906976744186046,
+                "recall": 0.39087947882736157,
+                "f1": 0.3256445047489824,
+                "support": 307
+              }
+            },
+            "confusion_matrix": [
+              [
+                120,
+                81,
+                143
+              ],
+              [
+                94,
+                158,
+                167
+              ],
+              [
+                100,
+                87,
+                120
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.2098817615135278
+          },
+          "training_oof_fold_macro_f1": [
+            0.32365733259783047,
+            0.371939688218758,
+            0.39131632614816136
+          ],
+          "validation_raw_metrics": {
+            "n": 497,
+            "accuracy": 0.38832997987927564,
+            "balanced_accuracy": 0.38957166072534505,
+            "macro_f1": 0.3881138854827841,
+            "up_precision": 0.2850678733031674,
+            "up_recall": 0.44366197183098594,
+            "down_precision": 0.37410071942446044,
+            "down_recall": 0.3291139240506329,
+            "directional_macro_precision": 0.3295842963638139,
+            "directional_macro_recall": 0.38638794794080944,
+            "directional_macro_f1": 0.34863789409243956,
+            "signal_coverage_all_eligible": 0.7243460764587525,
+            "eligible_signal_count": 360,
+            "eligible_signal_accuracy": 0.3194444444444444,
+            "directional_accuracy_on_actual_directional": 0.38333333333333336,
+            "actual_directional_count": 300,
+            "no_signal_prediction_count": 137,
+            "actual_distribution": {
+              "DOWN": 158,
+              "NO_SIGNAL": 197,
+              "UP": 142
+            },
+            "predicted_distribution": {
+              "DOWN": 139,
+              "NO_SIGNAL": 137,
+              "UP": 221
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.37410071942446044,
+                "recall": 0.3291139240506329,
+                "f1": 0.3501683501683502,
+                "support": 158
+              },
+              "NO_SIGNAL": {
+                "precision": 0.5693430656934306,
+                "recall": 0.39593908629441626,
+                "f1": 0.46706586826347307,
+                "support": 197
+              },
+              "UP": {
+                "precision": 0.2850678733031674,
+                "recall": 0.44366197183098594,
+                "f1": 0.34710743801652894,
+                "support": 142
+              }
+            },
+            "confusion_matrix": [
+              [
+                52,
+                28,
+                78
+              ],
+              [
+                39,
+                78,
+                80
+              ],
+              [
+                48,
+                31,
+                63
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1390668943918079
+          },
+          "validation_threshold_metrics": {
+            "n": 497,
+            "accuracy": 0.3822937625754527,
+            "balanced_accuracy": 0.3735275281236133,
+            "macro_f1": 0.37217656310541475,
+            "up_precision": 0.2736842105263158,
+            "up_recall": 0.36619718309859156,
+            "down_precision": 0.3805309734513274,
+            "down_recall": 0.2721518987341772,
+            "directional_macro_precision": 0.3271075919888216,
+            "directional_macro_recall": 0.3191745409163844,
+            "directional_macro_f1": 0.31529809273996356,
+            "signal_coverage_all_eligible": 0.6096579476861167,
+            "eligible_signal_count": 303,
+            "eligible_signal_accuracy": 0.31353135313531355,
+            "directional_accuracy_on_actual_directional": 0.31666666666666665,
+            "actual_directional_count": 300,
+            "no_signal_prediction_count": 194,
+            "actual_distribution": {
+              "DOWN": 158,
+              "NO_SIGNAL": 197,
+              "UP": 142
+            },
+            "predicted_distribution": {
+              "DOWN": 113,
+              "NO_SIGNAL": 194,
+              "UP": 190
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.3805309734513274,
+                "recall": 0.2721518987341772,
+                "f1": 0.3173431734317343,
+                "support": 158
+              },
+              "NO_SIGNAL": {
+                "precision": 0.4896907216494845,
+                "recall": 0.48223350253807107,
+                "f1": 0.4859335038363171,
+                "support": 197
+              },
+              "UP": {
+                "precision": 0.2736842105263158,
+                "recall": 0.36619718309859156,
+                "f1": 0.3132530120481928,
+                "support": 142
+              }
+            },
+            "confusion_matrix": [
+              [
+                43,
+                45,
+                70
+              ],
+              [
+                34,
+                95,
+                68
+              ],
+              [
+                36,
+                54,
+                52
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1390668943918079
+          },
+          "artifact": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\artifacts\\15min_lightgbm.joblib",
+          "parameters": {
+            "n_estimators": 120,
+            "learning_rate": 0.05,
+            "num_leaves": 7,
+            "min_child_samples": 30,
+            "reg_lambda": 2.0,
+            "class_weight": "balanced",
+            "random_state": 20261114,
+            "n_jobs": 1,
+            "verbosity": -1,
+            "deterministic": true,
+            "force_col_wise": true
+          }
+        },
+        "xgboost": {
+          "threshold_selection": {
+            "selected": {
+              "threshold": 0.35,
+              "macro_f1": 0.36436692024308476,
+              "signal_coverage": 0.6841121495327103,
+              "signals": 732
+            },
+            "coverage_floor_met": true,
+            "grid_results": [
+              {
+                "threshold": 0.0,
+                "macro_f1": 0.36352951290801844,
+                "signal_coverage": 0.6850467289719626,
+                "signals": 733
+              },
+              {
+                "threshold": 0.35,
+                "macro_f1": 0.36436692024308476,
+                "signal_coverage": 0.6841121495327103,
+                "signals": 732
+              },
+              {
+                "threshold": 0.4,
+                "macro_f1": 0.3525301845194851,
+                "signal_coverage": 0.6214953271028038,
+                "signals": 665
+              },
+              {
+                "threshold": 0.45,
+                "macro_f1": 0.3469243764631562,
+                "signal_coverage": 0.49906542056074765,
+                "signals": 534
+              },
+              {
+                "threshold": 0.5,
+                "macro_f1": 0.3343010336799157,
+                "signal_coverage": 0.3598130841121495,
+                "signals": 385
+              },
+              {
+                "threshold": 0.55,
+                "macro_f1": 0.3059083728238479,
+                "signal_coverage": 0.2485981308411215,
+                "signals": 266
+              },
+              {
+                "threshold": 0.6,
+                "macro_f1": 0.2623614630811752,
+                "signal_coverage": 0.13738317757009347,
+                "signals": 147
+              },
+              {
+                "threshold": 0.65,
+                "macro_f1": 0.24447860403102586,
+                "signal_coverage": 0.08504672897196262,
+                "signals": 91
+              },
+              {
+                "threshold": 0.7,
+                "macro_f1": 0.2117771937716536,
+                "signal_coverage": 0.04205607476635514,
+                "signals": 45
+              }
+            ],
+            "selection_source": "pooled chronological training OOF only"
+          },
+          "training_oof_raw_metrics": {
+            "n": 1070,
+            "accuracy": 0.36542056074766355,
+            "balanced_accuracy": 0.3640943494252051,
+            "macro_f1": 0.36352951290801844,
+            "up_precision": 0.2785714285714286,
+            "up_recall": 0.3811074918566775,
+            "down_precision": 0.3514376996805112,
+            "down_recall": 0.31976744186046513,
+            "directional_macro_precision": 0.3150045641259699,
+            "directional_macro_recall": 0.35043746685857136,
+            "directional_macro_f1": 0.3283630524308107,
+            "signal_coverage_all_eligible": 0.6850467289719626,
+            "eligible_signal_count": 733,
+            "eligible_signal_accuracy": 0.3096862210095498,
+            "directional_accuracy_on_actual_directional": 0.3486943164362519,
+            "actual_directional_count": 651,
+            "no_signal_prediction_count": 337,
+            "actual_distribution": {
+              "DOWN": 344,
+              "NO_SIGNAL": 419,
+              "UP": 307
+            },
+            "predicted_distribution": {
+              "DOWN": 313,
+              "NO_SIGNAL": 337,
+              "UP": 420
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.3514376996805112,
+                "recall": 0.31976744186046513,
+                "f1": 0.334855403348554,
+                "support": 344
+              },
+              "NO_SIGNAL": {
+                "precision": 0.486646884272997,
+                "recall": 0.3914081145584726,
+                "f1": 0.43386243386243384,
+                "support": 419
+              },
+              "UP": {
+                "precision": 0.2785714285714286,
+                "recall": 0.3811074918566775,
+                "f1": 0.3218707015130674,
+                "support": 307
+              }
+            },
+            "confusion_matrix": [
+              [
+                110,
+                101,
+                133
+              ],
+              [
+                85,
+                164,
+                170
+              ],
+              [
+                118,
+                72,
+                117
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.1540912538782326
+          },
+          "training_oof_fold_macro_f1": [
+            0.3054246445042197,
+            0.3636161631214799,
+            0.37876840233810416
+          ],
+          "validation_raw_metrics": {
+            "n": 497,
+            "accuracy": 0.40040241448692154,
+            "balanced_accuracy": 0.3978156027341844,
+            "macro_f1": 0.39871706498958287,
+            "up_precision": 0.2897196261682243,
+            "up_recall": 0.43661971830985913,
+            "down_precision": 0.34265734265734266,
+            "down_recall": 0.310126582278481,
+            "directional_macro_precision": 0.31618848441278347,
+            "directional_macro_recall": 0.37337315029417006,
+            "directional_macro_f1": 0.33694800104520517,
+            "signal_coverage_all_eligible": 0.7183098591549296,
+            "eligible_signal_count": 357,
+            "eligible_signal_accuracy": 0.31092436974789917,
+            "directional_accuracy_on_actual_directional": 0.37,
+            "actual_directional_count": 300,
+            "no_signal_prediction_count": 140,
+            "actual_distribution": {
+              "DOWN": 158,
+              "NO_SIGNAL": 197,
+              "UP": 142
+            },
+            "predicted_distribution": {
+              "DOWN": 143,
+              "NO_SIGNAL": 140,
+              "UP": 214
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.34265734265734266,
+                "recall": 0.310126582278481,
+                "f1": 0.32558139534883723,
+                "support": 158
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6285714285714286,
+                "recall": 0.4467005076142132,
+                "f1": 0.5222551928783383,
+                "support": 197
+              },
+              "UP": {
+                "precision": 0.2897196261682243,
+                "recall": 0.43661971830985913,
+                "f1": 0.34831460674157305,
+                "support": 142
+              }
+            },
+            "confusion_matrix": [
+              [
+                49,
+                23,
+                86
+              ],
+              [
+                43,
+                88,
+                66
+              ],
+              [
+                51,
+                29,
+                62
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.117867941613866
+          },
+          "validation_threshold_metrics": {
+            "n": 497,
+            "accuracy": 0.4024144869215292,
+            "balanced_accuracy": 0.39908999284748736,
+            "macro_f1": 0.39958197545203394,
+            "up_precision": 0.29245283018867924,
+            "up_recall": 0.43661971830985913,
+            "down_precision": 0.34285714285714286,
+            "down_recall": 0.3037974683544304,
+            "directional_macro_precision": 0.317654986522911,
+            "directional_macro_recall": 0.37020859333214473,
+            "directional_macro_f1": 0.3362150684412088,
+            "signal_coverage_all_eligible": 0.7082494969818913,
+            "eligible_signal_count": 352,
+            "eligible_signal_accuracy": 0.3125,
+            "directional_accuracy_on_actual_directional": 0.36666666666666664,
+            "actual_directional_count": 300,
+            "no_signal_prediction_count": 145,
+            "actual_distribution": {
+              "DOWN": 158,
+              "NO_SIGNAL": 197,
+              "UP": 142
+            },
+            "predicted_distribution": {
+              "DOWN": 140,
+              "NO_SIGNAL": 145,
+              "UP": 212
+            },
+            "per_class": {
+              "DOWN": {
+                "precision": 0.34285714285714286,
+                "recall": 0.3037974683544304,
+                "f1": 0.3221476510067114,
+                "support": 158
+              },
+              "NO_SIGNAL": {
+                "precision": 0.6206896551724138,
+                "recall": 0.45685279187817257,
+                "f1": 0.5263157894736842,
+                "support": 197
+              },
+              "UP": {
+                "precision": 0.29245283018867924,
+                "recall": 0.43661971830985913,
+                "f1": 0.3502824858757062,
+                "support": 142
+              }
+            },
+            "confusion_matrix": [
+              [
+                48,
+                25,
+                85
+              ],
+              [
+                42,
+                90,
+                65
+              ],
+              [
+                50,
+                30,
+                62
+              ]
+            ],
+            "confusion_class_order": [
+              "DOWN",
+              "NO_SIGNAL",
+              "UP"
+            ],
+            "log_loss": 1.117867941613866
+          },
+          "artifact": "D:\\ML_project\\models\\alpaca_1min_horizon_research_v1\\artifacts\\15min_xgboost.joblib",
+          "parameters": {
+            "n_estimators": 120,
+            "max_depth": 3,
+            "learning_rate": 0.05,
+            "min_child_weight": 10,
+            "subsample": 0.8,
+            "colsample_bytree": 0.8,
+            "reg_lambda": 2.0,
+            "objective": "multi:softprob",
+            "num_class": 3,
+            "eval_metric": "mlogloss",
+            "tree_method": "hist",
+            "n_jobs": 1,
+            "random_state": 20261114
+          }
+        }
+      }
+    }
+  },
+  "paired_validation_common_timestamp_count": 422
+}

@@ -1,0 +1,1322 @@
+{
+  "evaluation": {
+    "dataset": "data\\alpaca_ml_pipeline_v1\\test.csv",
+    "symbol": "ECL",
+    "provider": "Alpaca",
+    "feed": "IEX",
+    "timeframe": "5Min",
+    "horizon_minutes": 15,
+    "label_threshold_pct": {
+      "down_lt": -0.1,
+      "up_gt": 0.1
+    },
+    "test_rows": 1369,
+    "date_start": "2026-09-25",
+    "date_end": "2026-11-12",
+    "first_decision_timestamp": "2026-09-25 12:20:00",
+    "last_decision_timestamp": "2026-11-12 15:40:00",
+    "last_future_endpoint": "2026-11-12 15:55:00",
+    "class_order_3class": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ],
+    "class_distribution": {
+      "DOWN": 334,
+      "NEUTRAL": 695,
+      "UP": 340
+    },
+    "directional_rows": 674,
+    "training_class_distribution_for_baseline": {
+      "DOWN": 1323,
+      "NEUTRAL": 2364,
+      "UP": 1196
+    },
+    "training_directional_distribution_for_baseline": {
+      "DOWN": 1323,
+      "UP": 1196
+    },
+    "training_majority_3class": "NEUTRAL",
+    "training_majority_direction": "DOWN",
+    "test_target_policy": "Existing target values used unchanged; labels verified against saved future_return; exact +15-minute endpoint timestamp verified.",
+    "post_test_tuning_or_model_changes": false,
+    "preexisting_validation_or_walk_forward_metrics_read_only_for_comparison": true,
+    "artifact_hashes_unchanged": true,
+    "missing_required_artifacts": []
+  },
+  "models": {
+    "logistic_regression_3class": {
+      "n_evaluated": 1369,
+      "accuracy": 0.42074506939371803,
+      "balanced_accuracy": 0.37785068880436334,
+      "macro_f1": 0.37690857175660736,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.2925531914893617,
+          "recall": 0.32934131736526945,
+          "f1": 0.30985915492957744,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5601783060921248,
+          "recall": 0.5424460431654676,
+          "f1": 0.5511695906432749,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.278125,
+          "recall": 0.26176470588235295,
+          "f1": 0.2696969696969697,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          110,
+          131,
+          93
+        ],
+        [
+          180,
+          377,
+          138
+        ],
+        [
+          86,
+          165,
+          89
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 376,
+        "NEUTRAL": 673,
+        "UP": 320
+      },
+      "model_type": "three_class_classifier",
+      "artifact": "models/alpaca_baselines_v1/logistic_regression.joblib",
+      "n_test_rows": 1369,
+      "all_candle_accuracy": 0.42074506939371803,
+      "directional_accuracy_on_actual_up_down": 0.2952522255192878,
+      "directional_prediction_coverage_all_rows": 0.508400292184076,
+      "class_probability_order": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "random_forest_classifier_3class": {
+      "n_evaluated": 1369,
+      "accuracy": 0.42074506939371803,
+      "balanced_accuracy": 0.3681322500998849,
+      "macro_f1": 0.3662116779721048,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.2564102564102564,
+          "recall": 0.20958083832335328,
+          "f1": 0.23064250411861614,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5594900849858357,
+          "recall": 0.5683453237410072,
+          "f1": 0.5638829407566024,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.2846153846153846,
+          "recall": 0.3264705882352941,
+          "f1": 0.3041095890410959,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          70,
+          155,
+          109
+        ],
+        [
+          130,
+          395,
+          170
+        ],
+        [
+          73,
+          156,
+          111
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 273,
+        "NEUTRAL": 706,
+        "UP": 390
+      },
+      "model_type": "three_class_classifier",
+      "artifact": "models/alpaca_baselines_v1/random_forest.joblib",
+      "n_test_rows": 1369,
+      "all_candle_accuracy": 0.42074506939371803,
+      "directional_accuracy_on_actual_up_down": 0.2685459940652819,
+      "directional_prediction_coverage_all_rows": 0.48429510591672753,
+      "class_probability_order": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "xgboost_classifier_3class": {
+      "n_evaluated": 1369,
+      "accuracy": 0.38568298027757486,
+      "balanced_accuracy": 0.362260329109027,
+      "macro_f1": 0.35562131086868415,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.26101694915254237,
+          "recall": 0.23053892215568864,
+          "f1": 0.24483306836248012,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5609318996415771,
+          "recall": 0.4503597122302158,
+          "f1": 0.49960095770151636,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.26744186046511625,
+          "recall": 0.40588235294117647,
+          "f1": 0.32242990654205606,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          77,
+          119,
+          138
+        ],
+        [
+          142,
+          313,
+          240
+        ],
+        [
+          76,
+          126,
+          138
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 295,
+        "NEUTRAL": 558,
+        "UP": 516
+      },
+      "model_type": "three_class_classifier",
+      "artifact": "models/alpaca_baselines_v1/xgboost.joblib",
+      "n_test_rows": 1369,
+      "all_candle_accuracy": 0.38568298027757486,
+      "directional_accuracy_on_actual_up_down": 0.3189910979228487,
+      "directional_prediction_coverage_all_rows": 0.5924032140248356,
+      "class_probability_order": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "hist_gradient_boosting_classifier_3class": {
+      "n_evaluated": 1369,
+      "accuracy": 0.3747260774287801,
+      "balanced_accuracy": 0.345981671865748,
+      "macro_f1": 0.34194869751102175,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.2225609756097561,
+          "recall": 0.218562874251497,
+          "f1": 0.22054380664652568,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5457685664939551,
+          "recall": 0.4546762589928058,
+          "f1": 0.49607535321821034,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.2683982683982684,
+          "recall": 0.36470588235294116,
+          "f1": 0.3092269326683292,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          73,
+          137,
+          124
+        ],
+        [
+          165,
+          316,
+          214
+        ],
+        [
+          90,
+          126,
+          124
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 328,
+        "NEUTRAL": 579,
+        "UP": 462
+      },
+      "model_type": "three_class_classifier",
+      "artifact": "models/alpaca_baselines_v1/hist_gradient_boosting.joblib",
+      "n_test_rows": 1369,
+      "all_candle_accuracy": 0.3747260774287801,
+      "directional_accuracy_on_actual_up_down": 0.2922848664688427,
+      "directional_prediction_coverage_all_rows": 0.577063550036523,
+      "class_probability_order": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "frozen_balanced_lightgbm_B_reference": {
+      "n_evaluated": 1369,
+      "accuracy": 0.38422205989773556,
+      "balanced_accuracy": 0.3488521475880233,
+      "macro_f1": 0.34745891256679373,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.23964497041420119,
+          "recall": 0.24251497005988024,
+          "f1": 0.24107142857142858,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5401929260450161,
+          "recall": 0.48345323741007196,
+          "f1": 0.510250569476082,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.2665036674816626,
+          "recall": 0.3205882352941177,
+          "f1": 0.2910547396528705,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          81,
+          145,
+          108
+        ],
+        [
+          167,
+          336,
+          192
+        ],
+        [
+          90,
+          141,
+          109
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 338,
+        "NEUTRAL": 622,
+        "UP": 409
+      },
+      "model_type": "three_class_classifier",
+      "artifact": "models/alpaca_final_freeze_v1/candidate_pipeline.joblib",
+      "n_test_rows": 1369,
+      "all_candle_accuracy": 0.38422205989773556,
+      "directional_accuracy_on_actual_up_down": 0.2818991097922849,
+      "directional_prediction_coverage_all_rows": 0.545653761869978,
+      "class_probability_order": [
+        "DOWN",
+        "NEUTRAL",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "binary_random_forest_v3": {
+      "n_evaluated": 674,
+      "accuracy": 0.4821958456973294,
+      "balanced_accuracy": 0.48277562522014794,
+      "macro_f1": 0.48027264994089636,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.48031496062992124,
+          "recall": 0.5479041916167665,
+          "f1": 0.5118881118881119,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.48464163822525597,
+          "recall": 0.4176470588235294,
+          "f1": 0.4486571879936809,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          183,
+          151
+        ],
+        [
+          198,
+          142
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 381,
+        "UP": 293
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.23739956172388604,
+      "model_type": "binary_classifier",
+      "artifact": "models/alpaca_binary_research_v3/random_forest.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "class_probability_order": [
+        "DOWN",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "binary_xgboost_v3": {
+      "n_evaluated": 674,
+      "accuracy": 0.5133531157270029,
+      "balanced_accuracy": 0.5133938006340261,
+      "macro_f1": 0.5133531157270029,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.5088235294117647,
+          "recall": 0.5179640718562875,
+          "f1": 0.5133531157270029,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.5179640718562875,
+          "recall": 0.5088235294117647,
+          "f1": 0.5133531157270029,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          173,
+          161
+        ],
+        [
+          167,
+          173
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 340,
+        "UP": 334
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.2527392257121987,
+      "model_type": "binary_classifier",
+      "artifact": "models/alpaca_binary_research_v3/xgboost.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "class_probability_order": [
+        "DOWN",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "binary_xgboost_v1_additional": {
+      "n_evaluated": 674,
+      "accuracy": 0.4732937685459941,
+      "balanced_accuracy": 0.4722877773864037,
+      "macro_f1": 0.46595690068856227,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.45977011494252873,
+          "recall": 0.3592814371257485,
+          "f1": 0.40336134453781514,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.48184019370460046,
+          "recall": 0.5852941176470589,
+          "f1": 0.5285524568393094,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          120,
+          214
+        ],
+        [
+          141,
+          199
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 261,
+        "UP": 413
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.23301680058436816,
+      "model_type": "binary_classifier",
+      "artifact": "models/alpaca_binary_research_v1/xgboost_binary.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "class_probability_order": [
+        "DOWN",
+        "UP"
+      ],
+      "status": "PASS"
+    },
+    "ridge_regression": {
+      "n_evaluated": 674,
+      "accuracy": 0.5445103857566765,
+      "balanced_accuracy": 0.5462046495244804,
+      "macro_f1": 0.5282855846675375,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.5290322580645161,
+          "recall": 0.7365269461077845,
+          "f1": 0.6157697121401752,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.5789473684210527,
+          "recall": 0.3558823529411765,
+          "f1": 0.4408014571948998,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          246,
+          88
+        ],
+        [
+          219,
+          121
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 465,
+        "UP": 209
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.2680788897005113,
+      "model_type": "return_regressor_zero_sign",
+      "artifact": "models/alpaca_return_regression_v1/ridge_full_train.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "decision_boundary_pct_points": 0.0,
+      "mae_pct_points": 0.12623560504761364,
+      "rmse_pct_points": 0.16643168092180546,
+      "return_correlation": 0.037847729006214845,
+      "status": "PASS"
+    },
+    "random_forest_regression": {
+      "n_evaluated": 674,
+      "accuracy": 0.486646884272997,
+      "balanced_accuracy": 0.487715744980627,
+      "macro_f1": 0.47967835213479937,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.48564593301435405,
+          "recall": 0.6077844311377245,
+          "f1": 0.5398936170212766,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.48828125,
+          "recall": 0.36764705882352944,
+          "f1": 0.41946308724832215,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          203,
+          131
+        ],
+        [
+          215,
+          125
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 418,
+        "UP": 256
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.239590942293645,
+      "model_type": "return_regressor_zero_sign",
+      "artifact": "models/alpaca_return_regression_v1/random_forest_regressor_full_train.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "decision_boundary_pct_points": 0.0,
+      "mae_pct_points": 0.1274815686820296,
+      "rmse_pct_points": 0.16792949653958614,
+      "return_correlation": -0.06535335262682865,
+      "status": "PASS"
+    },
+    "xgboost_regression": {
+      "n_evaluated": 674,
+      "accuracy": 0.4762611275964392,
+      "balanced_accuracy": 0.4767876012680521,
+      "macro_f1": 0.47467802440677664,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.47480106100795755,
+          "recall": 0.5359281437125748,
+          "f1": 0.5035161744022504,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.4781144781144781,
+          "recall": 0.4176470588235294,
+          "f1": 0.44583987441130296,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          179,
+          155
+        ],
+        [
+          198,
+          142
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 377,
+        "UP": 297
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.23447772096420746,
+      "model_type": "return_regressor_zero_sign",
+      "artifact": "models/alpaca_return_regression_v1/xgboost_regressor_full_train.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "decision_boundary_pct_points": 0.0,
+      "mae_pct_points": 0.1280798562017522,
+      "rmse_pct_points": 0.169166561822298,
+      "return_correlation": -0.08265368502040382,
+      "status": "PASS"
+    },
+    "hist_gradient_boosting_regression": {
+      "n_evaluated": 674,
+      "accuracy": 0.4629080118694362,
+      "balanced_accuracy": 0.4628654455794294,
+      "macro_f1": 0.4628654455794294,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.45808383233532934,
+          "recall": 0.45808383233532934,
+          "f1": 0.45808383233532934,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.4676470588235294,
+          "recall": 0.4676470588235294,
+          "f1": 0.4676470588235294,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          153,
+          181
+        ],
+        [
+          181,
+          159
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 334,
+        "UP": 340
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.2279035792549306,
+      "model_type": "return_regressor_zero_sign",
+      "artifact": "models/alpaca_return_regression_v1/hist_gradient_boosting_regressor_full_train.joblib",
+      "n_test_rows": 1369,
+      "prediction_count": 1369,
+      "decision_boundary_pct_points": 0.0,
+      "mae_pct_points": 0.13196651125839273,
+      "rmse_pct_points": 0.17281597283536876,
+      "return_correlation": -0.02614545780154662,
+      "status": "PASS"
+    },
+    "cnn_6_candles": {
+      "n_evaluated": 674,
+      "accuracy": 0.49554896142433236,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.33134920634920634,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.49554896142433236,
+          "recall": 1.0,
+          "f1": 0.6626984126984127,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          334,
+          0
+        ],
+        [
+          340,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 1369,
+        "UP": 0
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.24397370343316288,
+      "model_type": "sequence_cnn_binary",
+      "artifact": "models/alpaca_sequence_research_v1/causal_1d_cnn_len6.keras",
+      "scaler_artifact": "models/alpaca_sequence_research_v1/channel_scaler_len6.joblib",
+      "sequence_length_candles": 6,
+      "n_test_rows": 1369,
+      "n_sequence_eligible_rows": 1369,
+      "sequence_directional_eligibility_coverage": 1.0,
+      "prediction_count": 1369,
+      "decision_threshold_p_up": 0.5,
+      "status": "PASS"
+    },
+    "cnn_12_candles": {
+      "n_evaluated": 674,
+      "accuracy": 0.49554896142433236,
+      "balanced_accuracy": 0.5,
+      "macro_f1": 0.33134920634920634,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.49554896142433236,
+          "recall": 1.0,
+          "f1": 0.6626984126984127,
+          "support": 334
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          334,
+          0
+        ],
+        [
+          340,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 1369,
+        "UP": 0
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 1.0,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.24397370343316288,
+      "model_type": "sequence_cnn_binary",
+      "artifact": "models/alpaca_sequence_research_v1/causal_1d_cnn_len12.keras",
+      "scaler_artifact": "models/alpaca_sequence_research_v1/channel_scaler_len12.joblib",
+      "sequence_length_candles": 12,
+      "n_test_rows": 1369,
+      "n_sequence_eligible_rows": 1369,
+      "sequence_directional_eligibility_coverage": 1.0,
+      "prediction_count": 1369,
+      "decision_threshold_p_up": 0.5,
+      "status": "PASS"
+    },
+    "cnn_24_candles": {
+      "n_evaluated": 619,
+      "accuracy": 0.4798061389337641,
+      "balanced_accuracy": 0.48209587839812923,
+      "macro_f1": 0.33222326454033774,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.4883720930232558,
+          "recall": 0.9545454545454546,
+          "f1": 0.6461538461538462,
+          "support": 308
+        },
+        "UP": {
+          "precision": 0.17647058823529413,
+          "recall": 0.00964630225080386,
+          "f1": 0.018292682926829267,
+          "support": 311
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          294,
+          14
+        ],
+        [
+          308,
+          3
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 1233,
+        "UP": 20
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 0.9183976261127597,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.21694667640613585,
+      "model_type": "sequence_cnn_binary",
+      "artifact": "models/alpaca_sequence_research_v1/causal_1d_cnn_len24.keras",
+      "scaler_artifact": "models/alpaca_sequence_research_v1/channel_scaler_len24.joblib",
+      "sequence_length_candles": 24,
+      "n_test_rows": 1369,
+      "n_sequence_eligible_rows": 1253,
+      "sequence_directional_eligibility_coverage": 0.9183976261127597,
+      "prediction_count": 1253,
+      "decision_threshold_p_up": 0.5,
+      "status": "PASS"
+    },
+    "cnn_36_candles": {
+      "n_evaluated": 416,
+      "accuracy": 0.45913461538461536,
+      "balanced_accuracy": 0.4971821145784816,
+      "macro_f1": 0.358161159149975,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.45524296675191817,
+          "recall": 0.9368421052631579,
+          "f1": 0.612736660929432,
+          "support": 190
+        },
+        "UP": {
+          "precision": 0.52,
+          "recall": 0.05752212389380531,
+          "f1": 0.10358565737051793,
+          "support": 226
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          178,
+          12
+        ],
+        [
+          213,
+          13
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 807,
+        "UP": 54
+      },
+      "test_directional_rows_available": 674,
+      "eligible_directional_coverage": 0.6172106824925816,
+      "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+      "all_candle_accuracy_neutral_wrong": 0.13951789627465302,
+      "model_type": "sequence_cnn_binary",
+      "artifact": "models/alpaca_sequence_research_v1/causal_1d_cnn_len36.keras",
+      "scaler_artifact": "models/alpaca_sequence_research_v1/channel_scaler_len36.joblib",
+      "sequence_length_candles": 36,
+      "n_test_rows": 1369,
+      "n_sequence_eligible_rows": 861,
+      "sequence_directional_eligibility_coverage": 0.6172106824925816,
+      "prediction_count": 861,
+      "decision_threshold_p_up": 0.5,
+      "status": "PASS"
+    }
+  },
+  "baselines": {
+    "always_neutral": {
+      "n_evaluated": 1369,
+      "accuracy": 0.5076698319941563,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.22448320413436693,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5076698319941563,
+          "recall": 1.0,
+          "f1": 0.6734496124031008,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          0,
+          334,
+          0
+        ],
+        [
+          0,
+          695,
+          0
+        ],
+        [
+          0,
+          340,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 0,
+        "NEUTRAL": 1369,
+        "UP": 0
+      },
+      "model_type": "baseline",
+      "training_majority_3class": "NEUTRAL",
+      "training_majority_direction": "DOWN",
+      "all_candle_accuracy": 0.5076698319941563,
+      "directional": {
+        "n_evaluated": 674,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 334
+          },
+          "UP": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 340
+          }
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "prediction_distribution": {
+          "DOWN": 0,
+          "UP": 0
+        },
+        "test_directional_rows_available": 674,
+        "eligible_directional_coverage": 1.0,
+        "emitted_directional_signal_coverage_of_evaluable_rows": 0.0,
+        "all_candle_accuracy_neutral_wrong": 0.0
+      }
+    },
+    "training_majority_3class": {
+      "n_evaluated": 1369,
+      "accuracy": 0.5076698319941563,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.22448320413436693,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5076698319941563,
+          "recall": 1.0,
+          "f1": 0.6734496124031008,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          0,
+          334,
+          0
+        ],
+        [
+          0,
+          695,
+          0
+        ],
+        [
+          0,
+          340,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 0,
+        "NEUTRAL": 1369,
+        "UP": 0
+      },
+      "model_type": "baseline",
+      "training_majority_3class": "NEUTRAL",
+      "training_majority_direction": "DOWN",
+      "all_candle_accuracy": 0.5076698319941563,
+      "directional": {
+        "n_evaluated": 674,
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0,
+        "macro_f1": 0.0,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 334
+          },
+          "UP": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 340
+          }
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "prediction_distribution": {
+          "DOWN": 0,
+          "UP": 0
+        },
+        "test_directional_rows_available": 674,
+        "eligible_directional_coverage": 1.0,
+        "emitted_directional_signal_coverage_of_evaluable_rows": 0.0,
+        "all_candle_accuracy_neutral_wrong": 0.0
+      }
+    },
+    "training_majority_direction": {
+      "n_evaluated": 1369,
+      "accuracy": 0.24397370343316288,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.1307496574672147,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.24397370343316288,
+          "recall": 1.0,
+          "f1": 0.39224897240164414,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          334,
+          0,
+          0
+        ],
+        [
+          695,
+          0,
+          0
+        ],
+        [
+          340,
+          0,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 1369,
+        "NEUTRAL": 0,
+        "UP": 0
+      },
+      "model_type": "baseline",
+      "training_majority_3class": "NEUTRAL",
+      "training_majority_direction": "DOWN",
+      "all_candle_accuracy": 0.24397370343316288,
+      "directional": {
+        "n_evaluated": 674,
+        "accuracy": 0.49554896142433236,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.33134920634920634,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.49554896142433236,
+            "recall": 1.0,
+            "f1": 0.6626984126984127,
+            "support": 334
+          },
+          "UP": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 340
+          }
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            334,
+            0
+          ],
+          [
+            340,
+            0
+          ]
+        ],
+        "prediction_distribution": {
+          "DOWN": 674,
+          "UP": 0
+        },
+        "test_directional_rows_available": 674,
+        "eligible_directional_coverage": 1.0,
+        "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+        "all_candle_accuracy_neutral_wrong": 0.24397370343316288
+      }
+    },
+    "always_up": {
+      "n_evaluated": 1369,
+      "accuracy": 0.2483564645726808,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.13263116832455626,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.2483564645726808,
+          "recall": 1.0,
+          "f1": 0.3978935049736688,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          0,
+          0,
+          334
+        ],
+        [
+          0,
+          0,
+          695
+        ],
+        [
+          0,
+          0,
+          340
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 0,
+        "NEUTRAL": 0,
+        "UP": 1369
+      },
+      "model_type": "baseline",
+      "training_majority_3class": "NEUTRAL",
+      "training_majority_direction": "DOWN",
+      "all_candle_accuracy": 0.2483564645726808,
+      "directional": {
+        "n_evaluated": 674,
+        "accuracy": 0.5044510385756676,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.33530571992110453,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 334
+          },
+          "UP": {
+            "precision": 0.5044510385756676,
+            "recall": 1.0,
+            "f1": 0.6706114398422091,
+            "support": 340
+          }
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            0,
+            334
+          ],
+          [
+            0,
+            340
+          ]
+        ],
+        "prediction_distribution": {
+          "DOWN": 0,
+          "UP": 674
+        },
+        "test_directional_rows_available": 674,
+        "eligible_directional_coverage": 1.0,
+        "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+        "all_candle_accuracy_neutral_wrong": 0.2483564645726808
+      }
+    },
+    "always_down": {
+      "n_evaluated": 1369,
+      "accuracy": 0.24397370343316288,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.1307496574672147,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.24397370343316288,
+          "recall": 1.0,
+          "f1": 0.39224897240164414,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "confusion_matrix_actual_rows_predicted_columns": [
+        [
+          334,
+          0,
+          0
+        ],
+        [
+          695,
+          0,
+          0
+        ],
+        [
+          340,
+          0,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 1369,
+        "NEUTRAL": 0,
+        "UP": 0
+      },
+      "model_type": "baseline",
+      "training_majority_3class": "NEUTRAL",
+      "training_majority_direction": "DOWN",
+      "all_candle_accuracy": 0.24397370343316288,
+      "directional": {
+        "n_evaluated": 674,
+        "accuracy": 0.49554896142433236,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.33134920634920634,
+        "per_class": {
+          "DOWN": {
+            "precision": 0.49554896142433236,
+            "recall": 1.0,
+            "f1": 0.6626984126984127,
+            "support": 334
+          },
+          "UP": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 340
+          }
+        },
+        "confusion_matrix_actual_rows_predicted_columns": [
+          [
+            334,
+            0
+          ],
+          [
+            340,
+            0
+          ]
+        ],
+        "prediction_distribution": {
+          "DOWN": 674,
+          "UP": 0
+        },
+        "test_directional_rows_available": 674,
+        "eligible_directional_coverage": 1.0,
+        "emitted_directional_signal_coverage_of_evaluable_rows": 1.0,
+        "all_candle_accuracy_neutral_wrong": 0.24397370343316288
+      }
+    }
+  }
+}

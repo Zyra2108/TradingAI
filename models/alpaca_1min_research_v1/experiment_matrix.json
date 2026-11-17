@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "source": "Alpaca IEX only",
+  "asset": "ECL",
+  "permitted_split_ranges_from_train_validation_csv_timestamps": {
+    "train": ["2025-11-13", "2026-08-05"],
+    "validation": ["2026-08-06", "2026-09-24"]
+  },
+  "inputs": ["1-minute OHLCV features", "5-minute OHLC-derived B features from Alpaca IEX 5-minute bars fetched for the same permitted dates"],
+  "target": {
+    "horizon_minutes": 10,
+    "reference": "current completed candle close",
+    "future_price": "close of candle timestamped exactly 10 minutes after the decision candle timestamp",
+    "UP": "future return > +0.10%",
+    "DOWN": "future return < -0.10%",
+    "NO_SIGNAL": "return in the inclusive [-0.10%, +0.10%] interval",
+    "eligible_binary_training": "UP and DOWN events only; NO_SIGNAL excluded"
+  },
+  "features": {
+    "one_minute": "feature_schema.json; causal trailing OHLC/volume and session-time inputs with at most a 10-minute rolling lookback, reset at each session and missing-minute gap",
+    "five_minute": "the frozen 24 B features in their original order, using live_app.features.calculate_b_features on direct Alpaca IEX 5-minute bars from identical train/validation dates",
+    "volume": "only trailing one-minute volume features in the one-minute candidate; never added to the existing 5-minute B feature set"
+  },
+  "models": {
+    "logistic_regression": {"C": 0.2, "class_weight": "balanced", "max_iter": 1000, "random_state": 20261113},
+    "lightgbm": {"n_estimators": 200, "learning_rate": 0.03, "num_leaves": 15, "min_child_samples": 35, "reg_lambda": 10.0, "class_weight": "balanced", "random_state": 20261113},
+    "xgboost": {"n_estimators": 200, "max_depth": 3, "learning_rate": 0.03, "min_child_weight": 8, "reg_lambda": 10.0, "subsample": 0.8, "colsample_bytree": 0.8, "objective": "binary:logistic", "random_state": 20261113, "scale_pos_weight": "training-fold DOWN/UP ratio"}
+  },
+  "preprocessing": "median imputation fitted inside each fold; StandardScaler additionally fitted inside Logistic Regression fold pipelines",
+  "walk_forward": {"folds": 3, "method": "expanding chronological by training trading date", "initial_train_fraction": 0.4, "purge": "exclude training rows whose target endpoint is at or beyond the evaluation fold start"},
+  "selective_policy": {
+    "outputs": ["UP", "DOWN", "NO_SIGNAL"],
+    "coverage_targets_on_training_OOF_eligible_directional_rows": [0.2, 0.3, 0.4, 0.5],
+    "minimum_total_emissions": 75,
+    "minimum_emissions_each_fold": 10,
+    "selection": "Among OOF candidates meeting >=20% eligible coverage and emission guards, maximize mean fold macro directional precision; tie-break by mean emitted eligible accuracy, macro F1, then log loss. No validation metric selects a model or threshold."
+  },
+  "validation": "one final confirmation of the single training-OOF selected interval/model/threshold; validation is previously used and not pristine",
+  "experiment_count": 6,
+  "no_tuning": true,
+  "test_split_access_allowed": false
+}

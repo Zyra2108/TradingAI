@@ -1,0 +1,67 @@
+{
+  "seed": 20261113,
+  "target": {
+    "horizon_minutes": 15,
+    "up": "future return > +0.10%",
+    "down": "future return < -0.10%",
+    "neutral": "otherwise",
+    "neutral_excluded_from_binary_training_and_directional_metrics": true
+  },
+  "walk_forward": {
+    "method": "expanding window, 3 chronological folds, date-grouped",
+    "initial_train_date_fraction": 0.4,
+    "purge": "Remove training samples with future_datetime >= evaluation start."
+  },
+  "models": {
+    "logistic_regression": {
+      "C": 0.2,
+      "max_iter": 500,
+      "class_weight": "balanced"
+    },
+    "extra_trees": {
+      "n_estimators": 250,
+      "max_depth": 8,
+      "min_samples_leaf": 18,
+      "max_features": 0.75,
+      "class_weight": "balanced"
+    },
+    "random_forest": {
+      "n_estimators": 250,
+      "max_depth": 8,
+      "min_samples_leaf": 18,
+      "max_features": 0.75,
+      "class_weight": "balanced_subsample"
+    },
+    "xgboost": {
+      "n_estimators": 220,
+      "max_depth": 2,
+      "learning_rate": 0.03,
+      "min_child_weight": 8,
+      "reg_lambda": 10.0
+    },
+    "lightgbm": {
+      "n_estimators": 220,
+      "num_leaves": 7,
+      "learning_rate": 0.03,
+      "min_child_samples": 35,
+      "reg_lambda": 10.0,
+      "class_weight": "balanced"
+    },
+    "catboost": "Not run; not installed."
+  },
+  "preprocessing": "Median imputation; weekday most-frequent imputation and one-hot encoding. Logistic numeric features additionally standardized. All fit inside each fold or full-train final fit.",
+  "thresholds": {
+    "coverage_targets": [
+      0.2,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "selection_source": "Training-only OOF confidence-score quantiles among actual UP/DOWN OOF rows; no validation labels used to set thresholds.",
+    "coverage_reference": "Eligible directional examples; all-candle coverage and neutral false signals are also reported.",
+    "tie_policy": "Predict DOWN on equal class probabilities; score ties can increase realized coverage."
+  },
+  "selection_rule": "At 30% OOF eligible-direction coverage, rank by mean fold eligible-only directional macro precision, then emitted eligible directional accuracy, then unthresholded accuracy. Prefer candidates with mean eligible-direction coverage >=20%; otherwise report coverage shortfall.",
+  "validation_use": "One final confirmation after training-only selection. Not pristine holdout due prior project research.",
+  "no_test_data_access": true
+}

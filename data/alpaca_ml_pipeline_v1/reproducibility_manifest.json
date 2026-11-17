@@ -1,0 +1,170 @@
+{
+  "pipeline": "Alpaca IEX only canonical ECL 5-minute training pipeline v1",
+  "symbol": "ECL",
+  "feed": "IEX",
+  "timeframe": "5Min",
+  "timestamp_convention": "candle open timestamp in UTC; derived local timestamp is America/New_York",
+  "sources": {
+    "one_year_primary": {
+      "path": "reports/alpaca_iex_1y_audit_v1/alpaca_iex_ecl_5min_1y_20261112.csv",
+      "sha256": "757b35e5426426ed5840282b9817f888664789ffe5f50f17898f8178ed1bd4c2",
+      "provenance": "Alpaca IEX historical audit CSV, corroborated against independent Alpaca IEX native-cache overlap; upstream manifest records Alpaca IEX provenance; acquisition script not present in project."
+    },
+    "native_cache_verification_only": {
+      "path": "models/alpaca_1min_research_v1/raw_ecl_iex_5min_train_validation.csv",
+      "sha256": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+      "metadata": "models/alpaca_1min_research_v1/fetch_5min_metadata.json"
+    },
+    "backfill": {
+      "path": "data/alpaca_backfill_v1/ecl_iex_5min_20260925_20261112.csv",
+      "sha256": "eba280d6eeaac17ebc29d078d23d1afcd039e551579fc0788b4ffa542d60b4f9",
+      "metadata": "data/alpaca_backfill_v1/ecl_iex_5min_20260925_20261112_manifest.json"
+    }
+  },
+  "source_reconciliation": [
+    {
+      "comparison": "one-year vs independent native cache",
+      "common_timestamps": 16059,
+      "exact_matches": 16059,
+      "left_only": 2675,
+      "right_only": 0,
+      "conflicts": 0
+    },
+    {
+      "comparison": "one-year vs backfill overlap",
+      "common_timestamps": 2627,
+      "exact_matches": 2627,
+      "left_only": 16107,
+      "right_only": 55,
+      "conflicts": 0
+    }
+  ],
+  "canonical_file": "canonical_ecl_iex_5min.csv",
+  "canonical_sha256": "ead3b5a955c3957d65139a9427ab393be103d679285925befa3e8b2abd42cf3b",
+  "canonical_rows": 18789,
+  "canonical_date_range_ny": [
+    "2025-11-12 11:25:00",
+    "2026-11-12 15:55:00"
+  ],
+  "rejected_source_rows": [
+    {
+      "timestamp_utc": "2026-09-18T13:25:00+00:00",
+      "source_id": "one_year_primary",
+      "reason": "outside_or_misaligned_nyse_regular_session"
+    },
+    {
+      "timestamp_utc": "2026-09-18T13:25:00+00:00",
+      "source_id": "native_cache_verification",
+      "reason": "outside_or_misaligned_nyse_regular_session"
+    }
+  ],
+  "features": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "feature_builder": "live_app/features.py::calculate_b_features, reusing src/11_create_features.py and src/17_add_time_features.py",
+  "target": {
+    "horizon_minutes": 15,
+    "reference": "decision candle close",
+    "endpoint": "exact close timestamp t+15m; same continuous session segment only",
+    "UP": "future return > +0.10%",
+    "DOWN": "future return < -0.10%",
+    "NEUTRAL": "inclusive [-0.10%, +0.10%]",
+    "class_order": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ]
+  },
+  "split": {
+    "method": "chronological by eligible trading date; first floor(70%) train, next cumulative floor(85%) validation, remainder test",
+    "date_counts": {
+      "train": 154,
+      "validation": 33,
+      "test": 34
+    },
+    "date_ranges": {
+      "train": [
+        "2025-11-13",
+        "2026-08-05"
+      ],
+      "validation": [
+        "2026-08-06",
+        "2026-09-24"
+      ],
+      "test": [
+        "2026-09-25",
+        "2026-11-12"
+      ]
+    },
+    "purge_rule": "Drop earlier-split rows whose exact future endpoint is at or after the next split's first decision timestamp.",
+    "purged_rows": {
+      "train": 0,
+      "validation": 0
+    }
+  },
+  "split_summaries": {
+    "train": {
+      "rows": 4883,
+      "date_start": "2025-11-13",
+      "date_end": "2026-08-05",
+      "dates": 154,
+      "feature_missing_cells": 0,
+      "feature_nonfinite_cells": 0,
+      "target_counts": {
+        "DOWN": 1323,
+        "NEUTRAL": 2364,
+        "UP": 1196
+      },
+      "test_target_summary_withheld_until_final_evaluation": false
+    },
+    "validation": {
+      "rows": 1161,
+      "date_start": "2026-08-06",
+      "date_end": "2026-09-24",
+      "dates": 33,
+      "feature_missing_cells": 0,
+      "feature_nonfinite_cells": 0,
+      "target_counts": {
+        "DOWN": 277,
+        "NEUTRAL": 623,
+        "UP": 261
+      },
+      "test_target_summary_withheld_until_final_evaluation": false
+    },
+    "test": {
+      "rows": 1369,
+      "date_start": "2026-09-25",
+      "date_end": "2026-11-12",
+      "dates": 34,
+      "feature_missing_cells": 0,
+      "feature_nonfinite_cells": 0,
+      "target_counts": null,
+      "test_target_summary_withheld_until_final_evaluation": true
+    }
+  },
+  "test_policy": "New test rows are isolated from training/selection; read only once by final_evaluate_selected.py after validation-based model selection. Older split datasets were not read or used.",
+  "old_split_csvs_opened": false
+}

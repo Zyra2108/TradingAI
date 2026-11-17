@@ -1,0 +1,33 @@
+{
+  "inputs_read": [
+    "data/alpaca_rebuild_v1/train.csv",
+    "data/alpaca_rebuild_v1/validation.csv",
+    "models/alpaca_binary_research_v1/metrics.json",
+    "models/alpaca_binary_research_v1/selective_metrics.csv",
+    "models/alpaca_binary_research_v1/validation_predictions.csv",
+    "models/alpaca_final_freeze_v1/frozen_candidate_spec.json"
+  ],
+  "input_sha256": {
+    "train.csv": "b38005521485be7e22dc6a617bb422deaad075546f9a2db9603a5e737f96486b",
+    "validation.csv": "1767ccd6d69d8c416a9087e710d93f9f69de0e2e0b8f4521edd1074f8d6365cf",
+    "frozen_candidate_pipeline_sha256": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "frozen_candidate_spec_sha256": "b4f51daaabd59aa586c850ce04aaa82bd813ddc2325ededd2e51f159de9f688e"
+  },
+  "selected_model_sha256": "8a9693b7df8fa6117287d4d815674b90957e2997208a652172a06ee34c660151",
+  "test_dataset_accessed": false,
+  "seed": 20261113,
+  "versions": {
+    "python": "3.14.3",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "catboost_installed": false
+  },
+  "v2_validation_inference_passes": 2,
+  "validation_process_note": "One provisional v2 pass used an all-candle coverage denominator and was discarded. The corrected reported thresholds are derived from training-only OOF eligible-direction scores. Model/feature ranking was OOF-only; provisional metrics were not used to rank candidates. The threshold denominator was corrected to comply with the requested eligible-direction coverage definition.",
+  "training_script_sha256": "4cde42ac2eb424abb484e35e1f52281b34452d81db0bc561a0b5586011429cfb",
+  "training_config_sha256": "fdbe9387493bf7eafb1dc40b096cfcc1b5de5dd9d4c1f65eeecce02eec91bddb",
+  "feature_schema_sha256": "c6c016b7c037da3a9b4aa5c346a41b785610a36faf14cf26eab61202dfb3638d",
+  "model_specification_sha256": "5e46be88ee69ba9ddc5410fbf5f3524f2e8e3f19bcd5537d45c44b0bd477cf57"
+}

@@ -1,0 +1,94 @@
+{
+  "capture_start_utc": "2026-11-13T19:11:45.951198+00:00",
+  "capture_end_utc": "2026-11-13T20:11:49.171558+00:00",
+  "capture_start_new_york": "2026-11-13T14:11:45.951198-05:00",
+  "elapsed_seconds": 3603.22036,
+  "market_session_close_utc": "2026-11-13T21:00:00+00:00",
+  "health_ok_at_end": true,
+  "final_health_mode": "alpaca_iex",
+  "model_sha256": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+  "model_integrity": "PASS",
+  "active_model_path": "D:\\ML_project\\models\\alpaca_final_freeze_v1\\candidate_pipeline.joblib",
+  "feature_count": 24,
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "prediction_horizon_minutes": 15,
+  "initial_provider_state": "connected",
+  "final_provider_state": "connection_limit_exceeded",
+  "authentication_success_observed": false,
+  "subscription_success_observed": false,
+  "event_counts": {
+    "new_minute_events": 25,
+    "new_five_minute_candles": 5,
+    "new_predictions": 0,
+    "minute_bars_received": 25,
+    "unique_minute_timestamps": 25,
+    "finalized_five_minute_candles": 5,
+    "unique_five_minute_timestamps": 5
+  },
+  "new_alpaca_iex_data_persisted": {
+    "minute_bars_received": 25,
+    "unique_minute_timestamps": 25,
+    "finalized_five_minute_candles": 5,
+    "unique_five_minute_timestamps": 5
+  },
+  "new_predictions": [],
+  "new_settled_predictions": 0,
+  "reconnect_count_start": 0,
+  "reconnect_count_end": 4,
+  "reconnect_exercised": true,
+  "missing_data_warnings": [
+    {
+      "bucket_start_utc": "2026-11-13T19:40:00.000000Z",
+      "detected_at_utc": "2026-11-13T19:47:29.936864Z",
+      "missing_timestamps_json": "[]",
+      "reason": "known_stream_interruption"
+    },
+    {
+      "bucket_start_utc": "2026-11-13T19:15:00.000000Z",
+      "detected_at_utc": "2026-11-13T19:22:12.659570Z",
+      "missing_timestamps_json": "[]",
+      "reason": "known_stream_interruption"
+    },
+    {
+      "bucket_start_utc": "2026-11-13T19:05:00.000000Z",
+      "detected_at_utc": "2026-11-13T19:12:04.421433Z",
+      "missing_timestamps_json": "[]",
+      "reason": "known_stream_interruption"
+    }
+  ],
+  "errors": [
+    {
+      "state": "connection_failed",
+      "category": "connection_failed",
+      "transport": "websocket",
+      "status_code": null
+    },
+    {
+      "state": "connection_failed",
+      "category": "connection_failed",
+      "transport": "websocket",
+      "status_code": null
+    },
+    {
+      "state": "connection_failed",
+      "category": "connection_failed",
+      "transport": "websocket",
+      "status_code": null
+    },
+    {
+      "state": "connection_failed",
+      "category": "connection_failed",
+      "transport": "websocket",
+      "status_code": null
+    }
+  ],
+  "full_prediction_and_settlement_cycle": false,
+  "dashboard_visual_check": "manual: open http://127.0.0.1:8000 and verify actual candle/prediction/history display",
+  "capture_output_directory": "D:\\ML_project\\reports\\live_market_verification_runs\\20261113T191145Z",
+  "database_was_read_only_by_runner": true,
+  "synthetic_data_inserted": false
+}

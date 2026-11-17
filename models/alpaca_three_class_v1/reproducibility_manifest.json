@@ -1,0 +1,210 @@
+{
+  "configuration": {
+    "experiment": "ECL Alpaca IEX three-class model comparison v1",
+    "symbol": "ECL",
+    "provider": "Alpaca",
+    "feed": "IEX",
+    "timeframe": "5Min",
+    "horizon_minutes": 15,
+    "target": {
+      "UP": "future_return > 0.10 percentage points",
+      "DOWN": "future_return < -0.10 percentage points",
+      "NEUTRAL": "otherwise"
+    },
+    "classes": [
+      "DOWN",
+      "NEUTRAL",
+      "UP"
+    ],
+    "features_source": "Existing frozen B 24-feature schema, exact order; no new features",
+    "splits": "Existing Alpaca rebuild train.csv and validation.csv; four fixed expanding date folds from binary research v3; no test input",
+    "fold_purge": "Keep training decisions through each fold train_end only when future_datetime is earlier than the first validation decision timestamp",
+    "seed": 42,
+    "estimators": {
+      "ridge_regression_to_3class": {
+        "alpha": 10.0,
+        "preprocessing": "median imputer and StandardScaler fit inside each fold"
+      },
+      "xgboost_multiclass": {
+        "n_estimators": 250,
+        "max_depth": 3,
+        "min_child_weight": 5,
+        "learning_rate": 0.04,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 2.0,
+        "objective": "multi:softprob",
+        "eval_metric": "mlogloss",
+        "class_weights": "balanced sample weights computed from that fold's training labels",
+        "n_jobs": 1
+      },
+      "catboost_multiclass": {
+        "status": "not run; CatBoost was not installed; no package installation"
+      },
+      "hist_gradient_boosting_multiclass": {
+        "max_iter": 200,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1.0,
+        "class_weights": "balanced sample weights computed from that fold's training labels"
+      }
+    },
+    "ridge_neutral_threshold_selection": {
+      "primary": "Select one symmetric predicted-return boundary from pooled chronological OOF predictions only; maximize three-class macro-F1 subject to predicted directional coverage >= max(40%, OOF actual directional prevalence - 10 percentage points), predicted neutral share <= OOF actual neutral share + 5 percentage points, and each predicted class >= 5% of OOF rows.",
+      "fixed_grid_percentage_points": [
+        0.025,
+        0.05,
+        0.075,
+        0.1,
+        0.125,
+        0.15,
+        0.2,
+        0.25,
+        0.3
+      ],
+      "tie_breaks": [
+        "higher balanced accuracy",
+        "higher directional macro-F1",
+        "lower neutral prediction share",
+        "lower threshold"
+      ],
+      "if_no_threshold_is_feasible": "Record the highest unconstrained macro-F1 grid point as a diagnostic only; mark Ridge threshold selection as guardrail-failed and exclude Ridge from candidate eligibility.",
+      "diagnostic_zero_boundary": "Sign only: positive=UP, nonpositive=DOWN; binary diagnostic, not a three-class neutral boundary"
+    },
+    "candidate_selection": "Training OOF only: among candidates passing the same class-distribution guardrails, highest mean fold macro-F1; ties by mean balanced accuracy then mean directional macro-F1. If none pass, select the highest macro-F1 candidate for limited validation diagnosis and mark guardrail failure.",
+    "validation": "After OOF selection and config freeze, fit the selected candidate on train.csv only and evaluate it once on validation.csv. Existing baseline validation predictions are read-only reference outputs; no model is refit on validation.",
+    "catboost_installation": false,
+    "protected_test_access": false
+  },
+  "python": "3.14.3",
+  "sklearn": "1.9.1",
+  "xgboost": "3.4.1",
+  "catboost_installed": false,
+  "input_sha256": {
+    "data\\alpaca_rebuild_v1\\train.csv": "b38005521485be7e22dc6a617bb422deaad075546f9a2db9603a5e737f96486b",
+    "data\\alpaca_rebuild_v1\\validation.csv": "1767ccd6d69d8c416a9087e710d93f9f69de0e2e0b8f4521edd1074f8d6365cf",
+    "models\\alpaca_final_freeze_v1\\feature_columns.json": "be6e23d6bda7410dd6377fe4e44e3a86f62399db9da1d5327376eae3e12e9f65",
+    "models\\alpaca_final_freeze_v1\\frozen_candidate_spec.json": "b4f51daaabd59aa586c850ce04aaa82bd813ddc2325ededd2e51f159de9f688e",
+    "reports\\alpaca_binary_research_v3\\walk_forward_folds.csv": "c8b005d641c8a14e1b1fc24b8bbbef8c1296b67b16d9a1908cf82c5ee8371a4d",
+    "models\\alpaca_1min_research_v1\\raw_ecl_iex_5min_train_validation.csv": "b6a4d4bcf3562d2d8272a202010090300319c03aaca80280976a3b4ba71c357d",
+    "models\\alpaca_1min_research_v1\\fetch_5min_metadata.json": "b06bf0b93ee6ee962a040709d82adbc0673855782a416103e3b77aaf3eabff02",
+    "models\\alpaca_three_class_v1\\experiment_config.json": "deabd726c522264232e7a54b7ab0ec5356a3421cca455aa89eec6774b959ed68"
+  },
+  "preexisting_model_hashes_before_finalization": {
+    "models\\alpaca_final_freeze_v1\\candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "models\\alpaca_baselines_v1\\xgboost.joblib": "343915e56469b6e80711e31c93d7d94070651a37d8f95bedb848eccfdbbeab79",
+    "models\\alpaca_return_regression_v1\\ridge_full_train.joblib": "dc01a3cca5aa519a3a953aede4e6ce4fc6053d8d0b2d3e257561c8535959f3b7",
+    "models\\alpaca_binary_research_v3\\xgboost.joblib": "b9fc849ec1c867c91128ce6ae62b6d39d73d64226160380988822e7ee5055daa",
+    "models\\alpaca_return_regression_v1\\ridge_fold1.joblib": "e6c54b5e9b856c0d153180ae11d7d9c2a4fbad0faaac0ad31f640260f8233eb1",
+    "models\\alpaca_return_regression_v1\\ridge_fold2.joblib": "16f1fb04470ed1a37403e9e2eedae61d47eb9924a6560d17102d7fa9551071d5",
+    "models\\alpaca_return_regression_v1\\ridge_fold3.joblib": "0d23dad49ecfbbe1a5c74b95bd179a7f86877f04a82d414b42ca0d18f796a481",
+    "models\\alpaca_return_regression_v1\\ridge_fold4.joblib": "ad84793bc6fecb01653405af4faf4dfab2a2e896d7fb673f275c3d07f35f3ecb"
+  },
+  "preexisting_model_hashes_after_finalization": {
+    "models\\alpaca_final_freeze_v1\\candidate_pipeline.joblib": "31188a09eba09d58d441324fcfb130a23268a833a459709e4c0c6ad9ca45d08d",
+    "models\\alpaca_baselines_v1\\xgboost.joblib": "343915e56469b6e80711e31c93d7d94070651a37d8f95bedb848eccfdbbeab79",
+    "models\\alpaca_return_regression_v1\\ridge_full_train.joblib": "dc01a3cca5aa519a3a953aede4e6ce4fc6053d8d0b2d3e257561c8535959f3b7",
+    "models\\alpaca_binary_research_v3\\xgboost.joblib": "b9fc849ec1c867c91128ce6ae62b6d39d73d64226160380988822e7ee5055daa",
+    "models\\alpaca_return_regression_v1\\ridge_fold1.joblib": "e6c54b5e9b856c0d153180ae11d7d9c2a4fbad0faaac0ad31f640260f8233eb1",
+    "models\\alpaca_return_regression_v1\\ridge_fold2.joblib": "16f1fb04470ed1a37403e9e2eedae61d47eb9924a6560d17102d7fa9551071d5",
+    "models\\alpaca_return_regression_v1\\ridge_fold3.joblib": "0d23dad49ecfbbe1a5c74b95bd179a7f86877f04a82d414b42ca0d18f796a481",
+    "models\\alpaca_return_regression_v1\\ridge_fold4.joblib": "ad84793bc6fecb01653405af4faf4dfab2a2e896d7fb673f275c3d07f35f3ecb"
+  },
+  "preexisting_hashes_unchanged": true,
+  "protected_test_csv_or_predictions_accessed": false,
+  "validation_predictions_recomputed_during_finalization": false,
+  "split_rows": {
+    "train": 4883,
+    "validation": 1161
+  },
+  "split_dates": {
+    "train": [
+      "2025-11-13",
+      "2026-08-05"
+    ],
+    "validation": [
+      "2026-08-06",
+      "2026-09-24"
+    ]
+  },
+  "feature_order": [
+    "close",
+    "return_1",
+    "return_3",
+    "return_6",
+    "return_12",
+    "sma_ratio_5",
+    "sma_ratio_10",
+    "sma_ratio_20",
+    "ema_ratio_5",
+    "ema_ratio_10",
+    "ema_ratio_20",
+    "rsi_14",
+    "volatility_5",
+    "volatility_10",
+    "volatility_20",
+    "candle_body",
+    "candle_range",
+    "upper_wick",
+    "lower_wick",
+    "minutes_since_open",
+    "minutes_until_close",
+    "day_of_week",
+    "time_sin",
+    "time_cos"
+  ],
+  "class_order": [
+    "DOWN",
+    "NEUTRAL",
+    "UP"
+  ],
+  "selected_artifact": "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_train_only.joblib",
+  "selected_artifact_sha256": "08aea3085131c3e20625a7b9c56fd161741f58408c02a7d30e807bbc4bea228b",
+  "frozen_candidate_config_sha256": "899913b044f9c38840cb5ca6658fcb29453db5ee6782b0b6f840d7e8eb23f8ba",
+  "experiment_output_sha256": {
+    "models\\alpaca_three_class_v1\\experiment_config.json": "deabd726c522264232e7a54b7ab0ec5356a3421cca455aa89eec6774b959ed68",
+    "models\\alpaca_three_class_v1\\finalize_saved_outputs.py": "930c5538e1837a9c1d4137e2fe93aabfb25749d473c1be2b921e96ab0d681fe1",
+    "models\\alpaca_three_class_v1\\frozen_candidate_config.json": "899913b044f9c38840cb5ca6658fcb29453db5ee6782b0b6f840d7e8eb23f8ba",
+    "models\\alpaca_three_class_v1\\run_experiment.py": "4bdb3a111a65e1230eaf06a396f203b67cd2d6840d6975b1c8de2f13d02ae70a",
+    "models\\alpaca_three_class_v1\\test_three_class.py": "e46e096f8a6fae374c38782183da3c9dabe77d1cae0f92e534751e2920d06097",
+    "models\\alpaca_three_class_v1\\write_report.py": "1e6b009565736fa60ca1897083b3a70966c464c8442326d92f30410e429c5dcd",
+    "models\\alpaca_three_class_v1\\estimators\\hist_gradient_boosting_multiclass_fold1.joblib": "f4b93b15f1f95ccd26889203ca8febd28fb60a54cb7948f2e26055226450c430",
+    "models\\alpaca_three_class_v1\\estimators\\hist_gradient_boosting_multiclass_fold2.joblib": "b9204eced7b22c6fb53f947393194ebf6211140e5096b6d64293ce5b6bb30fdc",
+    "models\\alpaca_three_class_v1\\estimators\\hist_gradient_boosting_multiclass_fold3.joblib": "adcbd63c4d8e85b36a786bd1d225607f0ee6460eae8d0e845d2dd5b1060843c6",
+    "models\\alpaca_three_class_v1\\estimators\\hist_gradient_boosting_multiclass_fold4.joblib": "42e437b0bcb2c9d16db6e57d522859b650a0659192ea86b6abe1c67ee9ba5036",
+    "models\\alpaca_three_class_v1\\estimators\\hist_gradient_boosting_multiclass_train_only.joblib": "533e86e35ca988965771d9d0e83cb1242175bdbca76df01d6513555fdc78d821",
+    "models\\alpaca_three_class_v1\\estimators\\ridge_regression_to_3class_fold1.joblib": "e6c54b5e9b856c0d153180ae11d7d9c2a4fbad0faaac0ad31f640260f8233eb1",
+    "models\\alpaca_three_class_v1\\estimators\\ridge_regression_to_3class_fold2.joblib": "16f1fb04470ed1a37403e9e2eedae61d47eb9924a6560d17102d7fa9551071d5",
+    "models\\alpaca_three_class_v1\\estimators\\ridge_regression_to_3class_fold3.joblib": "0d23dad49ecfbbe1a5c74b95bd179a7f86877f04a82d414b42ca0d18f796a481",
+    "models\\alpaca_three_class_v1\\estimators\\ridge_regression_to_3class_fold4.joblib": "ad84793bc6fecb01653405af4faf4dfab2a2e896d7fb673f275c3d07f35f3ecb",
+    "models\\alpaca_three_class_v1\\estimators\\ridge_regression_to_3class_train_only.joblib": "dc01a3cca5aa519a3a953aede4e6ce4fc6053d8d0b2d3e257561c8535959f3b7",
+    "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_fold1.joblib": "d727926b34b07a6276d37c1b5f5a6627b011955a49a9bf8accdbcbd9f271bd13",
+    "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_fold2.joblib": "5fca51027c884f10537f55e83a4c6dd907ae2fe63a6460e6863c6a1485edbeb4",
+    "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_fold3.joblib": "04efd4432ba02bdac2162818064dc93a7a9373fb128dac322f42acc9106a583a",
+    "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_fold4.joblib": "2621272cc9f65eecb976a1dfd2296f7cbfde353f738cc5dd86c309b20e3778c5",
+    "models\\alpaca_three_class_v1\\estimators\\xgboost_multiclass_train_only.joblib": "08aea3085131c3e20625a7b9c56fd161741f58408c02a7d30e807bbc4bea228b",
+    "models\\alpaca_three_class_v1\\__pycache__\\finalize_saved_outputs.cpython-314.pyc": "28195b96126d9fd46eafc0dee8a229002aaebb8ec0d2c3a2ecf805782474b391",
+    "models\\alpaca_three_class_v1\\__pycache__\\run_experiment.cpython-314.pyc": "0d97fcabc7258d3a282298a11b38eb01013a2d1d4f7d1704d94eaa72019fe9f9",
+    "models\\alpaca_three_class_v1\\__pycache__\\test_three_class.cpython-314-pytest-9.2.0.pyc": "b71a30fd084cc93d96b6a2c1f8fddbfb7ce88417aa1930554127b00062781d42",
+    "models\\alpaca_three_class_v1\\__pycache__\\test_three_class.cpython-314.pyc": "1c2e867d62530b56e4b908979d70892ea4aef880bdb37372864e3cc8f188d9ef",
+    "models\\alpaca_three_class_v1\\__pycache__\\write_report.cpython-314.pyc": "8a3035a44e9171f0768080541a37cc0ddc416ee97fcc9c0eb6104bbd464e604d",
+    "reports\\alpaca_three_class_v1\\baseline_fold_metrics.csv": "c0e881c2c43e919539cfedc0608bec21032af66e90369fe8ad0953a976f12cdf",
+    "reports\\alpaca_three_class_v1\\oof_prediction_distributions.csv": "26b80fa2afeb2df415502606831d0f8457b6da4e771c1d8cab0624d528ab4fdd",
+    "reports\\alpaca_three_class_v1\\research_report.md": "7298202598de50201ee88a49615a9d03f8f763c4884fb0f924a144e8c654f6f7",
+    "reports\\alpaca_three_class_v1\\ridge_threshold_sweep.json": "176765fc2e5c8d0073191f9dcde10cd215e4bc0bead519a386668fb19f78d887",
+    "reports\\alpaca_three_class_v1\\ridge_zero_boundary_binary_diagnostic.json": "6ef4d63013dabffb440cd1c016b0aed366b9ffb22dacadde517e86bfa33bead8",
+    "reports\\alpaca_three_class_v1\\saved_baseline_comparison.csv": "672568186edfca5db19ed5a87e80bad9ec745a9ad1bd55524c30ef26cb7e10d9",
+    "reports\\alpaca_three_class_v1\\selection.json": "c91f82501c63ca79535f005de70b14778508ee2cad87ded0e38e2733bf414a07",
+    "reports\\alpaca_three_class_v1\\validation_baseline_metrics.csv": "c0f94ee9d051d0ea28bb47be1b89a651f22ef0fd3c1b03ae1fdb3190d4b4958f",
+    "reports\\alpaca_three_class_v1\\validation_confusion_matrix.csv": "fa8e13e22dd31dc9ca05f91a8851c320272e408def80a70238954ae6d55de4c2",
+    "reports\\alpaca_three_class_v1\\validation_metrics.json": "8d5d307d68ec27a96ff8a8c56b25b0e344c4edb4452d77bbf22eee831ee1f502",
+    "reports\\alpaca_three_class_v1\\validation_predictions.csv": "0b48dd043467d4e856cc58cc3ff3c59d2752c30a7d02d0d102011218dd5dd7f0",
+    "reports\\alpaca_three_class_v1\\walk_forward_confusion_matrices.csv": "e4ee6731472097d5147855aefe4796e4fe3d165e5fb8ceead8652f994ae2c3d2",
+    "reports\\alpaca_three_class_v1\\walk_forward_fold_metrics.json": "9d5502d009f8f65f480926363c416128d250bcb84de6c99358b3511d556dd420",
+    "reports\\alpaca_three_class_v1\\walk_forward_fold_table.csv": "b61ae31ac6eb41a0fbb244400fe55eaf26bff4f39e1c76c9b2f66265e2b4466a",
+    "reports\\alpaca_three_class_v1\\walk_forward_predictions.csv": "0b11fb7a773c9a51115477e63539befdea89400f0f24c3b807e717e35d27e4d6",
+    "reports\\alpaca_three_class_v1\\walk_forward_summary.csv": "fd07f2ce9941eefd9358b25f8034105d69d44b663834a24ffae4095a8bd21f7f"
+  },
+  "outputs_confined_to_new_experiment_dirs": true
+}

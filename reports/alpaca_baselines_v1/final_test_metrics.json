@@ -1,0 +1,243 @@
+{
+  "test_evaluation_count": 1,
+  "selected_model": "xgboost",
+  "selected_model_sha256": "343915e56469b6e80711e31c93d7d94070651a37d8f95bedb848eccfdbbeab79",
+  "test_csv_sha256": "26c06a77260a1646b50b5e077209012e15783a684acc90fb871f39a99d0aa9f2",
+  "test_rows": 1369,
+  "test_date_range": [
+    "2026-09-25",
+    "2026-11-12"
+  ],
+  "test_class_distribution": {
+    "DOWN": 334,
+    "NEUTRAL": 695,
+    "UP": 340
+  },
+  "prediction_seconds": 0.01002169999992475,
+  "probability_rows_valid": true,
+  "scores": {
+    "selected_model": {
+      "n": 1369,
+      "accuracy": 0.38568298027757486,
+      "balanced_accuracy": 0.362260329109027,
+      "macro_f1": 0.35562131086868415,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.26101694915254237,
+          "recall": 0.23053892215568864,
+          "f1": 0.24483306836248012,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5609318996415771,
+          "recall": 0.4503597122302158,
+          "f1": 0.49960095770151636,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.26744186046511625,
+          "recall": 0.40588235294117647,
+          "f1": 0.32242990654205606,
+          "support": 340
+        }
+      },
+      "directional_macro_precision": 0.2642294048088293,
+      "directional_macro_recall": 0.31821063754843254,
+      "directional_macro_f1": 0.28363148745226807,
+      "directional_prediction_coverage_all_rows": 0.5924032140248356,
+      "directional_prediction_coverage_actual_directional_rows": 0.6364985163204748,
+      "accuracy_among_directional_predictions": 0.2651048088779285,
+      "confusion_matrix_rows_actual_columns_predicted": [
+        [
+          77,
+          119,
+          138
+        ],
+        [
+          142,
+          313,
+          240
+        ],
+        [
+          76,
+          126,
+          138
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 295,
+        "NEUTRAL": 558,
+        "UP": 516
+      },
+      "log_loss": 1.0979295286179134
+    },
+    "always_neutral_baseline": {
+      "n": 1369,
+      "accuracy": 0.5076698319941563,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.22448320413436693,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5076698319941563,
+          "recall": 1.0,
+          "f1": 0.6734496124031008,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "directional_macro_precision": 0.0,
+      "directional_macro_recall": 0.0,
+      "directional_macro_f1": 0.0,
+      "directional_prediction_coverage_all_rows": 0.0,
+      "directional_prediction_coverage_actual_directional_rows": 0.0,
+      "accuracy_among_directional_predictions": null,
+      "confusion_matrix_rows_actual_columns_predicted": [
+        [
+          0,
+          334,
+          0
+        ],
+        [
+          0,
+          695,
+          0
+        ],
+        [
+          0,
+          340,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 0,
+        "NEUTRAL": 1369,
+        "UP": 0
+      },
+      "log_loss": null
+    },
+    "train_majority_baseline": {
+      "n": 1369,
+      "accuracy": 0.5076698319941563,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.22448320413436693,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5076698319941563,
+          "recall": 1.0,
+          "f1": 0.6734496124031008,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 340
+        }
+      },
+      "directional_macro_precision": 0.0,
+      "directional_macro_recall": 0.0,
+      "directional_macro_f1": 0.0,
+      "directional_prediction_coverage_all_rows": 0.0,
+      "directional_prediction_coverage_actual_directional_rows": 0.0,
+      "accuracy_among_directional_predictions": null,
+      "confusion_matrix_rows_actual_columns_predicted": [
+        [
+          0,
+          334,
+          0
+        ],
+        [
+          0,
+          695,
+          0
+        ],
+        [
+          0,
+          340,
+          0
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 0,
+        "NEUTRAL": 1369,
+        "UP": 0
+      },
+      "log_loss": null
+    },
+    "fixed_rsi_baseline": {
+      "n": 1369,
+      "accuracy": 0.4558071585098612,
+      "balanced_accuracy": 0.34457171142269,
+      "macro_f1": 0.32446143851563297,
+      "per_class": {
+        "DOWN": {
+          "precision": 0.21693121693121692,
+          "recall": 0.12275449101796407,
+          "f1": 0.15678776290630975,
+          "support": 334
+        },
+        "NEUTRAL": {
+          "precision": 0.5154142581888247,
+          "recall": 0.7697841726618705,
+          "f1": 0.6174264281592614,
+          "support": 695
+        },
+        "UP": {
+          "precision": 0.3380281690140845,
+          "recall": 0.1411764705882353,
+          "f1": 0.1991701244813278,
+          "support": 340
+        }
+      },
+      "directional_macro_precision": 0.27747969297265074,
+      "directional_macro_recall": 0.13196548080309967,
+      "directional_macro_f1": 0.17797894369381878,
+      "directional_prediction_coverage_all_rows": 0.24178232286340395,
+      "directional_prediction_coverage_actual_directional_rows": 0.25370919881305637,
+      "accuracy_among_directional_predictions": 0.2688821752265861,
+      "confusion_matrix_rows_actual_columns_predicted": [
+        [
+          41,
+          251,
+          42
+        ],
+        [
+          108,
+          535,
+          52
+        ],
+        [
+          40,
+          252,
+          48
+        ]
+      ],
+      "prediction_distribution": {
+        "DOWN": 189,
+        "NEUTRAL": 1038,
+        "UP": 142
+      },
+      "log_loss": null
+    }
+  },
+  "test_used_for_selection_or_tuning": false,
+  "no_model_changes_after_evaluation": true,
+  "limitation": "The chronological dates of this rebuilt test period have appeared in the historical project's prior test research; this is a new Alpaca-only split, not a pristine project-level date holdout."
+}

@@ -1,0 +1,90 @@
+{
+  "started_utc": "2026-11-13T12:25:52.398314+00:00",
+  "endpoint": "https://data.alpaca.markets/v2/stocks/bars",
+  "symbol": "ECL",
+  "feed": "iex",
+  "timeframe": "1Min",
+  "start_utc": "2025-11-13T14:30:00Z",
+  "end_inclusive_utc": "2026-09-25T03:59:59Z",
+  "permitted_new_york_date_range": [
+    "2025-11-13",
+    "2026-09-24"
+  ],
+  "permitted_split_date_ranges": {
+    "train_start": "2025-11-13",
+    "train_end": "2026-08-05",
+    "validation_start": "2026-08-06",
+    "validation_end": "2026-09-24"
+  },
+  "pagination_limit": 10000,
+  "max_pages": 40,
+  "credential_values_saved": false,
+  "request_headers_saved": false,
+  "page_statuses": [
+    {
+      "page": 1,
+      "http_status": 200,
+      "bars_returned": 10000
+    },
+    {
+      "page": 2,
+      "http_status": 200,
+      "bars_returned": 10000
+    },
+    {
+      "page": 3,
+      "http_status": 200,
+      "bars_returned": 10000
+    },
+    {
+      "page": 4,
+      "http_status": 200,
+      "bars_returned": 10000
+    },
+    {
+      "page": 5,
+      "http_status": 200,
+      "bars_returned": 9348
+    }
+  ],
+  "rate_limit_headers": [
+    {
+      "page": 1,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794572755"
+    },
+    {
+      "page": 2,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794572781"
+    },
+    {
+      "page": 3,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794572786"
+    },
+    {
+      "page": 4,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794572793"
+    },
+    {
+      "page": 5,
+      "X-RateLimit-Limit": "200",
+      "X-RateLimit-Remaining": "199",
+      "X-RateLimit-Reset": "1794572812"
+    }
+  ],
+  "request_success": true,
+  "finished_utc": "2026-11-13T12:26:54.473657+00:00",
+  "returned_bars": 49348,
+  "first_timestamp_utc": "2025-11-13T14:30:00.000000Z",
+  "last_timestamp_utc": "2026-09-24T19:59:00.000000Z",
+  "raw_csv": "raw_ecl_iex_1min_train_validation.csv",
+  "raw_csv_sha256": "7d5bce7c8925b9cb1f27aba122f9ce97b0459a1bdce826bdee1f70f3d109880c",
+  "raw_csv_bytes": 3574393
+}

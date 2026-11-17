@@ -1,0 +1,142 @@
+{
+  "selected_interval_minutes": 1,
+  "selected_model": "xgboost",
+  "selected_oof_coverage_target": 0.5,
+  "confidence_threshold_from_training_oof": 0.6117426156997681,
+  "validation_is_pristine": false,
+  "one_confirmation_only": true,
+  "class_distribution": {
+    "DOWN": 63,
+    "NO_SIGNAL": 108,
+    "UP": 54
+  },
+  "metrics": {
+    "n_labeled_rows": 225,
+    "n_eligible_directional": 117,
+    "n_emitted_signals_all_rows": 149,
+    "n_emitted_on_eligible": 76,
+    "n_emitted_on_neutral_actual": 73,
+    "n_no_signal_outputs": 76,
+    "eligible_directional_coverage": 0.6495726495726496,
+    "all_candle_signal_coverage": 0.6622222222222223,
+    "up_precision_eligible": 0.5161290322580645,
+    "down_precision_eligible": 0.35714285714285715,
+    "macro_directional_precision": 0.43663594470046085,
+    "directional_accuracy_emitted_eligible": 0.4868421052631579,
+    "binary_accuracy_all_eligible_before_abstention": 0.5470085470085471,
+    "accuracy_all_eligible_after_abstention_no_signal_is_miss": 0.3162393162393162,
+    "up_recall_all_eligible": 0.5925925925925926,
+    "down_recall_all_eligible": 0.07936507936507936,
+    "macro_directional_recall_all_eligible": 0.33597883597883593,
+    "macro_directional_f1_all_eligible_no_signal_is_miss": 0.3407971339005822,
+    "all_candle_operational_accuracy_no_signal_and_actual_neutral_are_errors": 0.16444444444444445,
+    "all_candle_three_outcome_accuracy_neutral_target_maps_to_no_signal": 0.32,
+    "confusion_matrix_labels_rows_actual_cols_output": [
+      "DOWN",
+      "NO_SIGNAL",
+      "UP"
+    ],
+    "confusion_matrix_all_rows": [
+      [
+        5,
+        28,
+        30
+      ],
+      [
+        14,
+        35,
+        59
+      ],
+      [
+        9,
+        13,
+        32
+      ]
+    ],
+    "eligible_confusion_matrix_labels_rows_actual_cols_output": [
+      "DOWN",
+      "UP"
+    ],
+    "eligible_confusion_matrix": [
+      [
+        5,
+        28,
+        30
+      ],
+      [
+        9,
+        13,
+        32
+      ]
+    ],
+    "calibration_eligible_directional": {
+      "count": 117,
+      "log_loss": 0.7832540418116638,
+      "brier_score": 0.2867104665975755,
+      "ece_10_bins": 0.20183542459948448,
+      "mean_probability_up": 0.5904261962725565,
+      "std_probability_up": 0.1557603196757712,
+      "reliability_bins": [
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 8,
+          "mean_probability_up": 0.2554108779877424,
+          "observed_up_rate": 0.625
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 10,
+          "mean_probability_up": 0.36892731189727784,
+          "observed_up_rate": 0.5
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 14,
+          "mean_probability_up": 0.45367527859551565,
+          "observed_up_rate": 0.07142857142857142
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "count": 20,
+          "mean_probability_up": 0.5578762203454971,
+          "observed_up_rate": 0.45
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 34,
+          "mean_probability_up": 0.6534607024753795,
+          "observed_up_rate": 0.5882352941176471
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 24,
+          "mean_probability_up": 0.7455527757604917,
+          "observed_up_rate": 0.5416666666666666
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 7,
+          "mean_probability_up": 0.8181994301932198,
+          "observed_up_rate": 0.14285714285714285
+        }
+      ]
+    },
+    "predicted_class_distribution": {
+      "UP": 121,
+      "NO_SIGNAL": 76,
+      "DOWN": 28
+    }
+  },
+  "regime_thresholds_fit_on_training_only": {
+    "feature": "realized_vol_10",
+    "low_volatility_upper_cutoff": 0.04107527356908555,
+    "medium_volatility_upper_cutoff": 0.05868270132713465
+  }
+}

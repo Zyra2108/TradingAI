@@ -1,0 +1,149 @@
+{
+  "provenance": {
+    "symbol": "ECL",
+    "feed": "iex",
+    "minute_timeframe": "1Min",
+    "native_timeframe": "5Min",
+    "permitted_dates_new_york": [
+      "2025-11-13",
+      "2026-09-24"
+    ],
+    "train_dates": [
+      "2025-11-13",
+      "2026-08-05"
+    ],
+    "validation_dates": [
+      "2026-08-06",
+      "2026-09-24"
+    ],
+    "test_data_accessed": false,
+    "network_requests_made": false
+  },
+  "source_quality": {
+    "minute": {
+      "source_file": "raw_ecl_iex_1min_train_validation.csv",
+      "rows_total": 49348,
+      "date_min_new_york": "2025-11-13",
+      "date_max_new_york": "2026-09-24",
+      "duplicate_rows": 0,
+      "invalid_ohlc_rows": 0,
+      "out_of_session_or_nonexistent_session_rows": 1,
+      "unaligned_rows": 0,
+      "volume_missing_rows": 0,
+      "trade_count_missing_rows": 0
+    },
+    "native_5min": {
+      "source_file": "raw_ecl_iex_5min_train_validation.csv",
+      "rows_total": 16060,
+      "date_min_new_york": "2025-11-13",
+      "date_max_new_york": "2026-09-24",
+      "duplicate_rows": 0,
+      "invalid_ohlc_rows": 0,
+      "out_of_session_or_nonexistent_session_rows": 1,
+      "unaligned_rows": 0,
+      "volume_missing_rows": 0,
+      "trade_count_missing_rows": 0
+    }
+  },
+  "counts": {
+    "valid_minute_bars": 49347,
+    "valid_native_5min_bars": 16059,
+    "reconstructed_sparse_5min_bars": 16059,
+    "reconstructed_buckets_by_observed_minute_count": {
+      "1": 2138,
+      "2": 3559,
+      "3": 4019,
+      "4": 3681,
+      "5": 2662
+    },
+    "matched_buckets": 16059,
+    "missing_native_buckets": 0,
+    "missing_reconstructed_buckets": 0
+  },
+  "parity": {
+    "exact_ohlc_matches": 16059,
+    "exact_ohlc_match_rate": 1.0,
+    "ohlc_matches_with_abs_tolerance_1e-8": 16059,
+    "exact_volume_matches": 16059,
+    "volume_comparable_buckets": 16059,
+    "exact_volume_match_rate": 1.0,
+    "exact_trade_count_matches": 16059,
+    "trade_count_comparable_buckets": 16059,
+    "exact_trade_count_match_rate": 1.0,
+    "max_abs_difference": {
+      "open": 0.0,
+      "high": 0.0,
+      "low": 0.0,
+      "close": 0.0,
+      "volume": 0.0,
+      "trade_count": 0.0
+    }
+  },
+  "by_observed_minute_count": [
+    {
+      "observed_minute_count": 1,
+      "matched_buckets": 2138,
+      "exact_ohlc_matches": 2138,
+      "ohlc_exact_rate": 1.0,
+      "exact_volume_matches": 2138,
+      "volume_comparable": 2138,
+      "exact_trade_count_matches": 2138,
+      "trade_count_comparable": 2138
+    },
+    {
+      "observed_minute_count": 2,
+      "matched_buckets": 3559,
+      "exact_ohlc_matches": 3559,
+      "ohlc_exact_rate": 1.0,
+      "exact_volume_matches": 3559,
+      "volume_comparable": 3559,
+      "exact_trade_count_matches": 3559,
+      "trade_count_comparable": 3559
+    },
+    {
+      "observed_minute_count": 3,
+      "matched_buckets": 4019,
+      "exact_ohlc_matches": 4019,
+      "ohlc_exact_rate": 1.0,
+      "exact_volume_matches": 4019,
+      "volume_comparable": 4019,
+      "exact_trade_count_matches": 4019,
+      "trade_count_comparable": 4019
+    },
+    {
+      "observed_minute_count": 4,
+      "matched_buckets": 3681,
+      "exact_ohlc_matches": 3681,
+      "ohlc_exact_rate": 1.0,
+      "exact_volume_matches": 3681,
+      "volume_comparable": 3681,
+      "exact_trade_count_matches": 3681,
+      "trade_count_comparable": 3681
+    },
+    {
+      "observed_minute_count": 5,
+      "matched_buckets": 2662,
+      "exact_ohlc_matches": 2662,
+      "ohlc_exact_rate": 1.0,
+      "exact_volume_matches": 2662,
+      "volume_comparable": 2662,
+      "exact_trade_count_matches": 2662,
+      "trade_count_comparable": 2662
+    }
+  ],
+  "feature_compatibility": {
+    "feature_count": 24,
+    "feature_order_matches_frozen_spec": true,
+    "native_rows": 16059,
+    "reconstructed_rows": 16059,
+    "common_timestamps": 16059,
+    "native_ready_rows": 6792,
+    "reconstructed_ready_rows": 6792,
+    "common_rows_ready_in_both": 6792,
+    "common_ready_rows_all_features_exact": 6792,
+    "native_feature_segments": 797,
+    "reconstructed_feature_segments": 797,
+    "all_feature_nan_status_identical_on_common_timestamps": true
+  },
+  "data_revision_caveat": "The two cached timeframes were fetched separately; late updates or historical revisions may explain isolated differences."
+}
